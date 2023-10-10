@@ -1,10 +1,8 @@
 import styled from "@emotion/styled";
 
-export const MainSide = styled.aside`
+export const Sidebar = styled.aside`
   background-color: yellow;
   height: 100%;
-  width: 12vw;
-  left: 0;
-
+  width: 200px;
   position: fixed;
 `;

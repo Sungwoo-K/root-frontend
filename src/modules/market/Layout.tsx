@@ -1,11 +1,11 @@
-import Side from "@/components/Side/Side";
-import Header from "../../components/Header/Header";
+import Header from "../../components/Header";
+import { Sidebar } from "@/components/Sidebar/styles";
 
 const Layout = () => {
   return (
     <>
-      <Side />
       <Header />
+      <Sidebar />
     </>
   );
 };
