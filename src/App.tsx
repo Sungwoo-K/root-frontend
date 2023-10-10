@@ -6,10 +6,12 @@ import { mainRoutes } from "./modules/main/routes";
 import { communityRoutes } from "./modules/community/routes";
 import { productRoutes } from "./modules/market/productRoutes";
 import { userRoutes } from "./modules/market/userRoutes";
+import ResetStyle from "./styles/reset";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ResetStyle />
       <Routes>
         <Route path="/" element={<MainLayout />}>
           {mainRoutes}
