@@ -3,7 +3,7 @@ import header from "./Header";
 
 export const MainHeader = styled.header`
   background-color: green;
-  height: 56px;
+  height: 100px;
   width: 100vw;
   left: 0;
   top: 0;

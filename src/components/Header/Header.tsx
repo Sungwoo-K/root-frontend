@@ -4,7 +4,9 @@ const header = () => {
   return (
     <>
       <div>
-        <MainHeader></MainHeader>
+        <MainHeader>
+          <p>asd</p>
+        </MainHeader>
       </div>
     </>
   );
