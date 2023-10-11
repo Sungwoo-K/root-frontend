@@ -1,6 +1,4 @@
 import Main from "@/components/Main";
-// import Header from "../../components/Header";
-// import { Sidebar } from "@/components/Sidebar/styles";
 
 const Layout = () => {
   return (
