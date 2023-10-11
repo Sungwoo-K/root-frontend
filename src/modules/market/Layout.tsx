@@ -8,8 +8,10 @@ const Layout = () => {
     <>
       <Container>
         <Header />
+
         <Item>
           <Sidebar />
+
           <Main />
         </Item>
       </Container>

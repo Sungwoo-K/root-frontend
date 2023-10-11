@@ -9,7 +9,7 @@ export const Container = styled.div`
 `;
 
 export const Item = styled.div`
-  background-color: whitesmoke;
+  background-color: rgb(255, 217, 142, 0.5);
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
