@@ -1,15 +1,16 @@
-import { Container, Header, Item, Main, Sidebar } from "./styles";
+import { Main } from "./styles";
 
 const main = () => {
   return (
     <>
-      <Container>
-        <Header>머리</Header>
-        <Item>
-          <Sidebar>사이드바</Sidebar>
-          <Main>메인</Main>
-        </Item>
-      </Container>
+      <Main>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum ipsa
+        quis rerum harum modi magnam commodi sit et odio maxime suscipit, ipsam,
+        illum tempore distinctio expedita, architecto debitis fugit fuga? Lorem
+        ipsum dolor sit, amet consectetur adipisicing elit. Laborum ipsa quis
+        rerum harum modi magnam commodi sit et odio maxime suscipit, ipsam,
+        illum tempore distinctio expedita, architecto debitis fugit fuga?
+      </Main>
     </>
   );
 };

@@ -1,0 +1,17 @@
+import styled from "@emotion/styled";
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  height: 100vh;
+`;
+
+export const Item = styled.div`
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 90vh;
+`;
