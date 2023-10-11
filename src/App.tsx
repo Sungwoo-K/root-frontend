@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./modules/main/Layout";
 import MarketLayout from "./modules/market/Layout";
 import CommunityLayout from "./modules/community/Layout";
