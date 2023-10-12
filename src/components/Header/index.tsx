@@ -1,4 +1,5 @@
 import {
+  Button,
   Campdiv,
   Header,
   Hedaerline,
@@ -16,9 +17,11 @@ const main = () => (
   <>
     <Header>
       <Hedaerline>
-        <Menubutton>
-          <BiMenu style={{ width: "40px", height: "60px" }} />
-        </Menubutton>
+        <Button>
+          <Menubutton>
+            <BiMenu style={{ width: "45px", height: "45px" }} />
+          </Menubutton>
+        </Button>
         <Campdiv>
           <img
             src={require("./tent.png")}

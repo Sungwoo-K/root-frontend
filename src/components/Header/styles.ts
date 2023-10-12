@@ -1,21 +1,35 @@
 import styled from "@emotion/styled";
 
+export const Button = styled.button`
+  cursor: pointer;
+  background-color: rgb(255, 217, 142, 0);
+  border: none;
+  margin-left: 7px;
+  align-items: center;
+  display: flex;
+`;
+
 export const Header = styled.div`
   background-color: rgb(255, 217, 142, 0.5);
-  padding: 0%, 16vh;
+  padding: 0cap, 16vh;
   display: flex;
   height: 65px;
   width: 100%;
 `;
 
 export const Menubutton = styled.button`
-  background-color: none;
-  margin-left: 10px;
-  margin-right: 20px;
-  background-color: rgb(255, 217, 142, 0.1);
-  border: 0;
-  width: 60px;
+  display: flex;
+  /* margin-left: 5px; */
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 217, 142, 0);
+  /* background-color: white; */
+  /* border-radius: 50%; */
+  border: none;
+  width: 70px;
   height: 60px;
+  /* box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; */
+
   cursor: pointer;
 `;
 
@@ -33,7 +47,7 @@ export const Title = styled.div`
   font-size: 29px;
   margin-top: 10px;
   justify-content: center;
-  text-decoration: none;
+
   font-family: "TAEBAEKfont";
 `;
 
@@ -51,6 +65,7 @@ export const Inputdiv = styled.div`
   float: right;
   justify-content: flex-end;
   margin-right: 3vh;
+  margin-bottom: 10px;
 `;
 
 export const Input = styled.input`
