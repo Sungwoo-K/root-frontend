@@ -1,15 +1,96 @@
 import { UsageState } from "webpack";
 import { Main } from "./styles";
-import { useState } from "react";
-
-const menu = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-};
 
 const main = () => {
   return (
     <>
-      <Main></Main>
+      <Main>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
+        provident ex eos est, vero, aut aspernatur nisi maxime quia quis modi
+        molestiae hic, fugiat incidunt sed esse voluptas distinctio similique?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
+        provident ex eos est, vero, aut aspernatur nisi maxime quia quis modi
+        molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Dolorem provident ex eos est, vero, aut aspernatur nisi maxime quia quis
+        modi molestiae hic, fugiat incidunt sed esse voluptas distinctio
+        similique?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </Main>
     </>
   );
 };

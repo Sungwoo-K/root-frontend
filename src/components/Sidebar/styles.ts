@@ -8,7 +8,7 @@ export const Sidebar = styled.aside`
   width: 90px;
   align-items: center;
   padding-top: 40px;
-  gap: 10px;
+  gap: 15px;
 `;
 
 export const Iconbutton = styled.button`
@@ -25,7 +25,7 @@ export const Iconbutton = styled.button`
 
 export const Icon = styled.div``;
 
-export const Button = styled.button`
+export const Button = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,9 +33,11 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
   background-color: rgb(255, 217, 142, 0);
+  gap: 4px;
 `;
 
 export const SideMenu = styled.p`
   margin-top: 3px;
   margin-left: 3px;
+  font-size: 13px;
 `;
