@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./modules/main/Layout";
-import MarketLayout from "./modules/market/Layout";
+// import MarketLayout from "./modules/market/Layout";
+import MarketLayout from "./modules/community/Layout";
 import CommunityLayout from "./modules/community/Layout";
 import { mainRoutes } from "./modules/main/routes";
 import { communityRoutes } from "./modules/community/routes";
