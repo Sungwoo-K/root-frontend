@@ -1,5 +1,5 @@
 import { Button, Icon, Iconbutton, SideMenu, Sidebar } from "./styles";
-import { BsPerson, BsBell } from "react-icons/bs";
+import { BsPerson, BsBell, BsBookmarkStar } from "react-icons/bs";
 import { TiShoppingCart } from "react-icons/ti";
 import { SlUserFollow } from "react-icons/sl";
 import { HiOutlineFolderPlus } from "react-icons/hi2";
@@ -36,12 +36,12 @@ const main = () => {
         </Button>
 
         <Button>
-          <Iconbutton>
+          <Iconbutton className="listbutton">
             <Icon>
-              <HiOutlineFolderPlus style={{ width: "35px", height: "60px" }} />
+              <BsBookmarkStar style={{ width: "35px", height: "30px" }} />
             </Icon>
           </Iconbutton>
-          <SideMenu>저장</SideMenu>
+          <SideMenu>찜한 상품</SideMenu>
         </Button>
 
         <Button>

@@ -9,7 +9,7 @@ export const Header = styled.div`
   .sidebar {
     width: 250px;
     min-height: 100vh;
-    /* box-shadow: 0px 4px 8px rgb(0 0 0 / 16%); */
+
     background-color: white;
     position: fixed;
     top: 0;
@@ -46,8 +46,6 @@ export const Menudiv = styled.div`
     margin-left: 30px;
     font-size: large;
     gap: 10px;
-    .button {
-    }
   }
 
   .menulist li {
@@ -58,7 +56,7 @@ export const Menudiv = styled.div`
 
 export const Menubutton = styled.div`
   display: flex;
-  margin-left: 15px;
+  margin-left: 10px;
 
   justify-content: center;
   align-items: center;
@@ -84,9 +82,7 @@ export const ToggleButton = styled.div`
   cursor: pointer;
 `;
 
-export const menulist = styled.ul`
-  display: flex;
-`;
+export const Menulist = styled.ul``;
 
 export const Title = styled.div`
   @font-face {
@@ -128,7 +124,7 @@ export const Iconbutton = styled.button`
   background-color: white;
   justify-content: center;
   margin-left: 28px;
-  margin-right: 30px;
+  margin-right: 20px;
   border-radius: 50%;
   border: none;
   align-items: flex-end;
@@ -160,22 +156,39 @@ export const Searchbutton = styled.button`
 
 export const SideMenu = styled.p`
   display: flex;
-  width: 100px;
+  width: 95px;
   margin-top: 3px;
-  margin-left: 3px;
+
   font-size: 15px;
-  justify-content: center;
+  justify-content: left;
+  align-items: center;
 `;
 
 export const Button = styled.div`
   margin-top: 10px;
   padding: 0;
-
   display: flex;
   align-items: center;
   cursor: pointer;
   .listbutton {
     justify-content: center;
     align-items: flex-end;
+  }
+  .allshop {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+export const Navlist = styled.nav`
+  .listbar {
+    flex-direction: column;
+    padding-left: 80px;
+    width: 100px;
+    top: 10%;
+    display: none;
+  }
+  .listbar.active {
+    display: flex;
   }
 `;
