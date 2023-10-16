@@ -199,8 +199,11 @@ const main = () => {
             src={require("./tent.png")}
             style={{ height: "40px", marginTop: "2px" }}
           />
-          <Link to="http://localhost:5000/market">
-            <Title> CAMP&TENT</Title>
+          <Link
+            to="http://localhost:5000/market"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <Title>CAMP&TENT</Title>
           </Link>
         </Campdiv>
         <Inputdiv>

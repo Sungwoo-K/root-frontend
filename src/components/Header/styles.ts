@@ -98,7 +98,6 @@ export const Title = styled.div`
   font-size: 29px;
   margin-top: 10px;
   justify-content: center;
-
   font-family: "TAEBAEKfont";
 `;
 
@@ -137,6 +136,11 @@ export const Input = styled.input`
   width: 30%;
   height: 35px;
   border: 0.5cap;
+`;
+
+export const Linkgo = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Hedaerline = styled.div`

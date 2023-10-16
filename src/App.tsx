@@ -7,6 +7,7 @@ import { communityRoutes } from "./modules/community/routes";
 import { productRoutes } from "./modules/market/productRoutes";
 import { userRoutes } from "./modules/market/userRoutes";
 import ResetStyle from "./styles/reset";
+import Login from "./components/Login";
 
 const App = () => {
   return (
@@ -16,6 +17,8 @@ const App = () => {
         <Route path="/" element={<MainLayout />}>
           {mainRoutes}
         </Route>
+        <Route element={<Login />} path="/login"></Route>
+
         <Route element={<MarketLayout />} path="/market">
           {productRoutes}
           {userRoutes}
