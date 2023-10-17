@@ -1,10 +1,13 @@
 import { UsageState } from "webpack";
 import { Main } from "./styles";
+import { Outlet } from "react-router-dom";
 
 const main = () => {
   return (
     <>
-      <Main></Main>
+      <Main>
+        <Outlet />
+      </Main>
     </>
   );
 };

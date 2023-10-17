@@ -5,5 +5,5 @@ export const Main = styled.div`
   height: 100vh;
   width: 100%;
   border-radius: 70px 0 0 0;
-  overflow: scroll;
+  overflow: auto;
 `;
