@@ -121,7 +121,7 @@ const main = () => {
                       alignItems: "flex-end",
 
                       marginTop: "1px",
-                      marginLeft: "3px",
+                      marginLeft: "1px",
                     }}
                   />
                 </SideMenu>

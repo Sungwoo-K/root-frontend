@@ -13,5 +13,5 @@ export const Item = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  height: 90vh;
+  height: 100vh;
 `;

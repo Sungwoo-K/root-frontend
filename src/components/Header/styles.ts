@@ -160,11 +160,11 @@ export const Searchbutton = styled.button`
 
 export const SideMenu = styled.p`
   display: flex;
-  width: 95px;
+  width: 130px;
   margin-top: 3px;
 
   font-size: 15px;
-  justify-content: left;
+  justify-content: space-between;
   align-items: center;
 `;
 

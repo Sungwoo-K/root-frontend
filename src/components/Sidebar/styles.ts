@@ -3,7 +3,8 @@ import styled from "@emotion/styled";
 export const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
-  background-color: rgb(255, 217, 142, 0.1);
+  /* background-color: rgb(255, 217, 142, 0.1); */
+
   height: 100vh;
   width: 90px;
   align-items: center;
@@ -32,7 +33,7 @@ export const Button = styled.div`
   justify-content: center;
   border: none;
   cursor: pointer;
-  background-color: rgb(255, 217, 142, 0);
+  /* background-color: rgb(255, 217, 142, 0); */
   gap: 4px;
 `;
 

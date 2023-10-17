@@ -10,10 +10,11 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20%;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
   background-color: #fafafa;
+  height: 100vh;
+  padding: 0%;
 `;
 
 export const Logindiv = styled.div`
@@ -28,8 +29,9 @@ export const Logininput = styled.input`
 
 export const Loginbutton = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
+
+  width: 250px;
 `;
 
 export const ExceptionButton = styled.button`
@@ -39,7 +41,6 @@ export const ExceptionButton = styled.button`
   height: 40px;
   background-color: #fafafa;
   font-size: 15px;
-  justify-content: space-between;
 `;
 
 export const Button = styled.button`
@@ -51,4 +52,5 @@ export const Button = styled.button`
   font-size: 20px;
   font-weight: bold;
   color: white;
+  margin-top: 25px;
 `;

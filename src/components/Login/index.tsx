@@ -16,9 +16,11 @@ import axios from "axios";
 const login = () => {
   return (
     <>
-      <LoginHeader></LoginHeader>
       <Container>
-        <Link to={"http://localhost:5000/market"}>
+        <Link
+          to={"http://localhost:5000/market"}
+          style={{ marginBottom: "20px" }}
+        >
           <img
             src={require("../Header/tent.png")}
             style={{
@@ -32,7 +34,7 @@ const login = () => {
             style={{ width: "160px", height: "55px" }}
           />
         </Link>
-        <form action="http://localhost:8080/auth/signin" method="post">
+        <form action="http://192.168.100.109:8080/auth/signin" method="post">
           <Logindiv>
             <Logininput
               type="text"
@@ -46,20 +48,19 @@ const login = () => {
             ></Logininput>
           </Logindiv>
 
-          <Loginbutton>
-            <Button>로그인</Button>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                gap: "15px",
-              }}
-            >
-              <ExceptionButton>회원가입</ExceptionButton>
-              <ExceptionButton>계정찾기</ExceptionButton>
-            </div>
-          </Loginbutton>
+          <Button>로그인</Button>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          ></div>
         </form>
+
+        <Loginbutton>
+          <ExceptionButton>회원가입</ExceptionButton>
+          <ExceptionButton>계정찾기</ExceptionButton>
+        </Loginbutton>
       </Container>
     </>
   );

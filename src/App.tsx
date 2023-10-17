@@ -8,6 +8,7 @@ import { productRoutes } from "./modules/market/productRoutes";
 import { userRoutes } from "./modules/market/userRoutes";
 import ResetStyle from "./styles/reset";
 import Login from "./components/Login";
+import Joinmember from "./components/Login/Joinmember";
 
 const App = () => {
   return (
@@ -18,7 +19,7 @@ const App = () => {
           {mainRoutes}
         </Route>
         <Route element={<Login />} path="/login"></Route>
-
+        <Route element={<Joinmember />} path="/joinmember"></Route>
         <Route element={<MarketLayout />} path="/market">
           {productRoutes}
           {userRoutes}
