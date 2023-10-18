@@ -6,8 +6,8 @@ import { communityRoutes } from "./modules/community/routes";
 import { productRoutes } from "./modules/market/productRoutes";
 import { userRoutes } from "./modules/market/userRoutes";
 import ResetStyle from "./styles/reset";
-import Login from "./modules/market/Auth/Login";
-import Join from "./modules/market/Auth/Join";
+import Login from "./modules/market/auth/Login";
+import Join from "./modules/market/auth/Join";
 
 const App = () => {
   return (
