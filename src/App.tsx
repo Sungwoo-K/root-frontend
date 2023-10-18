@@ -16,14 +16,12 @@ const App = () => {
       <ResetStyle />
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          {mainRoutes}
-        </Route>
-        <Route element={<Login />} path="/login"></Route>
-        <Route element={<Joinmember />} path="/joinmember"></Route>
-        <Route element={<MarketLayout />} path="/market">
           {productRoutes}
           {userRoutes}
         </Route>
+        <Route element={<Login />} path="/login"></Route>
+        <Route element={<Joinmember />} path="/joinmember"></Route>
+        <Route element={<MarketLayout />} path="/market"></Route>
         <Route element={<CommunityLayout />} path="/community">
           {communityRoutes}
         </Route>
