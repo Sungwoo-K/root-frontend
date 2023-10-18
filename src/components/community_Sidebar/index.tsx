@@ -1,11 +1,13 @@
-import { PostSidebar } from "./styles";
-
+import { Container } from "../community_Header/styles";
+import { PostSidebar, BestFont } from "./styles";
+// import { HeaderAtag, PostHeader, Container } from "./styles";
 const main = () => {
   return (
-    <>
-      <PostSidebar>사이드바</PostSidebar>
-      <hr />
-    </>
+    <Container>
+      <PostSidebar>
+        <BestFont>BestContent</BestFont>
+      </PostSidebar>
+    </Container>
   );
 };
 
