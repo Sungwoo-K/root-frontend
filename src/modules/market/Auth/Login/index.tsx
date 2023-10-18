@@ -9,7 +9,7 @@ import {
   Logininput,
 } from "./styles";
 
-const login = () => {
+const Login = () => {
   return (
     <>
       <Container>
@@ -18,7 +18,7 @@ const login = () => {
           style={{ marginBottom: "20px" }}
         >
           <img
-            src={require("../Header/tent.png")}
+            src={require("../../../../components/Header/tent.png")}
             style={{
               width: "50px",
               height: "50px",
@@ -26,7 +26,7 @@ const login = () => {
             }}
           />
           <img
-            src={require("../Header/logo.png")}
+            src={require("../../../../components/Header/logo.png")}
             style={{ width: "160px", height: "55px" }}
           />
         </Link>
@@ -62,4 +62,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
