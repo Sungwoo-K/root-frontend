@@ -1,17 +1,13 @@
 import { Link } from "react-router-dom";
-import { Title } from "../Header/styles";
-import Header from "../Login";
+
 import {
   Button,
   Container,
   ExceptionButton,
-  LoginHeader,
   Loginbutton,
   Logindiv,
   Logininput,
 } from "./styles";
-import { useState } from "react";
-import axios from "axios";
 
 const login = () => {
   return (

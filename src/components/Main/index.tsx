@@ -1,4 +1,3 @@
-import { UsageState } from "webpack";
 import { Main } from "./styles";
 import { Outlet } from "react-router-dom";
 

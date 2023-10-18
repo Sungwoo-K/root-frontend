@@ -2,7 +2,6 @@ import { Button, Icon, Iconbutton, SideMenu, Sidebar } from "./styles";
 import { BsPerson, BsBell, BsBookmarkStar } from "react-icons/bs";
 import { TiShoppingCart } from "react-icons/ti";
 import { SlUserFollow } from "react-icons/sl";
-import { HiOutlineFolderPlus } from "react-icons/hi2";
 
 const main = () => {
   return (
