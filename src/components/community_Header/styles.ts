@@ -1,30 +1,28 @@
 import styled from "@emotion/styled";
 
 export const StyledSection = styled.section`
-  margin: -1vw;
+  margin: 0vw;
   display: flex;
   justify-content: space-between;
 `;
 export const HeaderNav = styled.nav`
   background-size: cover;
   display: flex;
-  flex-direction: rew;
+  flex-direction: row;
   margin: 2.5vw;
   @media (max-width: 768px) {
     margin: 5px;
   }
 `;
 export const SignBtn = styled.button`
-  margin: 0.7vw;
+  margin: 1vw;
   background: #8eecd1;
   color: white;
   font-weight: bold;
   border: none;
   border-radius: 35px;
-  padding: 1vw 1.8vw;
-  font-size: 16px;
-  min-width: 100px;
-  max-width: 200px;
+  padding: 1vw 1vw;
+  font-size: 10px;
   cursor: pointer;
   outline: none;
   position: relative;
@@ -71,8 +69,8 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   margin: 0 11vw;
-  max-width: 1200vw;
-  padding: 0 20px;
+  max-width: 80vw;
+  padding: 1vw 0.1vw;
 
   @media (max-width: 768px) {
     margin: 0 5vw;
@@ -91,7 +89,7 @@ export const PostHeader = styled.div`
   display: flex;
   justify-content: space-between;
   background-color: white;
-  height: 9vw;
+  height: 20vh;
   width: 100%;
 `;
 export const HeaderAtag = styled.a`

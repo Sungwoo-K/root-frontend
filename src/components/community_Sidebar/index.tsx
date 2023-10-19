@@ -1,13 +1,19 @@
 import { Container } from "../community_Header/styles";
-import { PostSidebar, BestFont } from "./styles";
+import { PostSidebar, BestFont, BestItem, BestItemContainer } from "./styles";
 // import { HeaderAtag, PostHeader, Container } from "./styles";
 const main = () => {
   return (
-    <Container>
-      <PostSidebar>
+    <PostSidebar>
+      <BestItemContainer>
         <BestFont>BestContent</BestFont>
-      </PostSidebar>
-    </Container>
+      </BestItemContainer>
+      <Container>
+        <BestItem>imge</BestItem>
+        <BestItem>imge</BestItem>
+        <BestItem>imge</BestItem>
+        <BestItem>imge</BestItem>
+      </Container>
+    </PostSidebar>
   );
 };
 

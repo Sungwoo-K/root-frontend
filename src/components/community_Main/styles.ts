@@ -10,4 +10,3 @@ export const PostMain = styled.div`
   margin-right: 5%;
   border-radius: 10% 0 0 0;
 `;
-export const ContainerM = styled(Container);

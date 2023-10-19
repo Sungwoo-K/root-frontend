@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 import {
   HeaderAtag,
@@ -19,11 +19,10 @@ const main = () => {
     <Container>
       <PostHeader>
         <StyledSection>
-          <HeaderNav>
-            <HeaderAtag href="http://localhost:5000/community">
-              캠프&텐트
-            </HeaderAtag>
-          </HeaderNav>
+          <HeaderAtag href="http://localhost:5000/community">
+            캠프&텐트
+          </HeaderAtag>
+
           <HeaderNav>
             <FormField type="text" placeholder="🔍Search" />
           </HeaderNav>
@@ -42,7 +41,9 @@ const main = () => {
           </HeaderNav>
           <HeaderNav>
             <PostAddButton>
-              <span>글쓰기</span>
+              <Link to="/community/Write">
+                <span>글쓰기</span>
+              </Link>
             </PostAddButton>
           </HeaderNav>
         </StyledSection>
