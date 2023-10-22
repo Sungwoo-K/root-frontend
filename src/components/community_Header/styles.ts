@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from 'react-router-dom';
 
 export const StyledSection = styled.section`
   margin: 0vw;
@@ -15,7 +16,7 @@ export const HeaderNav = styled.nav`
   }
 `;
 export const SignBtn = styled.button`
-  margin: 1vw;
+margin: 0;
   background: #8eecd1;
   color: white;
   font-weight: bold;
@@ -48,14 +49,6 @@ export const SignBtn = styled.button`
   &:active {
     transform: translateY(1px);
   }
-  @media (max-width: 768px) {
-    margin: 5px;
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-  @media (max-width: 480px) {
-    font-size: 12px;
-  }
 `;
 export const BaseBtn = styled.button`
   border: none;
@@ -63,18 +56,16 @@ export const BaseBtn = styled.button`
   color: white;
 `;
 export const Container = styled.div`
-  background-color: gold;
+  background-color: white;
   background-size: cover;
   justify-content: space-between;
   display: flex;
   align-items: center;
-  margin: 0 11vw;
+  margin: 1vw 11vw;
   max-width: 80vw;
   padding: 1vw 0.1vw;
 
-  @media (max-width: 768px) {
-    margin: 0 5vw;
-  }
+
 `;
 export const SigninButton = styled(SignBtn)``;
 export const SignupButton = styled(SignBtn)``;
@@ -82,32 +73,36 @@ export const CartButton = styled(BaseBtn)`
   background-color: white;
 `;
 export const PostAddButton = styled(BaseBtn)`
+padding: 1vw 1vw;
   background-color: skyblue;
+  font-size: 10px;
+  border-radius: 35px;
+  text-decoration: none;
+  color: white; 
 `;
+export const StyledLink = styled(Link)`
+text-decoration: none;
+`
 
-export const PostHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  background-color: white;
-  height: 20vh;
-  width: 100%;
-`;
 export const HeaderAtag = styled.a`
+margin: 0;
   font-family: "Nanum Pen Script", cursive;
-  font-size: 4.5vw;
+  font-size: 3.5vw;
   text-decoration: none;
   color: inherit;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 
-  @media (max-width: 768px) {
-    font-size: 7vw;
-  }
 `;
+export const MarketAtag = styled(HeaderAtag)`
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 1.5vw;
+`
+export const CommunityAtag = styled(MarketAtag)``
 export const FormField = styled.input`
   font-family: inherit;
-  width: 100%;
+  width: 20vw;
   border: 0;
   border-bottom: 2px solid #9b9b9b;
   outline: 0;

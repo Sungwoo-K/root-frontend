@@ -1,12 +1,17 @@
-import { AddBtn, WriteContainer, WriteHeader } from "./styles";
+import { AddBtn, WriteContainer,WriteInput, WriteTextarea,} from "./styles";
+
+
+
 
 const main = () => {
   return (
     <>
       <WriteContainer>
-        <WriteHeader>
+
           <AddBtn>올리기</AddBtn>
-        </WriteHeader>
+          <WriteInput type="text" placeholder="제목을입력해주세요"></WriteInput>
+          <WriteTextarea placeholder="내용을입력해주세요"></WriteTextarea>
+
       </WriteContainer>
     </>
   );

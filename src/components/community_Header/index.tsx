@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 import {
   HeaderAtag,
-  PostHeader,
+  MarketAtag,
+  CommunityAtag,
   Container,
   StyledSection,
   HeaderNav,
@@ -12,42 +13,37 @@ import {
   SignupButton,
   CartButton,
   PostAddButton,
+  StyledLink,
 } from "./styles";
 
 const main = () => {
   return (
     <Container>
-      <PostHeader>
-        <StyledSection>
           <HeaderAtag href="http://localhost:5000/community">
             캠프&텐트
           </HeaderAtag>
+          <CommunityAtag href="http://localhost:5000/community">
+            커뮤니티
+          </CommunityAtag>
+          <MarketAtag href="http://localhost:5000/market">
+            쇼핑
+          </MarketAtag>
+          <FormField type="text" placeholder="🔍Search" />
+          <CartButton>
+            <AiOutlineShoppingCart size={30} color="black" />
+          </CartButton>
+          <SigninButton>
+            <span>로그인</span>
+          </SigninButton>
+          <SignupButton>
+            <span>회원가입</span>
+          </SignupButton>
+          <PostAddButton>
+            <StyledLink to= "/community/Write">
+              <span>글쓰기</span>
+            </StyledLink>
+          </PostAddButton>
 
-          <HeaderNav>
-            <FormField type="text" placeholder="🔍Search" />
-          </HeaderNav>
-          <HeaderNav>
-            <CartButton>
-              <AiOutlineShoppingCart size={50} color="blue" />
-            </CartButton>
-          </HeaderNav>
-          <HeaderNav>
-            <SigninButton>
-              <span>로그인</span>
-            </SigninButton>
-            <SignupButton>
-              <span>회원가입</span>
-            </SignupButton>
-          </HeaderNav>
-          <HeaderNav>
-            <PostAddButton>
-              <Link to="/community/Write">
-                <span>글쓰기</span>
-              </Link>
-            </PostAddButton>
-          </HeaderNav>
-        </StyledSection>
-      </PostHeader>
     </Container>
   );
 };
