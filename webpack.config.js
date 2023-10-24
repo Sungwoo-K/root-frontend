@@ -23,6 +23,10 @@ module.exports = {
         test: /\.(gif|jpg|png|webp|svg|mp4)$/,
         type: "asset/resource",
       },
+      {
+        test: /\.css$/i,
+        loader: "css-loader",
+      },
     ],
   },
   output: {
