@@ -2,7 +2,6 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 import {
-  HeaderAtag,
   MarketAtag,
   CommunityAtag,
   Container,
@@ -14,16 +13,17 @@ import {
   CartButton,
   PostAddButton,
   StyledLink,
+  HeaderLink,
 } from "./styles";
 
 const main = () => {
   return (
     <Container>
-      <HeaderAtag href="http://localhost:5000/community">캠프&텐트</HeaderAtag>
-      <CommunityAtag href="http://localhost:5000/community">
+      <HeaderLink to="http://localhost:5000/community">캠프&텐트</HeaderLink>
+      <CommunityAtag to="http://localhost:5000/community">
         커뮤니티
       </CommunityAtag>
-      <MarketAtag href="http://localhost:5000/market">쇼핑</MarketAtag>
+      <MarketAtag to="http://localhost:5000/market">쇼핑</MarketAtag>
       <FormField type="text" placeholder="🔍Search" />
       <CartButton>
         <img

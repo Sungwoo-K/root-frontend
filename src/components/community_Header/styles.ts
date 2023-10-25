@@ -101,7 +101,7 @@ export const StyledLink = styled(Link)`
   font-family: "Nanum Pen Script", cursive;
 `;
 
-export const HeaderAtag = styled.a`
+export const HeaderLink = styled(Link)`
   margin: 0;
   font-family: "Nanum Pen Script", cursive;
   font-size: 3.5vw;
@@ -110,17 +110,28 @@ export const HeaderAtag = styled.a`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  /* background-image: url("https://i.ibb.co/FX0hnQk/free-icon-bonfire-4018851.png");
-  background-repeat: no-repeat;
-  background-size: 4vw;
-  background-position: center; */
   &:hover {
     background: linear-gradient(90deg, #ffc312, #ee5a24, #00a8ff);
     -webkit-background-clip: text;
     color: transparent;
   }
 `;
-export const MarketAtag = styled(HeaderAtag)`
+// export const HeaderAtag = styled.a`
+//   margin: 0;
+//   font-family: "Nanum Pen Script", cursive;
+//   font-size: 3.5vw;
+//   text-decoration: none;
+//   color: inherit;
+//   white-space: nowrap;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   &:hover {
+//     background: linear-gradient(90deg, #ffc312, #ee5a24, #00a8ff);
+//     -webkit-background-clip: text;
+//     color: transparent;
+//   }
+// `;
+export const MarketAtag = styled(HeaderLink)`
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 1.3vw;
   background-image: none;
