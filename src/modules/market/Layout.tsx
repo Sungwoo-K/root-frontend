@@ -1,13 +1,22 @@
-// import Main from "@/components/community_Main";
-// // import Header from "../../components/Header";
-// // import { Sidebar } from "@/components/Sidebar/styles";
+import Main from "@/components/Main";
+import { Container, Item } from "./styles";
+import Header from "@/components/Header";
+import Sidebar from "@/components/Sidebar";
 
-// const Layout = () => {
-//   return (
-//     <>
-//       <Main />
-//     </>
-//   );
-// };
+const Layout = () => {
+  return (
+    <>
+      <Container>
+        <Header />
 
-// // export default Layout;
+        <Item>
+          <Sidebar />
+
+          <Main />
+        </Item>
+      </Container>
+    </>
+  );
+};
+
+export default Layout;
