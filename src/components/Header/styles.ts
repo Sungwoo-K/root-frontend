@@ -14,7 +14,7 @@ export const Header = styled.div`
     position: fixed;
     top: 0;
     left: -100%;
-    z-index: 1;
+    z-index: 99;
     transition: 0.3s;
     align-items: center;
   }

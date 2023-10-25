@@ -1,27 +1,58 @@
 import styled from "@emotion/styled";
 import Slider from "react-slick";
 
-export const BannerContainer = styled(Slider)`
-  height: 400px;
+type BannerSize = {
+  widthSize: string;
+  heightSize: string;
+};
+
+export const BannerContainer = styled.div`
+  height: 500px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  > div:last-of-type {
+    position: absolute;
+    background-color: silver;
+    width: 140px;
+    height: 30px;
+    bottom: 0;
+    border-radius: 10px 10px 0px 0px;
+  }
+`;
+
+export const Banner = styled(Slider)<BannerSize>`
+  display: flex;
+  justify-content: center;
+  width: ${(props) => props.widthSize || "1840px"};
+  height: 470px;
   .slick-list {
-    height: 430px;
+    width: ${(props) => props.widthSize || "1840px"};
+    height: ${(props) => props.heightSize || "500px"};
   }
 
   .slick-track {
-    height: 430px;
+    width: ${(props) => props.widthSize || "1840px"};
+    height: ${(props) => props.heightSize || "500px"};
   }
 
   .slick-slide {
-    height: 430px;
+    width: ${(props) => props.widthSize || "1840px"};
+    height: ${(props) => props.heightSize || "500px"};
     div {
-      height: 430px;
+      width: ${(props) => props.widthSize || "1840px"};
+      height: ${(props) => props.heightSize || "500px"};
       img {
-        height: 430px;
-        object-fit: contain;
+        height: ${(props) => props.heightSize || "500px"};
       }
     }
   }
-  .slick-dots li button:hover:before,
+
+  .slick-dots {
+    z-index: 90;
+  }
+
   .slick-dots li button:focus:before {
     opacity: 0.25;
     color: black;
@@ -33,8 +64,19 @@ export const BannerContainer = styled(Slider)`
     color: white;
   }
 
+  .slick-dots li button:hover:before,
   li.slick-active button:before {
     opacity: 1;
     color: white;
+  }
+
+  .slick-slider .slick-track,
+  .slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    transition-delay: 10ms;
   }
 `;

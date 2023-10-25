@@ -5,6 +5,11 @@ export const MainContainer = styled.div`
   height: 95%;
   section:first-of-type {
     width: 100%;
-    height: 50%;
+    height: 500px;
+  }
+  section:last-of-type {
+    width: 100%;
+    height: 41%;
+    border: 1px solid red;
   }
 `;
