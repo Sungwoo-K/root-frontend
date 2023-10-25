@@ -19,11 +19,17 @@ module.exports = {
       },
     },
   ],
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react"],
+  plugins: ["@typescript-eslint", "react"],
   rules: {
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-unused-vars": "off",

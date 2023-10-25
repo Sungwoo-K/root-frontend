@@ -8,6 +8,7 @@
     "@styled/typescript-styled-plugin": "^1.0.0",
     "@types/react": "^18.2.27",
     "@types/react-dom": "^18.2.12",
+    "@types/react-slick": "^0.23.11",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "esbuild-loader": "^4.0.2",
     "eslint": "^8.51.0",
@@ -31,6 +32,8 @@
     "react-icons": "^4.11.0",
     "react-minimal-side-navigation": "^1.9.2",
     "react-router-dom": "^6.16.0",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
     "swr": "^2.2.4"
   }
 }
