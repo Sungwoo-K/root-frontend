@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import { Link } from 'react-router-dom';
+import { keyframes } from "@emotion/react";
+import { Link } from "react-router-dom";
 
 export const StyledSection = styled.section`
   margin: 0vw;
@@ -16,7 +17,7 @@ export const HeaderNav = styled.nav`
   }
 `;
 export const SignBtn = styled.button`
-margin: 0;
+  margin: 0;
   background: #8eecd1;
   color: white;
   font-weight: bold;
@@ -64,28 +65,44 @@ export const Container = styled.div`
   margin: 1vw 11vw;
   max-width: 80vw;
   padding: 1vw 0.1vw;
-
-
 `;
 export const SigninButton = styled(SignBtn)``;
 export const SignupButton = styled(SignBtn)``;
+const slideFromLeft = keyframes`
+0% {
+  transform: translateX(-100%);
+}
+100% {
+  transform: translateX(0);
+}
+`;
 export const CartButton = styled(BaseBtn)`
   background-color: white;
+  animation: ${slideFromLeft} 4s forwards;
+  img {
+    width: 2.5vw;
+    height: 100%;
+  }
 `;
 export const PostAddButton = styled(BaseBtn)`
-padding: 1vw 1vw;
+  padding: 0.2vw 1vw;
   background-color: skyblue;
-  font-size: 10px;
+  font-size: 1.6vw;
   border-radius: 35px;
   text-decoration: none;
-  color: white; 
+  color: white;
+  span {
+    color: white;
+  }
 `;
 export const StyledLink = styled(Link)`
-text-decoration: none;
-`
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-decoration: none;
+  font-family: "Nanum Pen Script", cursive;
+`;
 
 export const HeaderAtag = styled.a`
-margin: 0;
+  margin: 0;
   font-family: "Nanum Pen Script", cursive;
   font-size: 3.5vw;
   text-decoration: none;
@@ -93,13 +110,25 @@ margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
+  /* background-image: url("https://i.ibb.co/FX0hnQk/free-icon-bonfire-4018851.png");
+  background-repeat: no-repeat;
+  background-size: 4vw;
+  background-position: center; */
+  &:hover {
+    background: linear-gradient(90deg, #ffc312, #ee5a24, #00a8ff);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
 `;
 export const MarketAtag = styled(HeaderAtag)`
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-font-size: 1.5vw;
-`
-export const CommunityAtag = styled(MarketAtag)``
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1.3vw;
+  background-image: none;
+`;
+export const CommunityAtag = styled(MarketAtag)`
+  font-family: "Noto Sans KR", sans-serif;
+  background-image: none;
+`;
 export const FormField = styled.input`
   font-family: inherit;
   width: 20vw;

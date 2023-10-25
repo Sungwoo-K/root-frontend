@@ -11,14 +11,14 @@ export const BestFont = styled.div`
   font-size: 2.5vw;
   text-decoration: none;
   color: inherit;
-  padding: 2vw;
+  padding: 0vw;
 `;
 export const BestItemContainer = styled(Container)`
   padding: 0vw;
 `;
 export const Bestfiles = styled.div`
   flex: 1;
-  border: 2px solid red;
+  border: 2px solid gold;
   height: 300px;
   margin: 10px;
 `;
