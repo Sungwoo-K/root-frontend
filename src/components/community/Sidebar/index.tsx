@@ -1,7 +1,7 @@
-import { Container } from "../community_Header/styles";
+import { Container } from "../Header/styles";
 import { PostSidebar, BestFont, BestItem, BestItemContainer } from "./styles";
 // import { HeaderAtag, PostHeader, Container } from "./styles";
-const main = () => {
+const Sidebar = () => {
   return (
     <PostSidebar>
       <BestItemContainer>
@@ -17,4 +17,4 @@ const main = () => {
   );
 };
 
-export default main;
+export default Sidebar;

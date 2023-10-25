@@ -1,7 +1,7 @@
-import Main from "@/components/Main";
+import Main from "@/components/market/Main";
 import { Container, Item } from "./styles";
-import Header from "@/components/Header";
-import Sidebar from "@/components/Sidebar";
+import Header from "@/components/market/Header";
+import Sidebar from "@/components/market/Sidebar";
 
 const Layout = () => {
   return (

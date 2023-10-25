@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Container } from "../community_Header/styles";
+import { Container } from "../Header/styles";
 
 export const PostMain = styled.div`
   display: flex;

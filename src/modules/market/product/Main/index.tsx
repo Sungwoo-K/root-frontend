@@ -1,5 +1,5 @@
 import { MainContainer } from "./styles";
-import SlideBanner from "@/components/SlideBanner";
+import SlideBanner from "@/components/market/SlideBanner";
 
 const MarketMain = () => {
   return (
