@@ -2,19 +2,23 @@ import { Button, Icon, Iconbutton, SideMenu, Sidebar } from "./styles";
 import { BsPerson, BsBell, BsBookmarkStar } from "react-icons/bs";
 import { TiShoppingCart } from "react-icons/ti";
 import { SlUserFollow } from "react-icons/sl";
+import { Link } from "react-router-dom";
 
 const main = () => {
   return (
     <>
       <Sidebar>
-        <Button>
-          <Iconbutton>
-            <Icon>
-              <BsPerson style={{ width: "35px", height: "60px" }} />
-            </Icon>
-          </Iconbutton>
-          <SideMenu>프로필</SideMenu>
-        </Button>
+        <Link to="/user">
+          <Button>
+            <Iconbutton>
+              <Icon>
+                <BsPerson style={{ width: "35px", height: "60px" }} />
+              </Icon>
+            </Iconbutton>
+
+            <SideMenu>프로필</SideMenu>
+          </Button>
+        </Link>
 
         <Button>
           <Iconbutton>

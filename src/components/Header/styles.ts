@@ -56,13 +56,13 @@ export const Menudiv = styled.div`
 
 export const Menubutton = styled.div`
   display: flex;
-  margin-left: 10px;
+  margin-left: 25px;
 
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   background-color: rgb(255, 217, 142, 0);
 
-  width: 70px;
+  width: 33vh;
   height: 60px;
 
   cursor: pointer;
@@ -103,19 +103,19 @@ export const Title = styled.div`
 
 export const Campdiv = styled.div`
   display: flex;
-  width: 50%;
-  justify-content: flex-end;
+  width: 33vh;
+  justify-content: center;
 `;
 
 export const Inputdiv = styled.div`
   display: flex;
   flex-direction: row;
-  width: 50%;
+  width: 33vh;
   height: 35px;
   float: right;
-  justify-content: flex-end;
-  margin-right: 3vh;
+  justify-content: left;
   margin-bottom: 10px;
+  margin-right: 2vh;
 `;
 
 export const Iconbutton = styled.button`
@@ -133,7 +133,7 @@ export const Iconbutton = styled.button`
 `;
 
 export const Input = styled.input`
-  width: 30%;
+  width: 80%;
   height: 35px;
   border: 0.5cap;
 `;

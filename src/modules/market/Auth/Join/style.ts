@@ -15,6 +15,12 @@ export const Container = styled.div`
 export const Input = styled.input`
   width: 30vh;
   height: 3vh;
+  margin-top: 5px;
+  border: 1px solid #dbdbdb;
+`;
+
+export const Inputp = styled.p`
+  margin-top: 20px;
 `;
 
 export const Inputdiv = styled.div`

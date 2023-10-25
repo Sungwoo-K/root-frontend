@@ -8,15 +8,13 @@ import {
   Logindiv,
   Logininput,
 } from "./styles";
+import getCookie from "@/utils/cookie";
 
 const Login = () => {
   return (
     <>
       <Container>
-        <Link
-          to={"http://localhost:5000/market"}
-          style={{ marginBottom: "20px" }}
-        >
+        <Link to={"http://localhost:5000/"} style={{ marginBottom: "20px" }}>
           <img
             src={require("../../../../components/Header/tent.png")}
             style={{
