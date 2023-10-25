@@ -1,8 +1,8 @@
 import { Banner, BannerContainer } from "./styles";
-import image1 from "../../images/pexels-nathan-moore-2603681.jpg";
-import image2 from "../../images/pexels-igor-cibulsky-8713324.jpg";
-import image3 from "../../images/pexels-roman-odintsov-4555526.jpg";
-import image4 from "../../images/pexels-taryn-elliott-4909105.jpg";
+import image1 from "../../../images/pexels-clem-onojeghuo-221436.jpg";
+import image2 from "../../../images/pexels-igor-cibulsky-8713324.jpg";
+import image3 from "../../../images/pexels-roman-odintsov-4555526.jpg";
+import image4 from "../../../images/pexels-taryn-elliott-4909105.jpg";
 import { Settings } from "react-slick";
 
 interface BannerSize {

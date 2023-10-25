@@ -34,7 +34,7 @@ const UserProfile = () => {
       <Container>
         <Profilediv>
           <img
-            src={require("../../../../../../components/Header/tent.png")}
+            src={require("../../../../../../components/market/Header/tent.png")}
             style={{
               width: "118px",
               height: "118px",

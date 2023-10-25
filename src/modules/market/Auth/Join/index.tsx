@@ -5,26 +5,26 @@ import axios from "axios";
 import { useState } from "react";
 import { Button } from "../Login/styles";
 
-const Join = () => {
+const JoinMem = () => {
   const [formData, setFormData] = useState({
-    userName: "",
-    userId: "",
-    userPassword: "",
-    nickName: "",
-    userSex: "",
-    userBirth: "",
+    username: "",
+    userid: "",
+    userpassword: "",
+    nickname: "",
+    usersex: "",
+    userbirth: "",
   });
 
   const postExample = async (e) => {
     e.preventDefault();
 
     const response = await axios.post("http://192.168.100.109:8080/auth/sign", {
-      userId: formData.userId,
-      userName: formData.userName,
-      userPassword: formData.userPassword,
-      nickName: formData.nickName,
-      userSex: formData.userSex,
-      userBirth: formData.userBirth,
+      userid: formData.userid,
+      username: formData.username,
+      userpassword: formData.userpassword,
+      nickname: formData.nickname,
+      usersex: formData.usersex,
+      userbirth: formData.userbirth,
     });
 
     if (response.status === 201) {
@@ -47,7 +47,7 @@ const Join = () => {
     <>
       <Container>
         <Link
-          to="http://localhost:5000/"
+          to="http://localhost:5000/market"
           style={{
             display: "flex",
             width: "100%",
@@ -56,7 +56,7 @@ const Join = () => {
         >
           <div style={{ marginTop: "10px", marginLeft: "30px" }}>
             <img
-              src={require("../../../../components/Header/tent.png")}
+              src={require("../../../../components/market/Header/tent.png")}
               style={{
                 width: "50px",
                 height: "50px",
@@ -64,7 +64,7 @@ const Join = () => {
               }}
             />
             <img
-              src={require("../../../../components/Header/logo.png")}
+              src={require("../../../../components/market/Header/logo.png")}
               style={{ width: "160px", height: "55px" }}
             />
           </div>
@@ -74,35 +74,35 @@ const Join = () => {
         <Inputdiv>
           <Inputp>이름</Inputp>
           <Input
-            name="userName"
-            value={formData.userName}
+            name="username"
+            value={formData.username}
             onChange={handleInputChange}
           ></Input>
           <Inputp>아이디</Inputp>
           <Input
-            name="userId"
-            value={formData.userId}
+            name="userid"
+            value={formData.userid}
             onChange={handleInputChange}
           ></Input>
           <Inputp>닉네임</Inputp>
           <Input
-            name="nickName"
-            value={formData.nickName}
+            name="nickname"
+            value={formData.nickname}
             onChange={handleInputChange}
           ></Input>
           <Inputp>패스워드</Inputp>
           <Input
             type="password"
-            name="userPassword"
-            value={formData.userPassword}
+            name="userpassword"
+            value={formData.userpassword}
             onChange={handleInputChange}
           ></Input>
 
           <Inputp>성별</Inputp>
           <select
-            name="userSex"
+            name="usersex"
             onChange={handleInputChange}
-            value={formData.userSex}
+            value={formData.usersex}
             style={{ width: "30.8vh", height: "4vh", marginTop: "5px" }}
           >
             <option value="default">성별 선택</option>
@@ -114,8 +114,8 @@ const Join = () => {
           <Input
             style={{ width: "30.4vh", height: "3.5vh", marginTop: "5px" }}
             type="date"
-            name="userBirth"
-            value={formData.userBirth}
+            name="userbirth"
+            value={formData.userbirth}
             onChange={handleInputChange}
           ></Input>
         </Inputdiv>
@@ -126,4 +126,4 @@ const Join = () => {
     </>
   );
 };
-export default Join;
+export default JoinMem;
