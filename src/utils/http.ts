@@ -2,7 +2,7 @@ import axios from "axios";
 import { getCookie } from "./cookie";
 
 const http = axios.create({
-  baseURL: "http://192.168.100.109:8080",
+  baseURL: "http://lacalhost:8080",
 });
 
 // 요청값에 대해서 사전처리
