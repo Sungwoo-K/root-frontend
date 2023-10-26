@@ -28,12 +28,13 @@ const Login = () => {
             style={{ width: "160px", height: "55px" }}
           />
         </Link>
-        <form action="http://192.168.100.109:8080/auth/signin" method="post">
+        {/* <form action="http://192.168.100.109:8080/auth/signin" method="post"> */}
+        <form action="http://localhost:8080/auth/signin" method="post">
           <Logindiv>
             <Logininput
               type="text"
               placeholder="아이디"
-              name="userid"
+              name="userLoginId"
             ></Logininput>
             <Logininput
               type="password"

@@ -23,7 +23,8 @@ http.interceptors.response.use(
     const { status } = error.response;
 
     if (status === 401 || status == 403) {
-      alert("인증이 필요하거나 토큰이 만료되었습니다.");
+      alert("로그인이 필요합니다");
+
       window.location.href = "/login";
     }
 
@@ -31,6 +32,7 @@ http.interceptors.response.use(
       alert("데이터 존재하지 않습니다.");
     }
 
+    // return Promise.reject(error);
     return;
   }
 );

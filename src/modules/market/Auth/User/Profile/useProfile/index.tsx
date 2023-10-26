@@ -4,8 +4,8 @@ import {
   Categorydiv,
   Container,
   Icon,
+  Keydiv,
   Linkdiv,
-  Profile,
   Profilecontain,
   Profilediv,
 } from "./styles";
@@ -33,64 +33,63 @@ const UserProfile = () => {
     <>
       <Container>
         <Profilediv>
-          <img
-            src={require("../../../../../../components/market/Header/tent.png")}
-            style={{
-              width: "118px",
-              height: "118px",
-              marginLeft: "10vh",
-              marginTop: "5vh",
-            }}
-          />
-
+          <div className="profilediv">
+            <img
+              className="profileimg"
+              src={require("../../../../../../components/market/Header/tent.png")}
+            />
+          </div>
           {user.map((userData, id) => (
-            <>
-              <Profile key={id}>
+            <Keydiv key={id}>
+              <div className="namediv">
                 <h1
                   style={{
                     fontSize: "150%",
                     width: "15vh",
-                    height: "5vh",
-                    marginTop: "10px",
-                    marginLeft: "10.4vh",
+                    textAlign: "center",
                   }}
                 >
                   {userData.username}
                 </h1>
-
-                <p style={{ marginLeft: "8vh", width: "200px" }}>
+              </div>
+              <div className="middlediv">
+                <p>
                   {userData.nickname} | {userData.birth}
                 </p>
-              </Profile>
-              <Linkdiv style={{ marginLeft: "2.5vh", marginTop: "10vh" }}>
-                <Link to="">
-                  <Icon>
+              </div>
+              <div className="lastdiv">
+                <p>{userData.introduction}</p>
+              </div>
+
+              <Linkdiv>
+                <Icon>
+                  <Link to="" className="Linkstyle">
                     <BsBookmarkStar
                       style={{
                         width: "30px",
                         height: "30px",
-                        marginLeft: "12px",
                         marginBottom: "1vh",
                       }}
                     ></BsBookmarkStar>
                     <p>스크랩</p>
-                  </Icon>
-                </Link>
+                  </Link>
+                </Icon>
+
                 <Icon>
-                  <Link to="">
+                  <Link to="" className="Linkstyle">
                     <SlLike
                       style={{
                         width: "30px",
                         height: "30px",
-                        marginLeft: "12px",
                         marginBottom: "1vh",
                       }}
                     ></SlLike>
                     <p>좋아요</p>
                   </Link>
                 </Icon>
+
                 <Icon>
-                  <Link to="/user/edits">
+                  <Link to="/edits">
                     <AiOutlineSetting
                       style={{
                         width: "30px",
@@ -103,7 +102,7 @@ const UserProfile = () => {
                   </Link>
                 </Icon>
               </Linkdiv>
-            </>
+            </Keydiv>
           ))}
         </Profilediv>
       </Container>

@@ -6,13 +6,21 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   margin-left: 200px;
+  border: 1px solid white;
+  height: 1000px;
+  .firstedit {
+    display: flex;
+    width: 500px;
+    justify-content: left;
+    align-items: flex-end;
+    height: 170px;
+  }
 `;
 
 export const Editdiv = styled.div`
   display: flex;
   align-items: flex-start;
   margin-top: 4vh;
-
   width: 500px;
 `;
 
@@ -22,6 +30,7 @@ export const Editinput = styled.input`
   width: 100%;
   height: 40px;
   border: 1px solid #dbdbdb;
+  padding-left: 10px;
 `;
 
 export const Select = styled.select`
@@ -36,9 +45,6 @@ export const P = styled.p`
   font-weight: 700;
 `;
 
-export const Edit = styled.div`
-  display: flex;
-`;
 export const Button = styled.button`
   width: 150px;
   height: 45px;
@@ -61,7 +67,7 @@ export const Buttondiv = styled.div`
 `;
 
 export const Editp = styled.p`
-  width: 100px;
+  width: 120px;
   height: 60px;
   margin-top: 15px;
 `;

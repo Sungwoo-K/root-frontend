@@ -13,6 +13,7 @@ import {
   profileEdit,
   userProfile,
 } from "./modules/market/auth/User/Profile/useProfile/routes";
+import { orderItem } from "./modules/market/auth/User/Order/routes";
 
 const App = () => {
   return (
@@ -28,10 +29,13 @@ const App = () => {
 
         <Route element={<MarketLayout />} path="/user">
           {userProfile}
-          {/* <Route path="edits">{profileEdit}</Route> */}
         </Route>
         <Route path="edits" element={<MarketLayout />}>
           {profileEdit}
+        </Route>
+
+        <Route path="order" element={<MarketLayout />}>
+          {orderItem}
         </Route>
 
         <Route element={<CommunityLayout />} path="/community">

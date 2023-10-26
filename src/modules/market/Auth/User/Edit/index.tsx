@@ -7,10 +7,10 @@ import { Container } from "./styles";
 const ProfileEdit = () => {
   return (
     <>
-      {/* <ProfileHeader /> */}
       <Container>
-        <UserProfile />
-        <EditProfile />
+        <div className="edit">
+          <EditProfile />
+        </div>
       </Container>
     </>
   );
