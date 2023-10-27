@@ -4,15 +4,15 @@ import CommunityLayout from "./modules/community/Layout";
 
 import { communityRoutes } from "./modules/community/routes";
 import ResetStyle from "./styles/reset";
-import Login from "./modules/market/auth/Login";
-import Join from "./modules/market/auth/Join";
+import Login from "./modules/market/Auth/Login";
+import Join from "./modules/market/Auth/Join";
 
 import { productRoutes } from "./modules/market/productRoutes";
 import { userRoutes } from "./modules/market/userRoutes";
 import {
   profileEdit,
   userProfile,
-} from "./modules/market/auth/User/Profile/useProfile/routes";
+} from "./modules/market/Auth/User/Profile/useProfile/routes";
 
 const App = () => {
   return (
@@ -33,11 +33,7 @@ const App = () => {
         <Route path="edits" element={<MarketLayout />}>
           {profileEdit}
         </Route>
-        {/*
-        <Route element={<MarketLayout />} path="/market">
-        {productRoutes}
-        {userRoutes}
-         </Route> */}
+
         <Route element={<CommunityLayout />} path="/community">
           {communityRoutes}
         </Route>
