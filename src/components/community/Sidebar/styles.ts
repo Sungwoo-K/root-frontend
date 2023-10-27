@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Container } from "../Header/styles";
+import { Container, BaseBtn } from "@/components/community/Header/styles";
 
 export const PostSidebar = styled.aside`
   background-color: white;
@@ -23,3 +23,7 @@ export const Bestfiles = styled.div`
   margin: 10px;
 `;
 export const BestItem = styled(Bestfiles)``;
+
+export const Btnbtn = styled(BaseBtn)`
+  color: red;
+`;

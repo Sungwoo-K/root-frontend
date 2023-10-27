@@ -1,12 +1,7 @@
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { Link } from "react-router-dom";
-
 import {
   MarketAtag,
   CommunityAtag,
   Container,
-  StyledSection,
-  HeaderNav,
   FormField,
   SigninButton,
   SignupButton,
