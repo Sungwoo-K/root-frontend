@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ProvidePlugin } = require("webpack");
+const path = require("path");
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
@@ -7,7 +8,7 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
     alias: {
-      "@": __dirname + "/src",
+      "@": path.resolve(__dirname, "src"),
     },
   },
   module: {
@@ -22,6 +23,10 @@ module.exports = {
       {
         test: /\.(gif|jpg|png|webp|svg|mp4)$/,
         type: "asset/resource",
+      },
+      {
+        test: /\.css$/i,
+        loader: "css-loader",
       },
     ],
   },

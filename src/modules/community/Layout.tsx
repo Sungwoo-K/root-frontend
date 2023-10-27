@@ -1,12 +1,12 @@
-import PostHeader from "@/components/community_Header";
-import PostSidebar from "@/components/community_Sidebar";
+import Header from "@/components/community/Header";
+import Sidebar from "@/components/community/Sidebar";
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
     <>
-      <PostHeader />
-      <PostSidebar />
+      <Header />
+      <Sidebar />
       <Outlet />
     </>
   );

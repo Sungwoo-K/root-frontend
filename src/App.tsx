@@ -1,23 +1,38 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainLayout from "./modules/main/Layout";
-// import MarketLayout from "./modules/market/Layout";
-// import MarketLayout from "./modules/community/Layout";
+import MarketLayout from "./modules/market/Layout";
 import CommunityLayout from "./modules/community/Layout";
-import { mainRoutes } from "./modules/main/routes";
+
 import { communityRoutes } from "./modules/community/routes";
-// import { productRoutes } from "./modules/market/productRoutes";
-// import { userRoutes } from "./modules/market/userRoutes";
 import ResetStyle from "./styles/reset";
+import Login from "./modules/market/auth/Login";
+import Join from "./modules/market/auth/Join";
+
+import { productRoutes } from "./modules/market/productRoutes";
+import { userRoutes } from "./modules/market/userRoutes";
+import {
+  profileEdit,
+  userProfile,
+} from "./modules/market/auth/User/Profile/useProfile/routes";
 
 const App = () => {
   return (
     <BrowserRouter>
       <ResetStyle />
       <Routes>
-        <Route path="/" element={<MainLayout />}>
-          {mainRoutes}
+        <Route path="/" element={<MarketLayout />}>
+          {productRoutes}
+          {userRoutes}
         </Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/join" element={<Join />}></Route>
 
+        <Route element={<MarketLayout />} path="/user">
+          {userProfile}
+          {/* <Route path="edits">{profileEdit}</Route> */}
+        </Route>
+        <Route path="edits" element={<MarketLayout />}>
+          {profileEdit}
+        </Route>
         {/*
         <Route element={<MarketLayout />} path="/market">
         {productRoutes}
