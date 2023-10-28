@@ -14,19 +14,19 @@ const MarketMain = () => {
           <SlideBanner width={"1840px"} height={"500px"}></SlideBanner>
         </section>
         <section>
-          <Link to="/market">
+          <Link to="/products">
             <article>
               <PiTentDuotone size={90}></PiTentDuotone>
               <span>상품</span>
             </article>
           </Link>
-          <Link to="/market/hottest-item">
+          <Link to="/products/hottest-items">
             <article>
               <BsFire size={90}></BsFire>
               <span>인기상품</span>
             </article>
           </Link>
-          <Link to="/market/discount">
+          <Link to="/products/discount-items">
             <article>
               <TbDiscount2 size={90}></TbDiscount2>
               <span>할인상품</span>

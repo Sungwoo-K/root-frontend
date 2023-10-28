@@ -22,6 +22,7 @@ const SlideBanner = ({ width, height }: BannerSize) => {
     autoplay: true,
     autoplaySpeed: 4000,
     useTransform: false,
+    pauseOnHover: false,
   };
 
   return (
