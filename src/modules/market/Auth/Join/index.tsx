@@ -1,132 +1,152 @@
-import { Link } from 'react-router-dom';
-
-import { Container, Forminput, Input, Inputdiv, Inputp } from './style';
-import axios from 'axios';
-import { MutableRefObject, useRef, useState } from 'react';
-import { Button } from '../Login/styles';
-import UserEventButton from '@/components/market/UserEvent';
+import { Link } from "react-router-dom";
+import { Container, Input } from "./style";
+import axios from "axios";
+import { useState } from "react";
+import { Button } from "../Login/styles";
 
 const Join = () => {
-    const sexRef = useRef() as MutableRefObject<HTMLInputElement>;
+  const [formData, setFormData] = useState({
+    username: "",
+    userid: "",
+    userpassword: "",
+    nickname: "",
+    usersex: "",
+    userbirth: "",
+  });
 
-    const [sex, setSex] = useState('');
-    const [formData, setFormData] = useState({
-        username: '',
-        userid: '',
-        userpassword: '',
-        nickname: '',
-        usersex: '',
-        userbirth: '',
+  const value = ["남성", "여성"];
+  const [selectSex, setSelectSex] = useState("");
+
+  const clickButton = (e) => {
+    const selectedValue = e.target.value;
+    setFormData({
+      ...formData,
+      usersex: selectedValue,
+    });
+    setSelectSex(selectedValue);
+  };
+
+  const postExample = async (e) => {
+    e.preventDefault();
+
+    const response = await axios.post("http://192.168.100.109:8080/auth/sign", {
+      userid: formData.userid,
+      username: formData.username,
+      userpassword: formData.userpassword,
+      nickname: formData.nickname,
+      usersex: formData.usersex,
+      userbirth: formData.userbirth,
     });
 
-    const handlecheck = (e) => {
-        setSex(e.target.value);
-        console.log(sex);
-    };
+    console.log(response.data.usersex);
 
-    const postExample = async (e) => {
-        e.preventDefault();
+    if (response.status === 201) {
+      alert("회원가입이 성공했습니다.");
+      window.location.href = "/login";
+    } else {
+      alert("회원가입에 실패했습니다.");
+    }
+  };
 
-        const response = await axios.post('http://192.168.100.109:8080/auth/sign', {
-            userid: formData.userid,
-            username: formData.username,
-            userpassword: formData.userpassword,
-            nickname: formData.nickname,
-            usersex: formData.usersex,
-            userbirth: formData.userbirth,
-        });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
 
-        if (response.status === 201) {
-            alert('회원가입이 성공했습니다.');
-            window.location.href = '/login';
-        } else {
-            alert('회원가입에 실패했습니다.');
-        }
-    };
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
+  return (
+    <>
+      <Container>
+        <Link
+          to="http://localhost:5000/"
+          style={{
+            display: "flex",
+            width: "100%",
+            alignContent: "center",
+          }}
+        >
+          <div style={{ marginTop: "10px", marginLeft: "30px" }}>
+            <img
+              src={require("../../../../components/market/Header/tent.png")}
+              style={{
+                width: "50px",
+                height: "50px",
+                marginRight: "10px",
+              }}
+            />
+            <img
+              src={require("../../../../components/market/Header/logo.png")}
+              style={{ width: "160px", height: "55px" }}
+            />
+          </div>
+        </Link>
 
-    return (
-        <>
-            <Container>
-                <Link
-                    to="http://localhost:5000/market"
-                    style={{
-                        display: 'flex',
-                        width: '100%',
-                        alignContent: 'center',
-                    }}
-                >
-                    <div style={{ marginTop: '10px', marginLeft: '30px' }}>
-                        <img
-                            src={require('../../../../components/market/Header/tent.png')}
-                            style={{
-                                width: '50px',
-                                height: '50px',
-                                marginRight: '10px',
-                            }}
-                        />
-                        <img
-                            src={require('../../../../components/market/Header/logo.png')}
-                            style={{ width: '160px', height: '55px' }}
-                        />
-                    </div>
-                </Link>
+        <p style={{ fontSize: "40px", marginTop: "70px" }}> 회원 가입</p>
 
-                <p style={{ fontSize: '40px', marginTop: '70px' }}> 회원 가입</p>
+        <Input
+          name="userid"
+          value={formData.userid}
+          onChange={handleInputChange}
+          placeholder="아이디"
+          style={{ marginTop: "70px" }}
+        ></Input>
 
-                <Input
-                    name="userid"
-                    value={formData.userid}
-                    onChange={handleInputChange}
-                    placeholder="아이디"
-                    style={{ marginTop: '70px' }}
-                ></Input>
+        <Input
+          type="password"
+          name="userpassword"
+          value={formData.userpassword}
+          onChange={handleInputChange}
+          placeholder="패스워드"
+          style={{ marginBottom: "20px" }}
+        ></Input>
 
-                <Input
-                    type="password"
-                    name="userpassword"
-                    value={formData.userpassword}
-                    onChange={handleInputChange}
-                    placeholder="패스워드"
-                    style={{ marginBottom: '20px' }}
-                ></Input>
+        <Input
+          name="username"
+          value={formData.username}
+          onChange={handleInputChange}
+          placeholder="이름"
+        ></Input>
 
-                <Input
-                    name="username"
-                    value={formData.username}
-                    onChange={handleInputChange}
-                    placeholder="이름"
-                ></Input>
+        <Input
+          name="nickname"
+          value={formData.nickname}
+          onChange={handleInputChange}
+          placeholder="닉네임"
+        ></Input>
 
-                <Input
-                    name="nickname"
-                    value={formData.nickname}
-                    onChange={handleInputChange}
-                    placeholder="닉네임"
-                ></Input>
+        <Input
+          type="text"
+          placeholder="생년월일 8자리"
+          name="userbirth"
+          value={formData.userbirth}
+          onChange={handleInputChange}
+        ></Input>
 
-                <Input
-                    type="text"
-                    placeholder="생년월일 8자리"
-                    name="userbirth"
-                    value={formData.userbirth}
-                    onChange={handleInputChange}
-                ></Input>
-                <div className="select-sex">
-                    <UserEventButton />
-                </div>
-                <Button onClick={postExample} style={{ width: '31vh', marginTop: '15vh' }}>
-                    회원가입하기
-                </Button>
-            </Container>
-        </>
-    );
+        <div className="select-sex">
+          {value.map((item, idx) => (
+            <button
+              key={idx}
+              value={item}
+              name="usersex"
+              className={"buttonevent" + (item === selectSex ? idx + 1 : "")}
+              onClick={clickButton}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+
+        <Button
+          onClick={postExample}
+          style={{ width: "31vh", marginTop: "15vh" }}
+        >
+          회원가입하기
+        </Button>
+      </Container>
+    </>
+  );
 };
 export default Join;

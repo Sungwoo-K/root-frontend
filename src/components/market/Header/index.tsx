@@ -200,7 +200,7 @@ const main = () => {
             style={{ height: "40px", marginTop: "2px" }}
           />
           <Link
-            to="http://localhost:5000/market"
+            to="http://localhost:5000/"
             style={{ textDecoration: "none", color: "black" }}
           >
             <Title>CAMP&TENT</Title>
