@@ -28,11 +28,6 @@ const Login = () => {
             style={{ width: "160px", height: "55px" }}
           />
         </Link>
-<<<<<<< HEAD
-        {/* <form action="http://192.168.100.109:8080/auth/signin" method="post"> */}
-=======
-
->>>>>>> origin/communityRoot
         <form action="http://localhost:8080/auth/signin" method="post">
           <Logindiv>
             <Logininput

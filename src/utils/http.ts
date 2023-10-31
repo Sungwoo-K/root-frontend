@@ -18,18 +18,25 @@ http.interceptors.request.use((config) => {
 http.interceptors.response.use(
   (response) => response,
   (error) => {
-    const { status } = error.response;
+    if (error.response) {
+      const { status } = error.response;
 
-    if (status === 401 || status == 403) {
-      alert("로그인이 필요합니다");
+      if (status === 401 || status == 403) {
+        alert("로그인이 필요합니다");
 
-      window.location.href = "/login";
-    }
+        window.location.href = "/login";
+      }
 
-    if (status === 404) {
-      alert("데이터 존재하지 않습니다.");
+      if (status === 404) {
+        alert("데이터 존재하지 않습니다.");
+      } else {
+        console.error("No response found in error object:", error);
+      }
     } else {
-      console.error("No response found in error object:", error);
+      console.error(
+        "Error object does not contain a response property:",
+        error
+      );
     }
 
     return;
