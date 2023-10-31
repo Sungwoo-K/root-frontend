@@ -2,7 +2,7 @@ import axios from "axios";
 import { getCookie } from "./cookie";
 
 const http = axios.create({
-  baseURL: "http://192.168.100.109:8080",
+  baseURL: "http://localhost:8080",
 });
 
 // 요청값에 대해서 사전처리
@@ -29,9 +29,10 @@ http.interceptors.response.use(
 
     if (status === 404) {
       alert("데이터 존재하지 않습니다.");
+    } else {
+      console.error("No response found in error object:", error);
     }
-
-    return;
+    return Promise.reject(error);
   }
 );
 

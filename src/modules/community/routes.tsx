@@ -1,5 +1,5 @@
 import { Route } from "react-router-dom";
-import Write from "@/components/community/Write";
+import Write from "@/components/community/Write/";
 import Main from "@/components/community/Main/index";
 
 export const communityRoutes = [
