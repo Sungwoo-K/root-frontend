@@ -1,10 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MarketLayout from "./modules/market/Layout";
 import CommunityLayout from "./modules/community/Layout";
-
 import { communityRoutes } from "./modules/community/routes";
 import ResetStyle from "./styles/reset";
-
 import { productRoutes } from "./modules/market/productRoutes";
 import { userRoutes } from "./modules/market/userRoutes";
 import Login from "./modules/market/auth/Login";

@@ -1,12 +1,14 @@
-import Header from "@/components/community/Header";
-import Sidebar from "@/components/community/Sidebar";
+import { useLocation } from "react-router-dom";
+import PostHeader from "@/components/community/Header";
+import PostSidebar from "@/components/community/Sidebar";
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {
+  const location = useLocation();
   return (
     <>
-      <Header />
-      <Sidebar />
+      <PostHeader />
+      {location.pathname !== "/community/Write" && <PostSidebar />}
       <Outlet />
     </>
   );

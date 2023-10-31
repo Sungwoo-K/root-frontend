@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Container } from "../Header/styles";
+import { Container, BaseBtn } from "@/components/community/Header/styles";
 
 export const PostSidebar = styled.aside`
   background-color: white;
@@ -11,15 +11,19 @@ export const BestFont = styled.div`
   font-size: 2.5vw;
   text-decoration: none;
   color: inherit;
-  padding: 2vw;
+  padding: 0vw;
 `;
 export const BestItemContainer = styled(Container)`
   padding: 0vw;
 `;
 export const Bestfiles = styled.div`
   flex: 1;
-  border: 2px solid red;
+  border: 2px solid gold;
   height: 300px;
   margin: 10px;
 `;
 export const BestItem = styled(Bestfiles)``;
+
+export const Btnbtn = styled(BaseBtn)`
+  color: red;
+`;

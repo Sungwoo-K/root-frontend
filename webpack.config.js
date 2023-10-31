@@ -35,6 +35,7 @@ module.exports = {
     assetModuleFilename: "asset/[hash][ext][query]",
     path: __dirname + "/dist",
     clean: true,
+    publicPath: "/", // 이 부분을 추가해주세요.
   },
   plugins: [
     new HtmlWebpackPlugin({

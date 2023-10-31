@@ -1,9 +1,7 @@
 import axios from "axios";
 import { getCookie } from "./cookie";
 
-const http = axios.create({
-  baseURL: "http://lacalhost:8080",
-});
+const http = axios.create();
 
 // 요청값에 대해서 사전처리
 http.interceptors.request.use((config) => {
@@ -30,9 +28,10 @@ http.interceptors.response.use(
 
     if (status === 404) {
       alert("데이터 존재하지 않습니다.");
+    } else {
+      console.error("No response found in error object:", error);
     }
 
-    // return Promise.reject(error);
     return;
   }
 );

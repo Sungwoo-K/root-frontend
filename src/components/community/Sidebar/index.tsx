@@ -1,6 +1,6 @@
-import { Container } from "../Header/styles";
+import { Container } from "@/components/community/Header/styles";
 import { PostSidebar, BestFont, BestItem, BestItemContainer } from "./styles";
-// import { HeaderAtag, PostHeader, Container } from "./styles";
+
 const Sidebar = () => {
   return (
     <PostSidebar>
