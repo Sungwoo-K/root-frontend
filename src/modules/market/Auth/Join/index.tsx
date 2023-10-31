@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { Container, Input } from "./style";
+
+import { Container, Forminput, Input, Inputdiv, Inputp } from "./style";
 import axios from "axios";
-import { useState } from "react";
+import { MutableRefObject, useRef, useState } from "react";
 import { Button } from "../Login/styles";
 
 const Join = () => {
@@ -10,20 +11,17 @@ const Join = () => {
     userid: "",
     userpassword: "",
     nickname: "",
-    usersex: "",
+    selctSex: "",
     userbirth: "",
   });
 
   const value = ["남성", "여성"];
-  const [selectSex, setSelectSex] = useState("");
+  const [selctSex, isSelectSex] = useState("");
 
   const clickButton = (e) => {
-    const selectedValue = e.target.value;
-    setFormData({
-      ...formData,
-      usersex: selectedValue,
+    isSelectSex(() => {
+      return e.target.value;
     });
-    setSelectSex(selectedValue);
   };
 
   const postExample = async (e) => {
@@ -34,11 +32,9 @@ const Join = () => {
       username: formData.username,
       userpassword: formData.userpassword,
       nickname: formData.nickname,
-      usersex: formData.usersex,
+      usersex: formData.selctSex,
       userbirth: formData.userbirth,
     });
-
-    console.log(response.data.usersex);
 
     if (response.status === 201) {
       alert("회원가입이 성공했습니다.");
@@ -47,7 +43,6 @@ const Join = () => {
       alert("회원가입에 실패했습니다.");
     }
   };
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -124,21 +119,20 @@ const Join = () => {
           value={formData.userbirth}
           onChange={handleInputChange}
         ></Input>
-
         <div className="select-sex">
           {value.map((item, idx) => (
             <button
               key={idx}
               value={item}
               name="usersex"
-              className={"buttonevent" + (item === selectSex ? idx + 1 : "")}
+              className={"buttonevent" + (item == selctSex ? idx + 1 : "")}
               onClick={clickButton}
+              onChange={handleInputChange}
             >
               {item}
             </button>
           ))}
         </div>
-
         <Button
           onClick={postExample}
           style={{ width: "31vh", marginTop: "15vh" }}
