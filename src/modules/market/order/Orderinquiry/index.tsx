@@ -72,7 +72,7 @@ export const Inquiry = () => {
               </em>
               <em className="marker" style={{ marginBottom: "50px" }}>
                 공개 게시판이므로 전화번호, 메일 주소 등 고객님의 소중한
-                개인정보는 절대 남기지 말아주세요.
+                개인정보는 절대 남기지 말아주세요
               </em>
             </li>
           </ul>
