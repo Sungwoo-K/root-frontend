@@ -150,10 +150,6 @@ const EditProfile = () => {
               <Editdiv>
                 <Editp>프로필 이미지</Editp>
 
-                <MediaElement
-                  contentType="image/*"
-                  uuidFileName={userData.uuidFileName}
-                />
                 <input type="file" multiple accept="image/*" ref={imageRef} />
               </Editdiv>
             </div>
