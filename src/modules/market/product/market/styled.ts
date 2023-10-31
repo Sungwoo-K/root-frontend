@@ -3,10 +3,12 @@ import styled from "@emotion/styled";
 export const Container = styled.div`
   width: 100%;
   height: 95%;
+  font-family: "GmarketSansMedium";
+  overflow: hidden;
   > section:first-of-type {
     display: flex;
     justify-content: center;
-    height: 15%;
+    height: 150px;
 
     > article {
       padding-top: 50px;
@@ -15,7 +17,6 @@ export const Container = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: "GmarketSansMedium";
       font-size: 19px;
 
       > a {
@@ -43,8 +44,8 @@ export const Container = styled.div`
   }
 
   > section:last-of-type {
-    border: 1px solid black;
     width: 100%;
     height: 85%;
+    display: flex;
   }
 `;
