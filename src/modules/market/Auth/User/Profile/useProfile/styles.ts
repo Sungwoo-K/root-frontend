@@ -4,8 +4,7 @@ export const Categorydiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
-  height: 50px;
+
   border: 1px solid;
 `;
 
@@ -23,31 +22,55 @@ export const Profilediv = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   border: 1px solid;
+  .namediv {
+    display: flex;
+    width: 310px;
+    height: 50px;
+
+    justify-content: center;
+    align-items: center;
+  }
+  .middlediv {
+    width: 310px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profileimg {
+    width: 118px;
+    height: 118px;
+  }
+  .profilediv {
+    width: 310px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lastdiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+    height: 50px;
+    align-items: center;
+  }
 `;
 
 export const Linkdiv = styled.div`
-  width: 300px;
-  height: 200px;
+  width: 320px;
+  height: 150px;
   display: flex;
-  margin-bottom: 10vh;
-  box-sizing: border-box;
-  gap: 3vh;
+
   align-content: center;
+  align-items: center;
   justify-content: center;
 `;
+
+export const Keydiv = styled.div``;
 
 export const Profilecontain = styled.div`
   display: flex;
   margin-left: 30px;
-`;
-
-export const Profile = styled.div`
-  margin-left: 17px;
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-  height: 100px;
 `;
 
 export const Button = styled.button`
@@ -58,7 +81,14 @@ export const Button = styled.button`
 export const Icon = styled.div`
   display: flex;
   flex-direction: column;
-  width: 60px;
-  height: 100px;
   justify-content: center;
+  width: 33%;
+  height: 100px;
+  align-items: center;
+  .Linkstyle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;

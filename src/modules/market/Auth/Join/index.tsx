@@ -2,18 +2,27 @@ import { Link } from "react-router-dom";
 
 import { Container, Forminput, Input, Inputdiv, Inputp } from "./style";
 import axios from "axios";
-import { useState } from "react";
+import { MutableRefObject, useRef, useState } from "react";
 import { Button } from "../Login/styles";
 
-const JoinMem = () => {
+const Join = () => {
   const [formData, setFormData] = useState({
     username: "",
     userid: "",
     userpassword: "",
     nickname: "",
-    usersex: "",
+    selctSex: "",
     userbirth: "",
   });
+
+  const value = ["남성", "여성"];
+  const [selctSex, isSelectSex] = useState("");
+
+  const clickButton = (e) => {
+    isSelectSex(() => {
+      return e.target.value;
+    });
+  };
 
   const postExample = async (e) => {
     e.preventDefault();
@@ -23,7 +32,7 @@ const JoinMem = () => {
       username: formData.username,
       userpassword: formData.userpassword,
       nickname: formData.nickname,
-      usersex: formData.usersex,
+      usersex: formData.selctSex,
       userbirth: formData.userbirth,
     });
 
@@ -47,7 +56,7 @@ const JoinMem = () => {
     <>
       <Container>
         <Link
-          to="http://localhost:5000/market"
+          to="http://localhost:5000/"
           style={{
             display: "flex",
             width: "100%",
@@ -70,60 +79,68 @@ const JoinMem = () => {
           </div>
         </Link>
 
-        <p style={{ fontSize: "30px" }}> 회원 가입</p>
-        <Inputdiv>
-          <Inputp>이름</Inputp>
-          <Input
-            name="username"
-            value={formData.username}
-            onChange={handleInputChange}
-          ></Input>
-          <Inputp>아이디</Inputp>
-          <Input
-            name="userid"
-            value={formData.userid}
-            onChange={handleInputChange}
-          ></Input>
-          <Inputp>닉네임</Inputp>
-          <Input
-            name="nickname"
-            value={formData.nickname}
-            onChange={handleInputChange}
-          ></Input>
-          <Inputp>패스워드</Inputp>
-          <Input
-            type="password"
-            name="userpassword"
-            value={formData.userpassword}
-            onChange={handleInputChange}
-          ></Input>
+        <p style={{ fontSize: "40px", marginTop: "70px" }}> 회원 가입</p>
 
-          <Inputp>성별</Inputp>
-          <select
-            name="usersex"
-            onChange={handleInputChange}
-            value={formData.usersex}
-            style={{ width: "30.8vh", height: "4vh", marginTop: "5px" }}
-          >
-            <option value="default">성별 선택</option>
-            <option value="male">남성</option>
-            <option value="female">여성</option>
-          </select>
+        <Input
+          name="userid"
+          value={formData.userid}
+          onChange={handleInputChange}
+          placeholder="아이디"
+          style={{ marginTop: "70px" }}
+        ></Input>
 
-          <Inputp>생년월일</Inputp>
-          <Input
-            style={{ width: "30.4vh", height: "3.5vh", marginTop: "5px" }}
-            type="date"
-            name="userbirth"
-            value={formData.userbirth}
-            onChange={handleInputChange}
-          ></Input>
-        </Inputdiv>
-        <Button onClick={postExample} style={{ width: "31vh" }}>
+        <Input
+          type="password"
+          name="userpassword"
+          value={formData.userpassword}
+          onChange={handleInputChange}
+          placeholder="패스워드"
+          style={{ marginBottom: "20px" }}
+        ></Input>
+
+        <Input
+          name="username"
+          value={formData.username}
+          onChange={handleInputChange}
+          placeholder="이름"
+        ></Input>
+
+        <Input
+          name="nickname"
+          value={formData.nickname}
+          onChange={handleInputChange}
+          placeholder="닉네임"
+        ></Input>
+
+        <Input
+          type="text"
+          placeholder="생년월일 8자리"
+          name="userbirth"
+          value={formData.userbirth}
+          onChange={handleInputChange}
+        ></Input>
+        <div className="select-sex">
+          {value.map((item, idx) => (
+            <button
+              key={idx}
+              value={item}
+              name="usersex"
+              className={"buttonevent" + (item == selctSex ? idx + 1 : "")}
+              onClick={clickButton}
+              onChange={handleInputChange}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+        <Button
+          onClick={postExample}
+          style={{ width: "31vh", marginTop: "15vh" }}
+        >
           회원가입하기
         </Button>
       </Container>
     </>
   );
 };
-export default JoinMem;
+export default Join;

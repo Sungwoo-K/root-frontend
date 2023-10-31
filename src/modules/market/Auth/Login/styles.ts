@@ -20,27 +20,41 @@ export const Container = styled.div`
 export const Logindiv = styled.div`
   display: flex;
   flex-direction: column;
+  .id {
+    border-top: 1px solid #dbdbdb;
+    border-bottom: none;
+    border-right: 1px solid #dbdbdb;
+    border-left: 1px solid #dbdbdb;
+  }
+  .pw {
+    border-top: none;
+    border-bottom: 1px solid #dbdbdb;
+    border-right: 1px solid #dbdbdb;
+    border-left: 1px solid #dbdbdb;
+  }
 `;
 
 export const Logininput = styled.input`
   width: 300px;
   height: 50px;
+  padding: 0px 0px 0px 10px;
 `;
 
 export const Loginbutton = styled.div`
   display: flex;
   justify-content: space-between;
 
-  width: 250px;
+  width: 150px;
 `;
 
 export const ExceptionButton = styled.button`
   cursor: pointer;
   border: none;
   width: 80px;
-  height: 40px;
+  height: 20px;
   background-color: #fafafa;
-  font-size: 15px;
+  font-size: 14px;
+  padding-right: 0;
 `;
 
 export const Button = styled.button`

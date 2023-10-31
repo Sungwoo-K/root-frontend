@@ -28,14 +28,18 @@ const Login = () => {
             style={{ width: "160px", height: "55px" }}
           />
         </Link>
-        <form action="http://192.168.100.109:8080/auth/signin" method="post">
+        {/* <form action="http://192.168.100.109:8080/auth/signin" method="post"> */}
+        <form action="http://localhost:8080/auth/signin" method="post">
           <Logindiv>
             <Logininput
+              className="id"
               type="text"
               placeholder="아이디"
-              name="userid"
+              name="userLoginId"
             ></Logininput>
+            <div style={{ border: "0.5px solid #dbdbdb" }}></div>
             <Logininput
+              className="pw"
               type="password"
               placeholder="비밀번호"
               name="userPassword"
@@ -52,7 +56,19 @@ const Login = () => {
         </form>
 
         <Loginbutton>
-          <ExceptionButton>회원가입</ExceptionButton>
+          <Link to="/join">
+            <ExceptionButton>회원가입</ExceptionButton>
+          </Link>
+          <div
+            style={{
+              borderRight: "1px solid #adc4ce",
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "3px",
+              height: "15px",
+            }}
+          ></div>
+
           <ExceptionButton>계정찾기</ExceptionButton>
         </Loginbutton>
       </Container>
