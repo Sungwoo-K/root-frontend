@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { Container } from "./styles";
+import { Suspense } from "react";
 
 export const Layout = () => {
   return (
     <>
       <Container>
         <div className="Home">
-          <Link to="">홈으로</Link>
+          <Link to="/">홈으로</Link>
         </div>
         <div className="Scrap">
           <Link to="">스크랩</Link>
@@ -18,6 +19,9 @@ export const Layout = () => {
           <Link to="">설정</Link>
         </div>
       </Container>
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

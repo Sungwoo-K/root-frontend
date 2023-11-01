@@ -18,6 +18,7 @@ import { SlLike } from "react-icons/sl";
 import { AiOutlineSetting } from "react-icons/ai";
 import ProfileHeader from "../../Header";
 import Layout from "../../Layout";
+import Follow from "../../follow/Scrap";
 
 const UserProfile = () => {
   const [user, setUser] = useState([]);
@@ -32,7 +33,6 @@ const UserProfile = () => {
 
   return (
     <>
-      <Layout />
       <Container>
         <Profilediv>
           <div className="profilediv">

@@ -2,13 +2,13 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  margin-left: 200px;
   border: 1px solid white;
   height: 502px;
-  width: 100%;
+  width: 65%;
+  margin-left: 5%;
   align-items: center;
   .firstedit {
     display: flex;
@@ -60,10 +60,10 @@ export const Button = styled.button`
 
 export const Buttondiv = styled.div`
   display: flex;
-  width: 70%;
+  width: 100%;
 
-  justify-content: space-between;
-  margin-left: 10%;
+  justify-content: space-evenly;
+  margin-left: 5%;
   align-items: flex-start;
   height: 100%;
   cursor: pointer;
@@ -77,6 +77,7 @@ export const Editp = styled.p`
 
 export const Seconddiv = styled.div`
   display: flex;
-  justify-content: space-between;
-  height: 150px;
+  justify-content: space-evenly;
+  height: 120px;
+  align-items: center;
 `;

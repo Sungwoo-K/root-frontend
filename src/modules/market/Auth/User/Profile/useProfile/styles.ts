@@ -4,15 +4,16 @@ export const Categorydiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  position: fixed;
+  margin-top: 10vh;
   border: 1px solid;
 `;
 
 export const Container = styled.div`
-  margin-top: 10vh;
+  margin-top: 20vh;
   display: flex;
   width: 100%;
-  height: 1080px;
+  height: 700px;
 
   align-items: flex-start;
 `;
@@ -20,7 +21,8 @@ export const Profilediv = styled.div`
   display: flex;
   width: 310px;
   height: 500px;
-  margin-left: 10vh;
+  margin-left: 3%;
+  border-radius: 10px;
   justify-content: flex-start;
   flex-direction: column;
   border: 1px solid;

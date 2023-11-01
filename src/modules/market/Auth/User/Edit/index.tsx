@@ -72,9 +72,18 @@ const EditProfile = () => {
   return (
     <>
       <Container>
-        <form style={{ width: "90%" }}>
+        <form style={{ width: "100%" }}>
           {user.map((userData, id) => (
-            <div key={id}>
+            <div key={id} style={{ width: "100%" }}>
+              <Seconddiv
+                style={{
+                  height: "98px",
+                  fontSize: "xx-large",
+                  alignItems: "flex-start",
+                }}
+              >
+                회원 수정
+              </Seconddiv>
               <Seconddiv>
                 <Editdiv>
                   <Editp>이름</Editp>

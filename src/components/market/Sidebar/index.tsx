@@ -8,7 +8,7 @@ const main = () => {
   return (
     <>
       <Sidebar>
-        <Link to="/user">
+        <Link to="/user/profile">
           <Button>
             <Iconbutton>
               <Icon>

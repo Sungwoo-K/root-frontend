@@ -6,11 +6,16 @@ import Join from "./auth/Join";
 const Users = lazy(
   () => import("@/modules/market/auth/User/Profile/useProfile")
 );
+const Follow = lazy(() => import("@/modules/market/auth/User/follow/Scrap"));
+const Layout = lazy(() => import("@/modules/market/auth/User/Layout"));
 const EditProfile = lazy(() => import("@/modules/market/auth/User/Edit/"));
 
 export const userRoutes = [
   <Route key="main" element={<MarketMain />} index />,
-  <Route path="/user" key="user" element={<Users />}>
-    <Route path="edits" element={<EditProfile />} />
+  <Route path="/user" key="user" element={<Layout />}>
+    <Route path="profile" key="profile" element={<Users />}>
+      <Route key="follow" element={<Follow />} index />
+      <Route path="edits" element={<EditProfile />} />{" "}
+    </Route>
   </Route>,
 ];
