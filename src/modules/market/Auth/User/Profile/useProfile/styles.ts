@@ -11,8 +11,10 @@ export const Categorydiv = styled.div`
 export const Container = styled.div`
   margin-top: 10vh;
   display: flex;
-  width: 500px;
-  align-items: center;
+  width: 100%;
+  height: 1080px;
+
+  align-items: flex-start;
 `;
 export const Profilediv = styled.div`
   display: flex;

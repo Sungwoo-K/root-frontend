@@ -7,10 +7,10 @@ import { productRoutes } from "./modules/market/productRoutes";
 import { userRoutes } from "./modules/market/userRoutes";
 import Login from "./modules/market/auth/Login";
 import Join from "./modules/market/auth/Join";
-import {
-  profileEdit,
-  userProfile,
-} from "./modules/market/auth/User/Profile/useProfile/routes";
+// import {
+//   profileEdit,
+//   userProfile,
+// } from "./modules/market/auth/User/Profile/useProfile/routes";
 import { orderItem } from "./modules/market/order/routes";
 
 const App = () => {
@@ -25,12 +25,12 @@ const App = () => {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/join" element={<Join />}></Route>
 
-        <Route element={<MarketLayout />} path="/user">
+        {/* <Route element={<MarketLayout />} path="/user">
           {userProfile}
         </Route>
         <Route path="edits" element={<MarketLayout />}>
           {profileEdit}
-        </Route>
+        </Route> */}
 
         <Route path="order" element={<MarketLayout />}>
           {orderItem}

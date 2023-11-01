@@ -27,7 +27,7 @@ const Join = () => {
   const postExample = async (e) => {
     e.preventDefault();
 
-    const response = await axios.post("http://localhost:5000/auth/sign", {
+    const response = await axios.post("http://localhost:8080/auth/sign", {
       userid: formData.userid,
       username: formData.username,
       userpassword: formData.userpassword,
