@@ -110,7 +110,7 @@ export const Campdiv = styled.div`
 export const Inputdiv = styled.div`
   display: flex;
   flex-direction: row;
-  width: 33vh;
+  width: 300px;
   height: 35px;
   float: right;
   justify-content: left;
@@ -133,9 +133,9 @@ export const Iconbutton = styled.button`
 `;
 
 export const Input = styled.input`
-  width: 80%;
+  width: 300px;
   height: 35px;
-  border: 0.5cap;
+  /* border: 0.5cap; */
 `;
 
 export const Linkgo = styled.div`

@@ -10,7 +10,7 @@ import {
   Profilediv,
 } from "./styles";
 import axios from "axios";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, startTransition, useEffect, useState } from "react";
 import http from "@/utils/http";
 import getCookie from "@/utils/cookie";
 import { BsBookmarkStar } from "react-icons/bs";

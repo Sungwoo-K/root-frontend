@@ -10,7 +10,7 @@ export const Categorydiv = styled.div`
 `;
 
 export const Container = styled.div`
-  margin-top: 20vh;
+  margin-top: 10vh;
   display: flex;
   width: 100%;
   height: 700px;
