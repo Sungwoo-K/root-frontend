@@ -11,7 +11,7 @@ const MarketMain = () => {
     <>
       <MainContainer>
         <section>
-          <SlideBanner width={"1840px"} height={"500px"}></SlideBanner>
+          <SlideBanner width={"1900px"} height={"550px"}></SlideBanner>
         </section>
         <section>
           <Link to="/products">

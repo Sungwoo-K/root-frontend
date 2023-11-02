@@ -7,7 +7,7 @@ type BannerSize = {
 };
 
 export const BannerContainer = styled.div`
-  height: 500px;
+  height: 550px;
   width: 100%;
   position: relative;
   display: flex;
@@ -26,7 +26,7 @@ export const Banner = styled(Slider)<BannerSize>`
   display: flex;
   justify-content: center;
   width: ${(props) => props.widthSize || "1840px"};
-  height: 470px;
+  height: 520px;
   .slick-list {
     width: ${(props) => props.widthSize || "1840px"};
     height: ${(props) => props.heightSize || "500px"};

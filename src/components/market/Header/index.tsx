@@ -29,11 +29,22 @@ import { CiShop, CiDiscount1 } from "react-icons/ci";
 import { AiOutlineComment } from "react-icons/ai";
 import { LuArrowBigDown, LuArrowBigRight } from "react-icons/lu";
 import { PiArrowSquareDownLight } from "react-icons/pi";
+import { useHover } from "./data";
 
 const main = () => {
   const [isMenu, setIsMenu] = useState(false);
 
   const [isList, setIsList] = useState(false);
+
+  const { mutateIsHover } = useHover();
+
+  const handleMouseEnter = () => {
+    mutateIsHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    mutateIsHover(false);
+  };
 
   const ToggleSidebar = () => {
     isMenu === true ? setIsMenu(false) : setIsMenu(true);
@@ -46,7 +57,7 @@ const main = () => {
   };
 
   return (
-    <Header>
+    <Header onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <Hedaerline>
         <nav>
           <Menubutton onClick={ToggleSidebar}>

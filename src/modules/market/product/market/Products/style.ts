@@ -9,6 +9,8 @@ export const Category = styled.article`
     padding-left: 100px;
     display: flex;
     flex-direction: column;
+    position: fixed;
+    top: 21%;
 
     > a {
       color: black;
@@ -46,8 +48,8 @@ export const Category = styled.article`
 export const Product = styled.article`
   padding-top: 50px;
   width: 81%;
-  overflow: auto;
   > div {
+    user-select: none;
     overflow-y: auto;
     position: relative;
     display: inline-block;
@@ -98,6 +100,22 @@ export const Product = styled.article`
       bottom: 8px;
       right: 10px;
       position: absolute;
+    }
+
+    > div:first-of-type {
+      position: absolute;
+      right: 10px;
+      top: 3px;
+      width: 30px;
+      height: 30px;
+    }
+    > div:last-of-type {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      width: 30px;
+      height: 30px;
+      color: #f6b719;
     }
   }
 `;

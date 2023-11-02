@@ -4,14 +4,18 @@ export const Container = styled.div`
   width: 100%;
   height: 95%;
   font-family: "GmarketSansMedium";
-  overflow: hidden;
+  overflow: auto;
   > section:first-of-type {
+    pointer-events: auto;
     display: flex;
     justify-content: center;
-    height: 150px;
-
+    height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    transition: all 0.18s ease-in-out;
     > article {
-      padding-top: 50px;
+      padding-top: 10px;
       width: 25%;
       height: 40px;
       display: flex;
@@ -45,7 +49,7 @@ export const Container = styled.div`
 
   > section:last-of-type {
     width: 100%;
-    height: 85%;
+    height: 90%;
     display: flex;
   }
 `;
