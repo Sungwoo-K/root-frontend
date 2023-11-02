@@ -16,7 +16,7 @@ const Login = () => {
       <Container>
         <Link to={"http://localhost:5000/"} style={{ marginBottom: "20px" }}>
           <img
-            src={require("../../../../components/market/Header/tent.png")}
+            src={require("@/components/market/Header/tent.png")}
             style={{
               width: "50px",
               height: "50px",
@@ -24,15 +24,10 @@ const Login = () => {
             }}
           />
           <img
-            src={require("../../../../components/market/Header/logo.png")}
+            src={require("@/components/market/Header/logo.png")}
             style={{ width: "160px", height: "55px" }}
           />
         </Link>
-<<<<<<< HEAD
-        {/* <form action="http://192.168.100.109:8080/auth/signin" method="post"> */}
-=======
-
->>>>>>> origin/communityRoot
         <form action="http://localhost:8080/auth/signin" method="post">
           <Logindiv>
             <Logininput

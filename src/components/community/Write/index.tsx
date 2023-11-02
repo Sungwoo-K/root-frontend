@@ -8,7 +8,6 @@ import {
   DropArea,
 } from "./styles";
 import { MutableRefObject, useEffect, useRef, useState } from "react";
-import { MultiStats } from "webpack";
 
 interface PostItem {
   id: number;
@@ -20,31 +19,6 @@ interface PostFile {
   contentType: string;
   originalFileName: string;
   uuidFileName: string;
-}
-function MediaElement({
-  contentType,
-  uuidFileName,
-}: {
-  contentType: string;
-  uuidFileName: string;
-}) {
-  if (contentType.includes("image")) {
-    return (
-      <img
-        width={300}
-        src={`http://localhost:8080/post/files/${uuidFileName}`}
-      />
-    );
-  } else {
-    return (
-      <video>
-        <source
-          src={`http://localhost:8080/post/files/${uuidFileName}`}
-          type={contentType}
-        ></source>
-      </video>
-    );
-  }
 }
 
 const Write = () => {
@@ -78,7 +52,19 @@ const Write = () => {
           setPosts([{ ...response.data }, ...posts]);
         }
       } catch (error) {
-        console.error("Error posting data:", error);
+        if (error.response) {
+          console.error(
+            "오류가 있고, 서버로부터의 응답이 있는 경우:",
+            error.response.status
+          );
+        } else if (error.request) {
+          console.error(
+            "요청이 이루어 졌으나 응답을 받지 못한 경우:",
+            error.request
+          );
+        } else {
+          console.error("요청 설정 시 발생한 오류:", error.message);
+        }
       }
     })();
   };

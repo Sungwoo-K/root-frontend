@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Container } from "../Header/styles";
 
 export const PostMain = styled.div`
   display: flex;
