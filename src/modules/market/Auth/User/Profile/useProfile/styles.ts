@@ -12,8 +12,9 @@ export const Categorydiv = styled.div`
 export const Container = styled.div`
   margin-top: 10vh;
   display: flex;
-  width: 100%;
+  width: 1500px;
   height: 700px;
+  padding-left: 250px;
 
   align-items: flex-start;
 `;

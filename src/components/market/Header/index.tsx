@@ -206,13 +206,9 @@ const main = () => {
         ></div>
 
         <Campdiv>
-          <img
-            src={require("./tent.png")}
-            style={{ height: "40px", marginTop: "2px" }}
-          />
           <Link
             to="http://localhost:5000/"
-            style={{ textDecoration: "none", color: "black" }}
+            style={{ textDecoration: "none", color: "black", height: "30px" }}
           >
             <Title>CAMP&TENT</Title>
           </Link>

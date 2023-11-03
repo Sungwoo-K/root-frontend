@@ -7,8 +7,9 @@ export const Container = styled.div`
 
   height: 5%;
   justify-content: space-around;
-  /* position: fixed; */
-  width: 100%;
+
+  width: 1600px;
+  padding-left: 200px;
 
   .Home,
   .Shopping,

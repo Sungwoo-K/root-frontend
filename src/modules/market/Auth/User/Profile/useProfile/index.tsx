@@ -38,7 +38,7 @@ const UserProfile = () => {
           <div className="profilediv">
             <img
               className="profileimg"
-              src={require("../../../../../../components/market/Header/tent.png")}
+              src={require("@/components/market/Header/tent.png")}
             />
           </div>
           {user.map((userData, id) => (
