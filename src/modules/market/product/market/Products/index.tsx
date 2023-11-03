@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Category, Product } from "./styles";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { RiShoppingCartFill, RiShoppingCartLine } from "react-icons/ri";
 import { useCart } from "../data";
@@ -9,6 +9,7 @@ const Products = () => {
   const location = useLocation();
   const searchParam = new URLSearchParams(location.search);
   const category = searchParam.get("category");
+  const navigate = useNavigate();
   const { carts, setCart } = useCart();
   const [stars, setStar] = useState([]);
 
@@ -136,39 +137,60 @@ const Products = () => {
       </Category>
       <Product>
         {products.map((product) => (
-          <div key={product.id}>
-            <p>{product.brand}</p>
-            <div>
-              {carts.includes(product.id) ? (
-                <RiShoppingCartFill
-                  onClick={() => cartRemoveHandle(product.id)}
-                  size={"28px"}
-                />
-              ) : (
-                <RiShoppingCartLine
-                  onClick={() => cartAddHandle(product.id)}
-                  size={"28px"}
-                />
-              )}
+          <section
+            onClick={() => {
+              navigate(`/products/${product.id}`);
+            }}
+          >
+            <div key={product.id}>
+              <p
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate(`/brands/123`);
+                }}
+              >
+                {product.brand}
+              </p>
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                {carts.includes(product.id) ? (
+                  <RiShoppingCartFill
+                    onClick={() => cartRemoveHandle(product.id)}
+                    size={"28px"}
+                  />
+                ) : (
+                  <RiShoppingCartLine
+                    onClick={() => cartAddHandle(product.id)}
+                    size={"28px"}
+                  />
+                )}
+              </div>
+              <img src={product.img} />
+              <p>{product.name}</p>
+              <p>{product.price}원</p>
+              <p>{product.discount > 0 ? `${product.discount}% 할인중` : ""}</p>
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                {stars.includes(product.id) ? (
+                  <AiFillStar
+                    onClick={() => starRemoveHandle(product.id)}
+                    size={"28px"}
+                  />
+                ) : (
+                  <AiOutlineStar
+                    onClick={() => starAddHandle(product.id)}
+                    size={"28px"}
+                  />
+                )}
+              </div>
             </div>
-            <img src={product.img} />
-            <p>{product.name}</p>
-            <p>{product.price}원</p>
-            <p>{product.discount > 0 ? `${product.discount}% 할인중` : ""}</p>
-            <div>
-              {stars.includes(product.id) ? (
-                <AiFillStar
-                  onClick={() => starRemoveHandle(product.id)}
-                  size={"28px"}
-                />
-              ) : (
-                <AiOutlineStar
-                  onClick={() => starAddHandle(product.id)}
-                  size={"28px"}
-                />
-              )}
-            </div>
-          </div>
+          </section>
         ))}
       </Product>
     </>

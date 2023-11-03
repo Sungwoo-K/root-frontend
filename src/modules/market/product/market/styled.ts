@@ -6,14 +6,14 @@ export const Container = styled.div`
   font-family: "GmarketSansMedium";
   overflow: auto;
   > section:first-of-type {
-    pointer-events: auto;
     display: flex;
     justify-content: center;
-    height: 70px;
+    height: 65px;
     position: sticky;
     top: 0;
     z-index: 10;
     transition: all 0.18s ease-in-out;
+    background-color: white;
     > article {
       padding-top: 10px;
       width: 25%;

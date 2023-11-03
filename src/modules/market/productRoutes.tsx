@@ -1,7 +1,8 @@
 import { Route } from "react-router-dom";
 import { lazy } from "react";
 import MarketMain from "./product/Main";
-import Layout from "./product/market/Layout";
+
+const Layout = lazy(() => import("@/modules/market/product/market/Layout"));
 
 const Products = lazy(() => import("@/modules/market/product/market/Products"));
 const HottestItems = lazy(
@@ -13,12 +14,12 @@ const DiscountItem = lazy(
 
 export const productRoutes = [
   <Route key="main" element={<MarketMain />} index />,
-  <Route path="/products" key="market" element={<Layout />}>
+  <Route key="market" path="/products" element={<Layout />}>
     <Route key="products" element={<Products />} index />
-    <Route path="hottest-items" key="hottestItem" element={<HottestItems />} />
+    <Route key="hottestItem" path="hottest-items" element={<HottestItems />} />
     <Route
-      path="discount-items"
       key="discountItem"
+      path="discount-items"
       element={<DiscountItem />}
     />
   </Route>,

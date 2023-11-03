@@ -1,5 +1,13 @@
+import { HottestContainer } from "./styles";
+
 const HottestItems = () => {
-  return <></>;
+  return (
+    <>
+      <HottestContainer>
+        <section></section>
+      </HottestContainer>
+    </>
+  );
 };
 
 export default HottestItems;
