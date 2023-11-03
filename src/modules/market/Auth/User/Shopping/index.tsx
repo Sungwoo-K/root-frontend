@@ -1,17 +1,28 @@
-import { Container, Orderlist } from './styles';
+import { Link, Outlet } from "react-router-dom";
+import { Container, Orderlist } from "./styles";
+import { Suspense } from "react";
 
 export const Shoppinghistory = () => {
-    return (
-        <>
-            <Container>
-                <Orderlist>
-                    <div className="list">1번</div>
-                    <div className="list">2번</div>
-                    <div className="list">3번</div>
-                </Orderlist>
-            </Container>
-        </>
-    );
+  return (
+    <>
+      <Container>
+        <Orderlist>
+          <Link to="detail">
+            <div className="list">구매 내역</div>
+          </Link>
+          <Link to="detail">
+            <div className="list">구매 내역</div>
+          </Link>
+          <Link to="detail">
+            <div className="list">구매 내역</div>
+          </Link>
+        </Orderlist>
+      </Container>
+      <Suspense>
+        <Outlet />
+      </Suspense>
+    </>
+  );
 };
 
 export default Shoppinghistory;
