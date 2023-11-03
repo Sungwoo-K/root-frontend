@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import {
   Button,
   Categorydiv,
@@ -10,20 +10,22 @@ import {
   Profilediv,
 } from "./styles";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { Suspense, startTransition, useEffect, useState } from "react";
 import http from "@/utils/http";
-import getCookie from "@/utils/cookie";
+
 import { BsBookmarkStar } from "react-icons/bs";
 import { SlLike } from "react-icons/sl";
 import { AiOutlineSetting } from "react-icons/ai";
 import ProfileHeader from "../../Header";
+import Layout from "../../Layout";
+import Follow from "../../follow/Scrap";
 
 const UserProfile = () => {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
     (async () => {
-      const response = await http.get("/user/profile");
+      const response = await http.get("http://localhost:8080/user/profile");
       const responseData = response.data;
       setUser(responseData);
     })();
@@ -89,7 +91,7 @@ const UserProfile = () => {
                 </Icon>
 
                 <Icon>
-                  <Link to="/edits">
+                  <Link to="edits">
                     <AiOutlineSetting
                       style={{
                         width: "30px",
@@ -105,6 +107,9 @@ const UserProfile = () => {
             </Keydiv>
           ))}
         </Profilediv>
+        <Suspense>
+          <Outlet />
+        </Suspense>
       </Container>
     </>
   );

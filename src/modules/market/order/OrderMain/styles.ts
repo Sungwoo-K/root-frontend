@@ -90,6 +90,12 @@ export const Information = styled.div`
     width: 50vh;
     height: 100%;
   }
+  .option {
+    width: 50vh;
+    height: 100%;
+    padding-top: 30px;
+    position: relative;
+  }
   .productorder {
     width: 100%;
     height: 10%;
@@ -193,4 +199,17 @@ export const Price = styled.div`
   font-size: x-large;
   padding: 10px 10px 10px 10px;
   flex-direction: row-reverse;
+`;
+
+export const Selectbox = styled.select`
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 90%;
+  height: 50px;
+  padding: 0.8em 0.5em;
+  border: 1px solid #999;
+  border-radius: 0px;
+  background: url(https://t1.daumcdn.net/cfile/tistory/99761B495C84AA8716?original)
+    no-repeat 95% 50%;
 `;

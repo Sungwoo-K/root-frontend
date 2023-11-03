@@ -9,6 +9,7 @@ import {
   Iconbutton,
   Information,
   Price,
+  Selectbox,
 } from "./styles";
 import { useState } from "react";
 
@@ -60,10 +61,19 @@ const OrderMain = () => {
               <h1 style={{ marginLeft: "10px" }}>브랜드명</h1>
             </Link>
             <div className="headerdiv">
-              <h1 className="title">코마드 남자 반목폴라 베이직 니트 MNT574</h1>
+              <h1 className="title">
+                코마드 남자 반목폴라 베이직 니트 MNT57433333
+              </h1>
               <div style={{ marginLeft: "10%" }}>별점자리</div>
             </div>
-            <div className="pricediv"></div>
+            <div className="option">
+              <Selectbox id="select-box">
+                <option selected>옵션 선택</option>
+                <option value="">옵션1</option>
+                <option value="">옵션2</option>
+                <option value="">옵션3</option>
+              </Selectbox>
+            </div>
             <div className="productorder">
               <div className="buttondiv">
                 <div>
