@@ -8,12 +8,14 @@ const Products = lazy(() => import("@/modules/market/product/market/Products"));
 const HottestItems = lazy(
   () => import("@/modules/market/product/market/Hottest-items")
 );
+const Product = lazy(() => import("@/modules/market/order/OrderMain"));
 const DiscountItem = lazy(
   () => import("@/modules/market/product/market/Discount-items")
 );
 
 export const productRoutes = [
   <Route key="main" element={<MarketMain />} index />,
+  <Route key="product" path="products/:id" element={<Product />} />,
   <Route key="market" path="/products" element={<Layout />}>
     <Route key="products" element={<Products />} index />
     <Route key="hottestItem" path="hottest-items" element={<HottestItems />} />
