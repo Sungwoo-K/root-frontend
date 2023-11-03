@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Container } from "@/components/community/Header/styles";
+import { Maincontainer, ImageItem, ViewDetailsLink } from "./styles";
 import { useEffect, useState } from "react";
 
 interface PostItem {
@@ -59,16 +59,16 @@ const Main = () => {
   }, []);
 
   return (
-    <Container>
-      <div
+    <Maincontainer>
+      <ImageItem
         style={{
           display: "flex",
           flexDirection: "row",
         }}
       >
         {posts.map((post, idx) => (
-          <li key={`post-item-${post.id}-${idx}`}>
-            <div>
+          <div key={`post-item-${post.id}-${idx}`}>
+            <ViewDetailsLink to="/community/details">
               {post.files && post.files.length > 0 && (
                 <MediaElement
                   key={post.files[0].uuidFileName}
@@ -76,13 +76,13 @@ const Main = () => {
                   contentType={post.files[0].contentType}
                 />
               )}
-            </div>
+            </ViewDetailsLink>
             <h3>{post.title}</h3>
             <p>{post.content}</p>
-          </li>
+          </div>
         ))}
-      </div>
-    </Container>
+      </ImageItem>
+    </Maincontainer>
   );
 };
 

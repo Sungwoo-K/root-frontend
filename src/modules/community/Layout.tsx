@@ -8,7 +8,8 @@ const Layout = () => {
   return (
     <>
       <PostHeader />
-      {location.pathname !== "/community/Write" && <PostSidebar />}
+      {location.pathname !== "/community/Write" &&
+        location.pathname !== "/community/details" && <PostSidebar />}
       <Outlet />
     </>
   );
