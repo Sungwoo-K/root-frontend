@@ -2,13 +2,14 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
     margin-top: 10px;
-    width: 1218px;
+    width: 1400px;
+    margin-bottom: 90px;
     height: 100%;
     display: flex;
     flex-direction: column;
     border: 1px solid #ccc;
     align-items: center;
-    padding: 50px 40px 30px 40px;
+    padding: 50px 0px 30px 0px;
     .headbar {
         border: 1px solid;
         display: flex;
