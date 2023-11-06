@@ -22,11 +22,17 @@ const SlideBanner = ({ width, height, paths }: BannerSize) => {
     pauseOnHover: false,
   };
 
+  const images = {};
+
+  paths.forEach((path, i) => {
+    images[`image${i + 1}`] = require(`@/images/${path}`);
+  });
+
   return (
     <BannerContainer>
       <Banner widthSize={width} heightSize={height} {...settings}>
-        {paths.map((path) => (
-          <img src={`http://192.168.0.30:8080/product/files/${path}`} />
+        {Object.keys(images).map((key) => (
+          <img key={key} src={images[key]} />
         ))}
       </Banner>
       <div></div>
