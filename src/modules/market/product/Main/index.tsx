@@ -11,7 +11,16 @@ const MarketMain = () => {
     <>
       <MainContainer>
         <section>
-          <SlideBanner width={"1900px"} height={"550px"}></SlideBanner>
+          <SlideBanner
+            width={"1970px"}
+            height={"550px"}
+            paths={[
+              "pexels-nathan-moore-2603681.jpg",
+              "pexels-roman-odintsov-4555526.jpg",
+              "pexels-igor-cibulsky-8713324.jpg",
+              "pexels-taryn-elliott-4909105.jpg",
+            ]}
+          ></SlideBanner>
         </section>
         <section>
           <Link to="/products">

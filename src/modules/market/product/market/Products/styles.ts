@@ -109,14 +109,6 @@ export const Product = styled.article`
         width: 30px;
         height: 30px;
       }
-      > div:last-of-type {
-        position: absolute;
-        left: 10px;
-        bottom: 10px;
-        width: 30px;
-        height: 30px;
-        color: #f6b719;
-      }
     }
   }
 `;

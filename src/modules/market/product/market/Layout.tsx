@@ -82,7 +82,7 @@ const Layout = () => {
         </article>
       </section>
       <section>
-        <Suspense>
+        <Suspense fallback="..loading">
           <Outlet />
         </Suspense>
       </section>

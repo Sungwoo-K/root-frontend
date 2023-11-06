@@ -1,16 +1,13 @@
 import { Banner, BannerContainer } from "./styles";
-import image1 from "@/images/pexels-nathan-moore-2603681.jpg";
-import image2 from "@/images/pexels-igor-cibulsky-8713324.jpg";
-import image3 from "@/images/pexels-roman-odintsov-4555526.jpg";
-import image4 from "@/images/pexels-taryn-elliott-4909105.jpg";
 import { Settings } from "react-slick";
 
 interface BannerSize {
   width: string;
   height: string;
+  paths: string[];
 }
 
-const SlideBanner = ({ width, height }: BannerSize) => {
+const SlideBanner = ({ width, height, paths }: BannerSize) => {
   const settings: Settings = {
     slide: "img",
     dots: true,
@@ -28,10 +25,9 @@ const SlideBanner = ({ width, height }: BannerSize) => {
   return (
     <BannerContainer>
       <Banner widthSize={width} heightSize={height} {...settings}>
-        <img src={image1} />
-        <img src={image2} />
-        <img src={image3} />
-        <img src={image4} />
+        {paths.map((path) => (
+          <img src={`http://192.168.45.205:8080/product/files/${path}`} />
+        ))}
       </Banner>
       <div></div>
     </BannerContainer>

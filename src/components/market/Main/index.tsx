@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Main } from "./styles";
 import { Outlet } from "react-router-dom";
 
@@ -5,7 +6,9 @@ const main = () => {
   return (
     <>
       <Main>
-        <Outlet />
+        <Suspense>
+          <Outlet />
+        </Suspense>
       </Main>
     </>
   );
