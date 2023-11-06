@@ -1,13 +1,13 @@
 import { Container } from './styles';
 import OrderMain from './OrderMain';
-import { Inquiry } from './Orderinquiry';
+import { Inquiryorder } from './Orderinquiry';
 
 export const Order = () => {
     return (
         <>
             <Container>
                 <OrderMain />
-                <Inquiry />
+                <Inquiryorder />
             </Container>
         </>
     );

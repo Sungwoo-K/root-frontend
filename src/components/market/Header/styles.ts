@@ -42,6 +42,7 @@ export const Menudiv = styled.div`
   .menulist {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     margin-top: 30px;
     margin-left: 30px;
     font-size: large;
@@ -63,7 +64,7 @@ export const Menubutton = styled.div`
   background-color: rgb(255, 217, 142, 0);
 
   width: 33vh;
-  height: 60px;
+  height: 50px;
 
   cursor: pointer;
 `;
@@ -85,26 +86,24 @@ export const ToggleButton = styled.div`
 export const Menulist = styled.ul``;
 
 export const Title = styled.div`
-  @font-face {
-    font-family: "TAEBAEKfont";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/TAEBAEKfont.woff2")
-      format("woff2");
-    font-weight: normal;
-    font-style: normal;
-  }
-
+  display: flex;
+  font-family: "Gaegu", sans-serif;
+  font-size: 40px;
+  font-weight: 100px;
+  height: 60px;
+  text-decoration: none;
+  color: inherit;
   margin-left: 10px;
-  align-items: center;
-  font-size: 29px;
-  margin-top: 10px;
+  align-items: flex-start;
   justify-content: center;
-  font-family: "TAEBAEKfont";
 `;
 
 export const Campdiv = styled.div`
   display: flex;
-  width: 33vh;
+  width: 50vh;
+  height: 50px;
   justify-content: center;
+  align-items: flex-start;
 `;
 
 export const Inputdiv = styled.div`
