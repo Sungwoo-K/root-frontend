@@ -5,4 +5,5 @@ export const Main = styled.div`
   height: 100%;
   width: 100%;
   overflow: auto;
+  overflow-x: hidden;
 `;

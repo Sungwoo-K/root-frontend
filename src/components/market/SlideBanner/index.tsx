@@ -26,7 +26,7 @@ const SlideBanner = ({ width, height, paths }: BannerSize) => {
     <BannerContainer>
       <Banner widthSize={width} heightSize={height} {...settings}>
         {paths.map((path) => (
-          <img src={`http://192.168.45.205:8080/product/files/${path}`} />
+          <img src={`http://192.168.0.30:8080/product/files/${path}`} />
         ))}
       </Banner>
       <div></div>
