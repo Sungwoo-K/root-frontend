@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Forminput, Input, Inputdiv, Inputp } from './style';
 import axios from 'axios';
 import { MutableRefObject, useRef, useState } from 'react';
-import { Button } from '../Login/styles';
+import { Button, Headername } from '../Login/styles';
 
 const Join = () => {
     const [formData, setFormData] = useState({
@@ -61,25 +61,15 @@ const Join = () => {
                         display: 'flex',
                         width: '100%',
                         alignContent: 'center',
+                        textDecoration: 'none',
                     }}
                 >
                     <div style={{ marginTop: '10px', marginLeft: '30px' }}>
-                        <img
-                            src={require('@/components/market/Header/tent.png')}
-                            style={{
-                                width: '50px',
-                                height: '50px',
-                                marginRight: '10px',
-                            }}
-                        />
-                        <img
-                            src={require('@/components/market/Header/logo.png')}
-                            style={{ width: '160px', height: '55px' }}
-                        />
+                        <p className="Header">CAMP&TENT</p>
                     </div>
                 </Link>
 
-                <p style={{ fontSize: '40px', marginTop: '70px' }}> 회원 가입</p>
+                <Headername style={{ marginTop: '80px', fontSize: '60px' }}>회원 가입</Headername>
 
                 <Input
                     name="userid"
@@ -133,7 +123,7 @@ const Join = () => {
                         </button>
                     ))}
                 </div>
-                <Button onClick={postExample} style={{ width: '31vh', marginTop: '15vh' }}>
+                <Button onClick={postExample} style={{ width: '300px', marginTop: '80px' }}>
                     회원가입하기
                 </Button>
             </Container>

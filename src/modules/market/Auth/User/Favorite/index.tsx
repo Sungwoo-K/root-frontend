@@ -7,10 +7,10 @@ export const Favorite = () => {
         <>
             <Container>
                 <Orderlist>
-                    <Link to="scrap">
+                    <Link to="scrap" className="link">
                         <div className="list">장바구니</div>
                     </Link>
-                    <Link to="follow">
+                    <Link to="follow" className="link">
                         <div className="list">구독</div>
                     </Link>
                 </Orderlist>

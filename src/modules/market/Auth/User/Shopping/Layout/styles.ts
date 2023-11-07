@@ -19,9 +19,16 @@ export const Container = styled.div`
         height: 50px;
         border: 1px solid #dbdbdb;
         border-radius: 8px;
-        box-shadow: 5px 2px 2px 5px #dbdbdb;
+        box-shadow: 5px 5px 20px #dbdbdb;
         display: flex;
         align-items: center;
         justify-content: center;
+        color: black;
+        .LinkHeader {
+            color: black;
+            text-decoration: none;
+            font-family: yg-jalnan;
+            font-size: large;
+        }
     }
 `;

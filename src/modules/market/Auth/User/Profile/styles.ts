@@ -22,15 +22,15 @@ export const Profilediv = styled.div`
     width: 310px;
     height: 500px;
     margin-left: 3%;
-    border-radius: 10px;
+    border-radius: 5px;
     justify-content: flex-start;
     flex-direction: column;
-    border: 1px solid;
+    border: 1.5px solid #dbdbdb;
     .namediv {
         display: flex;
         width: 310px;
         height: 50px;
-
+        padding-right: 5px;
         justify-content: center;
         align-items: center;
     }
@@ -39,6 +39,7 @@ export const Profilediv = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        font-family: NanumSquareNeo-Variable;
     }
     .profileimg {
         width: 118px;
@@ -57,6 +58,7 @@ export const Profilediv = styled.div`
         margin-top: 5vh;
         height: 50px;
         align-items: center;
+        font-family: HakgyoansimWoojuR;
     }
 `;
 
@@ -70,7 +72,11 @@ export const Linkdiv = styled.div`
     justify-content: center;
 `;
 
-export const Keydiv = styled.div``;
+export const Keydiv = styled.div`
+    .namediv {
+        font-family: Cafe24Ssurround;
+    }
+`;
 
 export const Profilecontain = styled.div`
     display: flex;
@@ -89,10 +95,17 @@ export const Icon = styled.div`
     width: 33%;
     height: 100px;
     align-items: center;
+
+    .iconname {
+        font-family: NanumSquareNeo-Variable;
+    }
     .Linkstyle {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-decoration: none;
+        color: black;
+        font-weight: 300;
     }
 `;

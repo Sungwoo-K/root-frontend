@@ -17,6 +17,12 @@ export const Container = styled.div`
     padding: 0%;
 `;
 
+export const Headername = styled.p`
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 60px;
+    color: black;
+`;
+
 export const Logindiv = styled.div`
     display: flex;
     flex-direction: column;
@@ -68,4 +74,8 @@ export const Button = styled.button`
     color: white;
     margin-top: 25px;
     border: 1px solid #dbdbdb;
+    :hover {
+        transition: 0.3s;
+        background-color: #009fce;
+    }
 `;

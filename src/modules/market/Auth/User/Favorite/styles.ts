@@ -12,17 +12,26 @@ export const Container = styled.div`
 
 export const Orderlist = styled.div`
     display: flex;
-    justify-content: space-around;
-    width: 900px;
+    justify-content: space-evenly;
+    margin-left: 300px;
+    width: 550px;
     height: 50px;
+    border-bottom: 1px solid #dbdbdb;
+    border-top: 1px solid #dbdbdb;
 
     .list {
         display: flex;
         justify-content: center;
         width: 200px;
         height: 50px;
-        border-right: 1px solid;
-        border-left: 1px solid;
         align-items: center;
+    }
+    .link {
+        text-decoration: none;
+        color: black;
+        font-family: KOTRAHOPE;
+        font-size: large;
+        font-weight: bold;
+        color: #2f3438;
     }
 `;

@@ -171,6 +171,41 @@ const ResetStyle = () => {
                     font-weight: 400;
                     font-style: normal;
                 }
+                @font-face {
+                    font-family: 'KOTRAHOPE';
+                    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2')
+                        format('woff2');
+                    font-weight: normal;
+                    font-style: normal;
+                }
+                @font-face {
+                    font-family: 'Cafe24Ssurround';
+                    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff')
+                        format('woff');
+                    font-weight: normal;
+                    font-style: normal;
+                }
+                @font-face {
+                    font-family: 'NanumSquareNeo-Variable';
+                    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2')
+                        format('woff2');
+                    font-weight: normal;
+                    font-style: normal;
+                }
+                @font-face {
+                    font-family: 'HakgyoansimWoojuR';
+                    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2')
+                        format('woff2');
+                    font-weight: normal;
+                    font-style: normal;
+                }
+                @font-face {
+                    font-family: 'yg-jalnan';
+                    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff')
+                        format('woff');
+                    font-weight: normal;
+                    font-style: normal;
+                }
             `}
         />
     );

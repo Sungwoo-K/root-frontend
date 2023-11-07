@@ -1,25 +1,14 @@
 import { Link } from 'react-router-dom';
 
-import { Button, Container, ExceptionButton, Loginbutton, Logindiv, Logininput } from './styles';
+import { Button, Container, ExceptionButton, Headername, Loginbutton, Logindiv, Logininput } from './styles';
 import getCookie from '@/utils/cookie';
 
 const Login = () => {
     return (
         <>
             <Container>
-                <Link to={'http://localhost:5000/'} style={{ marginBottom: '20px' }}>
-                    <img
-                        src={require('@/components/market/Header/tent.png')}
-                        style={{
-                            width: '50px',
-                            height: '50px',
-                            marginRight: '10px',
-                        }}
-                    />
-                    <img
-                        src={require('@/components/market/Header/logo.png')}
-                        style={{ width: '160px', height: '55px' }}
-                    />
+                <Link to={'http://localhost:5000/'} style={{ marginBottom: '20px', textDecoration: 'none' }}>
+                    <Headername>캠프&텐트</Headername>
                 </Link>
                 <form action="http://localhost:8080/auth/signin" method="post">
                     <Logindiv>
