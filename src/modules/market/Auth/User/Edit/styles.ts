@@ -22,7 +22,7 @@ export const Container = styled.div`
 export const Editdiv = styled.div`
   display: flex;
   align-items: flex-start;
-
+  margin-left: 90px;
   width: 500px;
 `;
 
