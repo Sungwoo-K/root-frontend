@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
   width: 100%;
-  height: 95%;
+  height: 94%;
   font-family: "GmarketSansMedium";
-  overflow: auto;
+  overflow-y: scroll;
   > section:first-of-type {
     display: flex;
     justify-content: center;
@@ -49,7 +49,6 @@ export const Container = styled.div`
 
   > section:last-of-type {
     width: 100%;
-    height: 90%;
     display: flex;
   }
 `;

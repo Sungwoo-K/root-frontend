@@ -48,6 +48,7 @@ export const Category = styled.article`
 export const Product = styled.article`
   padding-top: 50px;
   width: 81%;
+  position: relative;
   > section {
     user-select: none;
     overflow-y: auto;
@@ -110,5 +111,12 @@ export const Product = styled.article`
         height: 30px;
       }
     }
+  }
+  > div {
+    position: absolute;
+    bottom: 500px;
+    width: 100%;
+    height: 1px;
+    z-index: -10;
   }
 `;

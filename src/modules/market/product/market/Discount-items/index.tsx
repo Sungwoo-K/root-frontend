@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Category, Product } from "./styles";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { RiShoppingCartFill, RiShoppingCartLine } from "react-icons/ri";
 import { useCart } from "../data";
 import http from "@/utils/http";
+import { PaginationResponse } from "../Products";
 
 export interface ProductItem {
   id: number;
@@ -25,6 +26,12 @@ const Products = () => {
   const category = searchParam.get("category");
   const navigate = useNavigate();
   const { carts, setCart } = useCart();
+  const [page, setPage] = useState(0);
+  const [isLast, setIsLast] = useState<Boolean>(false);
+  const [nowCategory, setNowCategory] = useState<String>();
+  const productTargetRef = useRef();
+
+  const PAGE_SIZE = 10;
 
   const [products, setProducts] = useState<ProductItem[]>([]);
 
@@ -41,16 +48,42 @@ const Products = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await http.get<ProductItem[]>(
-        `http://192.168.0.30:8080/product/discount?category=${category}`
-      );
-      if (response !== undefined) {
-        if (response.status === 200) {
-          setProducts(response.data);
+      if (nowCategory !== category) {
+        setProducts([]);
+        setNowCategory(category);
+        setPage(0);
+        setIsLast(false);
+      }
+      if (!isLast) {
+        const response = await http.get<PaginationResponse<ProductItem>>(
+          `http://192.168.0.30:8080/product/discount?category=${category}&page=${page}&size=${PAGE_SIZE}`
+        );
+        if (response !== undefined) {
+          if (response.status === 200) {
+            setProducts((prevProducts) =>
+              prevProducts.concat(response.data.content)
+            );
+            setIsLast(response.data.last);
+          }
         }
       }
     })();
-  }, [category]);
+  }, [category, page, isLast]);
+  useEffect(() => {
+    const productTarget = productTargetRef.current;
+    const observer = new IntersectionObserver((targets) => {
+      targets.forEach((target) => {
+        if (target.isIntersecting) {
+          setPage((prevPage) => prevPage + 1);
+        }
+      });
+    });
+    observer.observe(productTarget);
+
+    return () => {
+      observer.unobserve(productTarget);
+    };
+  }, []);
   return (
     <>
       <Category>
@@ -124,6 +157,7 @@ const Products = () => {
             </div>
           </section>
         ))}
+        <div ref={productTargetRef}></div>
       </Product>
     </>
   );
