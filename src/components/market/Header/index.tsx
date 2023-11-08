@@ -71,134 +71,151 @@ const main = () => {
                     <hr />
 
                     <Menudiv>
-                        <Button>
-                            <Iconbutton className="listbutton">
-                                <Icon>
-                                    <BsPerson style={{ width: '35px', height: '30px' }} />
-                                </Icon>
-                            </Iconbutton>
-                            <Link to="/user/profile">
+                        <Link to="/user/profile" className="Linknav" onClick={ToggleSidebar}>
+                            <Button>
+                                <Iconbutton className="listbutton">
+                                    <Icon>
+                                        <BsPerson style={{ width: '35px', height: '30px' }} />
+                                    </Icon>
+                                </Iconbutton>
+
                                 <SideMenu>프로필</SideMenu>
-                            </Link>
-                        </Button>
+                            </Button>
+                        </Link>
 
-                        <Button>
-                            <Iconbutton className="listbutton">
-                                <Icon>
-                                    <TiShoppingCart style={{ width: '35px', height: '30px' }} />
-                                </Icon>
-                            </Iconbutton>
-                            <SideMenu>장바구니</SideMenu>
-                        </Button>
+                        <Link to="/myorder/list/detail" className="Linknav" onClick={ToggleSidebar}>
+                            <Button>
+                                <Iconbutton className="listbutton">
+                                    <Icon>
+                                        <TiShoppingCart style={{ width: '35px', height: '30px' }} />
+                                    </Icon>
+                                </Iconbutton>
+                                <Link to="http://localhost:5000/myfavorite/list/scrap" className="Linknav">
+                                    <SideMenu>장바구니</SideMenu>
+                                </Link>
+                            </Button>
+                        </Link>
 
-                        <Button>
-                            <Iconbutton className="listbutton">
-                                <Icon>
-                                    <SlUserFollow style={{ width: '30px', height: '30px' }} />
-                                </Icon>
-                            </Iconbutton>
-                            <SideMenu>구독</SideMenu>
-                        </Button>
+                        <Link to="/myfavorite/list/follow" className="Linknav" onClick={ToggleSidebar}>
+                            <Button>
+                                <Iconbutton className="listbutton">
+                                    <Icon>
+                                        <SlUserFollow style={{ width: '30px', height: '30px' }} />
+                                    </Icon>
+                                </Iconbutton>
+                                <SideMenu>구독</SideMenu>
+                            </Button>
+                        </Link>
 
-                        <Button>
-                            <Iconbutton className="listbutton">
-                                <Icon>
-                                    <BsBookmarkStar style={{ width: '35px', height: '30px' }} />
-                                </Icon>
-                            </Iconbutton>
-                            <SideMenu>찜한 상품</SideMenu>
-                        </Button>
-
-                        <Button>
-                            <Iconbutton>
-                                <Icon>
-                                    <BsBell style={{ width: '30px', height: '30px' }} />
-                                </Icon>
-                            </Iconbutton>
-                            <SideMenu>알림</SideMenu>
-                        </Button>
+                        <Link to="" className="Linknav">
+                            <Button>
+                                <Iconbutton>
+                                    <Icon>
+                                        <BsBell style={{ width: '30px', height: '30px' }} />
+                                    </Icon>
+                                </Iconbutton>
+                                <SideMenu>알림</SideMenu>
+                            </Button>
+                        </Link>
                         <hr />
                         <Navlist>
                             <Button onClick={Togglelist}>
-                                <Iconbutton>
-                                    <Icon>
-                                        <CiShop style={{ width: '30px', height: '30px' }} />
-                                    </Icon>
-                                </Iconbutton>
-                                <SideMenu>
-                                    전체 상품
-                                    <PiArrowSquareDownLight
-                                        style={{
-                                            width: '20px',
-                                            height: '29px',
-                                            alignItems: 'flex-end',
+                                <Link to="/user/profile" className="Linknav" onClick={ToggleSidebar}>
+                                    <Iconbutton>
+                                        <Icon>
+                                            <CiShop style={{ width: '30px', height: '30px' }} />
+                                        </Icon>
+                                    </Iconbutton>
+                                </Link>
+                                <SideMenu>상품</SideMenu>
 
-                                            marginTop: '1px',
-                                            marginLeft: '1px',
-                                        }}
-                                    />
-                                </SideMenu>
+                                <PiArrowSquareDownLight
+                                    style={{
+                                        width: '20px',
+                                        height: '29px',
+                                        alignItems: 'flex-end',
+
+                                        marginTop: '1px',
+                                        marginLeft: '1px',
+                                    }}
+                                />
                             </Button>
+
                             <div className={`listbar ${isList === true ? 'active' : ''}`}>
                                 <Menulist>
                                     <li>
-                                        <Button>
-                                            <MdKeyboardArrowRight style={{ marginRight: '15px' }} />
-                                            텐트
-                                        </Button>
+                                        <Link to="/user/profile" className="Linknav" onClick={ToggleSidebar}>
+                                            <Button>
+                                                <MdKeyboardArrowRight style={{ marginRight: '15px' }} />
+                                                텐트
+                                            </Button>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <Button>
-                                            <MdKeyboardArrowRight style={{ marginRight: '15px' }} />
-                                            의자
-                                        </Button>
+                                        <Link to="/user/profile" className="Linknav" onClick={ToggleSidebar}>
+                                            <Button>
+                                                <MdKeyboardArrowRight style={{ marginRight: '15px' }} />
+                                                의자
+                                            </Button>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <Button>
-                                            <MdKeyboardArrowRight style={{ marginRight: '15px' }} />
-                                            식기류
-                                        </Button>
+                                        <Link to="/user/profile" className="Linknav" onClick={ToggleSidebar}>
+                                            <Button>
+                                                <MdKeyboardArrowRight style={{ marginRight: '15px' }} />
+                                                식기류
+                                            </Button>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <Button>
-                                            <MdKeyboardArrowRight style={{ marginRight: '15px' }} />
-                                            악세사리
-                                        </Button>
+                                        <Link to="/user/profile" className="Linknav" onClick={ToggleSidebar}>
+                                            <Button>
+                                                <MdKeyboardArrowRight style={{ marginRight: '15px' }} />
+                                                악세사리
+                                            </Button>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <Button>
-                                            <MdKeyboardArrowRight style={{ marginRight: '15px' }} />
-                                            기타
-                                        </Button>
+                                        <Link to="/user/profile" className="Linknav" onClick={ToggleSidebar}>
+                                            <Button>
+                                                <MdKeyboardArrowRight style={{ marginRight: '15px' }} />
+                                                기타
+                                            </Button>
+                                        </Link>
                                     </li>
                                 </Menulist>
                             </div>
                         </Navlist>
-
-                        <Button>
-                            <Iconbutton>
-                                <Icon>
-                                    <BsGraphUp style={{ width: '30px', height: '30px' }} />
-                                </Icon>
-                            </Iconbutton>
-                            <SideMenu>인기 상품</SideMenu>
-                        </Button>
-                        <Button>
-                            <Iconbutton>
-                                <Icon>
-                                    <CiDiscount1 style={{ width: '30px', height: '30px' }} />
-                                </Icon>
-                            </Iconbutton>
-                            <SideMenu>할인 상품</SideMenu>
-                        </Button>
-                        <Button>
-                            <Iconbutton>
-                                <Icon>
-                                    <AiOutlineComment style={{ width: '30px', height: '30px' }} />
-                                </Icon>
-                            </Iconbutton>
-                            <SideMenu>커뮤니티</SideMenu>
-                        </Button>
+                        <Link to="/user/profile" className="Linknav" onClick={ToggleSidebar}>
+                            <Button>
+                                <Iconbutton>
+                                    <Icon>
+                                        <BsGraphUp style={{ width: '30px', height: '30px' }} />
+                                    </Icon>
+                                </Iconbutton>
+                                <SideMenu>인기 상품</SideMenu>
+                            </Button>
+                        </Link>
+                        <Link to="/user/profile" className="Linknav" onClick={ToggleSidebar}>
+                            <Button>
+                                <Iconbutton>
+                                    <Icon>
+                                        <CiDiscount1 style={{ width: '30px', height: '30px' }} />
+                                    </Icon>
+                                </Iconbutton>
+                                <SideMenu>할인 상품</SideMenu>
+                            </Button>
+                        </Link>
+                        <Link to="/user/profile" className="Linknav" onClick={ToggleSidebar}>
+                            <Button>
+                                <Iconbutton>
+                                    <Icon>
+                                        <AiOutlineComment style={{ width: '30px', height: '30px' }} />
+                                    </Icon>
+                                </Iconbutton>
+                                <SideMenu>커뮤니티</SideMenu>
+                            </Button>
+                        </Link>
                         <hr />
                     </Menudiv>
                 </div>
