@@ -1,163 +1,222 @@
-import { BsBookmarkStar } from 'react-icons/bs';
+import { BsBookmarkStar } from "react-icons/bs";
 
-import { Link } from 'react-router-dom';
-import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import { Link, useLocation, useParams } from "react-router-dom";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import {
-    Addinformation,
-    Button,
-    Container,
-    Contentdiv,
-    EventButton,
-    Iconbutton,
-    Imgbox,
-    Information,
-    Mainimg,
-    Price,
-    Selectbox,
-} from './styles';
-import { useState } from 'react';
-import ButtonEvent from '@/components/market/ButtonEvent';
-import Inquery from '../../auth/User/Inquery';
-import Inquiryorder from '../Orderinquiry';
-import Revieworder from '../OrderReview';
-import Inqueryorderqna from '../Orderinquiryqna';
+  Addinformation,
+  Button,
+  Container,
+  Contentdiv,
+  EventButton,
+  Iconbutton,
+  Imgbox,
+  Information,
+  Mainimg,
+  Price,
+  Selectbox,
+} from "./styles";
+import { useEffect, useState } from "react";
+import ButtonEvent from "@/components/market/ButtonEvent";
+import Inquery from "../../auth/User/Inquery";
+import Inquiryorder from "../Orderinquiry";
+import Revieworder from "../OrderReview";
+import Inqueryorderqna from "../Orderinquiryqna";
+import { ImStarFull } from "react-icons/im";
+import http from "@/utils/http";
+import { ReviewCount } from "../../auth/User/Shopping/Review/styles";
+
+export interface ReviceItem {
+  id: number;
+  productId: number;
+  nickname: string;
+  brandName: string;
+  reviewcontent: string;
+  reviewCount: number;
+  reviewResponse: string;
+  createDate: string;
+  productPrice: number;
+  productName: string;
+  mainImageUuidName: string;
+}
+
+function convertToStars(score) {
+  switch (score) {
+    case 1:
+      return "★☆☆☆☆";
+    case 2:
+      return "★★☆☆☆";
+    case 3:
+      return "★★★☆☆";
+    case 4:
+      return "★★★★☆";
+    case 5:
+      return "★★★★★";
+    default:
+      return "☆☆☆☆☆";
+  }
+}
 
 const OrderMain = () => {
-    const [plusnum, setPlusnum] = useState<number>(1);
-    const [selectedTab, setSelectedTab] = useState('상품정보');
+  const { id } = useParams();
 
-    const handleTabClick = (e) => {
-        setSelectedTab(e);
+  const [plusnum, setPlusnum] = useState<number>(1);
+  const [selectedTab, setSelectedTab] = useState("상품정보");
+  const [review, setReview] = useState(0);
+
+  const handleTabClick = (e) => {
+    setSelectedTab(e);
+  };
+
+  const handleChange = (e) => {
+    setPlusnum(e.target.value);
+  };
+
+  const handlechange = () => {
+    setPlusnum(plusnum + 1);
+  };
+
+  const handleDown = () => {
+    setPlusnum(plusnum - 1);
+  };
+
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const fetch = await http.get(`http://192.168.100.159:8080/product/${id}`);
+      const response = await http.get(
+        `http://192.168.100.109:8080/review/review-total/${id}`
+      );
+      const productsArray = [fetch.data];
+      console.log(productsArray);
+      setProducts(productsArray);
+      console.log(response.data);
+      setReview(response.data);
     };
 
-    const handleChange = (e) => {
-        setPlusnum(e.target.value);
-    };
+    fetchData();
+  }, [id]);
+  const starRating = convertToStars(review.reviewTotal);
+  return (
+    <>
+      <Container>
+        {products.map((product) => (
+          <Contentdiv key={product.id}>
+            <div className="imgtotal">
+              <Imgbox>
+                <Mainimg
+                  src={`http://192.168.100.159:8080/product/files/${product.mainImageUuidName}`}
+                />
+                <div className="sidediv">
+                  <img src={product.img} alt="" className="sideimg" />
+                  <img src={product.img} alt="" className="sideimg" />
+                </div>
+              </Imgbox>
+            </div>
+            <Information>
+              <h1>{product.productBrand}</h1>
+              <div className="headerdiv">
+                <h1 className="title">{product.productName}</h1>
+                <div className="star">{starRating}</div>
+              </div>
+              <div className="option">
+                <Selectbox id="select-box">
+                  <option selected value="12">
+                    옵션 선택
+                  </option>
+                  <option value="1">옵션1</option>
+                  <option value="2">옵션2</option>
+                  <option value="3">옵션3</option>
+                </Selectbox>
+              </div>
+              <div className="productorder">
+                <div className="buttondiv">
+                  <input type="text" value={plusnum} onChange={handleChange} />
 
-    console.log(plusnum);
-    const handlechange = () => {
-        setPlusnum(plusnum + 1);
-    };
+                  <EventButton>
+                    <button className="countbutton" onClick={handlechange}>
+                      <AiOutlinePlus
+                        style={{ width: "100%", height: "100%" }}
+                      />
+                    </button>
 
-    const handleDown = () => {
-        setPlusnum(plusnum - 1);
-    };
-    const [products, setProducts] = useState([
-        {
-            id: 1,
-            brand: 'nike',
-            img: 'data:image/jpeg;base64,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',
-            name: '제목',
-            price: 12341,
-            discount: 32,
-            reviewcount: 4,
-            content:
-                '우드라인 테이블은 자연의 아름다움과 현대적인 디자인이 결합된 야외 가구입니다. 테이블 상판은 내구성 있는 우드 소재로 만들어져서 오랜 시간 사용해도 변형되지 않으며, 자연스러운 우드 그레인 패턴이 고급스러움을 더합니다. 이 테이블은 튼튼하고 안정감 있게 설계되었으며, 야외에서 사용하기에 이상적입니다. 우드라인 테이블은 정원, 발코니, 테라스 또는 피크닉과 같은 야외 활동에 적합하며, 자연과 함께 식사나 레저 시간을 즐기는 데 최적의 선택입니다.',
-        },
-    ]);
-    return (
-        <>
-            <Container>
-                {products.map((item) => (
-                    <Contentdiv key={item.id}>
-                        <div className="imgtotal">
-                            <Imgbox>
-                                <Mainimg src={item.img} />
-                                <div className="sidediv">
-                                    <img src={item.img} alt="" className="sideimg" />
-                                    <img src={item.img} alt="" className="sideimg" />
-                                </div>
-                            </Imgbox>
-                        </div>
-                        <Information>
-                            <h1>{item.brand}</h1>
-                            <div className="headerdiv">
-                                <h1 className="title">{item.name}</h1>
-                                <div>{item.reviewcount}</div>
-                            </div>
-                            <div className="option">
-                                <Selectbox id="select-box">
-                                    <option selected>옵션 선택</option>
-                                    <option value="">옵션1</option>
-                                    <option value="">옵션2</option>
-                                    <option value="">옵션3</option>
-                                </Selectbox>
-                            </div>
-                            <div className="productorder">
-                                <div className="buttondiv">
-                                    <input type="text" value={plusnum} onChange={handleChange} />
+                    <button className="countbutton" onClick={handleDown}>
+                      <AiOutlineMinus
+                        style={{ width: "100%", height: "100%" }}
+                      />
+                    </button>
+                  </EventButton>
+                </div>
 
-                                    <EventButton>
-                                        <button className="countbutton" onClick={handlechange}>
-                                            <AiOutlinePlus style={{ width: '100%', height: '100%' }} />
-                                        </button>
+                <div className="clickmenu">
+                  <Button
+                    style={{ backgroundColor: "white", color: "#0f5ca8" }}
+                  >
+                    장바구니
+                  </Button>
+                  <Button>바로구매</Button>
 
-                                        <button className="countbutton" onClick={handleDown}>
-                                            <AiOutlineMinus style={{ width: '100%', height: '100%' }} />
-                                        </button>
-                                    </EventButton>
-                                </div>
+                  <BsBookmarkStar
+                    style={{
+                      width: "3vh",
+                      height: "3vh",
+                    }}
+                  />
+                </div>
+              </div>
 
-                                <div className="clickmenu">
-                                    <Button style={{ backgroundColor: 'white', color: '#0f5ca8' }}>장바구니</Button>
-                                    <Button>바로구매</Button>
+              <Price>{product.productPrice.toLocaleString()} 원</Price>
+            </Information>
+          </Contentdiv>
+        ))}
 
-                                    <BsBookmarkStar
-                                        style={{
-                                            width: '3vh',
-                                            height: '3vh',
-                                        }}
-                                    />
-                                </div>
-                            </div>
+        <Addinformation>
+          <div className="productoption">
+            <nav className="navigation">
+              <ol className="proudct-list">
+                <li
+                  className={`product ${
+                    selectedTab === "상품정보" ? "active" : ""
+                  }`}
+                  onClick={() => handleTabClick("상품정보")}
+                >
+                  상품정보
+                </li>
+                <li
+                  className={`product ${
+                    selectedTab === "상품리뷰" ? "active" : ""
+                  }`}
+                  onClick={() => handleTabClick("상품리뷰")}
+                >
+                  상품리뷰
+                </li>
+                <li
+                  className={`product ${
+                    selectedTab === "상품문의" ? "active" : ""
+                  }`}
+                  onClick={() => handleTabClick("상품문의")}
+                >
+                  상품문의
+                </li>
+              </ol>
+            </nav>
+            {selectedTab === "상품정보" && <div className="product-info"></div>}
 
-                            <Price>16,900 원</Price>
-                        </Information>
-                    </Contentdiv>
-                ))}
+            {selectedTab === "상품리뷰" && (
+              <div className="product-review">
+                <Revieworder />
+              </div>
+            )}
 
-                <Addinformation>
-                    <div className="productoption">
-                        <nav className="navigation">
-                            <ol className="proudct-list">
-                                <li
-                                    className={`product ${selectedTab === '상품정보' ? 'active' : ''}`}
-                                    onClick={() => handleTabClick('상품정보')}
-                                >
-                                    상품정보
-                                </li>
-                                <li
-                                    className={`product ${selectedTab === '상품리뷰' ? 'active' : ''}`}
-                                    onClick={() => handleTabClick('상품리뷰')}
-                                >
-                                    상품리뷰
-                                </li>
-                                <li
-                                    className={`product ${selectedTab === '상품문의' ? 'active' : ''}`}
-                                    onClick={() => handleTabClick('상품문의')}
-                                >
-                                    상품문의
-                                </li>
-                            </ol>
-                        </nav>
-                        {selectedTab === '상품정보' && <div className="product-info"></div>}
-
-                        {selectedTab === '상품리뷰' && (
-                            <div className="product-review">
-                                <Revieworder />
-                            </div>
-                        )}
-
-                        {selectedTab === '상품문의' && (
-                            <div className="product-inquiry">
-                                <Inquiryorder />
-                            </div>
-                        )}
-                    </div>
-                </Addinformation>
-            </Container>
-        </>
-    );
+            {selectedTab === "상품문의" && (
+              <div className="product-inquiry">
+                <Inquiryorder />
+              </div>
+            )}
+          </div>
+        </Addinformation>
+      </Container>
+    </>
+  );
 };
 
 export default OrderMain;

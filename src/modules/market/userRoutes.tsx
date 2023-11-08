@@ -23,6 +23,9 @@ const Inquery = lazy(() => import("@/modules/market/auth/User/Inquery"));
 
 const Favorite = lazy(() => import("@/modules/market/auth/User/Favorite"));
 const Scrap = lazy(() => import("@/modules/market/auth/User/Favorite/Scrap"));
+const Followlist = lazy(
+  () => import("@/modules/market/auth/User/Favorite/Follow")
+);
 
 export const userRoutes = [
   <Route key="main" element={<MarketMain />} index />,
@@ -45,6 +48,7 @@ export const userRoutes = [
   <Route path="/myfavorite" key="favorite" element={<Layout />}>
     <Route path="list" key="favorite-list" element={<Favorite />}>
       <Route path="scrap" key="scrap-list" element={<Scrap />} />
+      <Route path="follow" key="follow-list" element={<Followlist />} />
     </Route>
   </Route>,
 ];

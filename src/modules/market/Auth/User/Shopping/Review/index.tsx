@@ -12,6 +12,7 @@ export interface ReviceItem {
   createDate: string;
   productPrice: number;
   productName: string;
+  mainImageUuidName: string;
 }
 export const ReviewDetail = () => {
   const [products, setProducts] = useState([]);
@@ -20,8 +21,9 @@ export const ReviewDetail = () => {
       const response = await http.get<ReviceItem[]>(
         `http://192.168.100.109:8080/review/no-review`
       );
+
       setProducts(response.data);
-      console.log(response.data);
+      console.log(setProducts);
     };
     fetchData();
   }, []);
@@ -36,8 +38,11 @@ export const ReviewDetail = () => {
         </div>
         {products.map((item) => (
           <ReviewTable key={item.id}>
-            <img src={item.img} className="detailimg" />
-            <ReviewPage href={`/products/${item.productId}`}>
+            <img
+              src={`http://192.168.100.159:8080/product/files/main-image/${item.productId}`}
+              className="detailimg"
+            />
+            <ReviewPage href={`/products/${item.productid}`}>
               <span className="brandname">{item.brandName}</span>
               <span className="productname">{item.productName}</span>
               <span className="reviewcount">{item.reviewcount}</span>

@@ -5,13 +5,13 @@ import { ReviceItem } from "../Review";
 
 export const Myreview = () => {
   const [products, setProducts] = useState([]);
-
+  const [prdouctid, setProductid] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       const response = await http.get<ReviceItem[]>(
         `http://192.168.100.109:8080/review/in-review`
       );
-
+      setProducts(response.data);
       console.log(response.data);
     };
     fetchData();
@@ -23,9 +23,9 @@ export const Myreview = () => {
         {products.map((item) => (
           <Reviewbox key={item.id}>
             <div className="productname">
-              {item.productname}
+              {item.productName}
               <div className="productdetail">
-                <a href={`/products/${item.id}`}>
+                <a href={`/products/${item.productId}`}>
                   <Button>제품 상세보기</Button>
                 </a>
               </div>
