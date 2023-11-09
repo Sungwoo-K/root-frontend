@@ -6,6 +6,7 @@ const ResetStyle = () => {
       styles={css`
         @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
         @import url("https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gaegu:wght@700&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300;400;500;700&family=Stylish&display=swap");
         html,
         body,
         div,
