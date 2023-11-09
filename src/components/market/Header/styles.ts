@@ -107,14 +107,16 @@ export const Campdiv = styled.div`
 `;
 
 export const Inputdiv = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 300px;
-  height: 35px;
-  float: right;
-  justify-content: left;
-  margin-bottom: 10px;
-  margin-right: 2vh;
+  > form {
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    height: 35px;
+    float: right;
+    justify-content: left;
+    margin-bottom: 10px;
+    margin-right: 2vh;
+  }
 `;
 
 export const Iconbutton = styled.button`

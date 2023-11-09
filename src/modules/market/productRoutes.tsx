@@ -13,6 +13,10 @@ const DiscountItem = lazy(
   () => import("@/modules/market/product/market/Discount-items")
 );
 
+const SearchItem = lazy(
+  () => import("@/modules/market/product/market/Search-items")
+);
+
 export const productRoutes = [
   <Route key="main" element={<MarketMain />} index />,
   <Route key="product" path="products/:id" element={<Product />} />,
@@ -24,5 +28,6 @@ export const productRoutes = [
       path="discount-items"
       element={<DiscountItem />}
     />
+    <Route key="searchItem" path="items/search" element={<SearchItem />} />
   </Route>,
 ];

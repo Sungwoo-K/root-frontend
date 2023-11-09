@@ -1,24 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Category, Product } from "./styles";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { RiShoppingCartFill, RiShoppingCartLine } from "react-icons/ri";
-import { useCart } from "../data";
+import { PaginationResponse, ProductItem, useCart } from "../data";
 import http from "@/utils/http";
-import { PaginationResponse } from "../Products";
-
-export interface ProductItem {
-  id: number;
-  productBrand: string;
-  productName: string;
-  productPrice: number;
-  category: string;
-  productDescription: string;
-  isActive: Boolean;
-  maximumPurchaseQuantity: number;
-  discountRate: number;
-  mainImageUuidName: string;
-}
 
 const Products = () => {
   const location = useLocation();
@@ -27,8 +12,8 @@ const Products = () => {
   const navigate = useNavigate();
   const { carts, setCart } = useCart();
   const [page, setPage] = useState(0);
-  const [isLast, setIsLast] = useState<Boolean>(false);
-  const [nowCategory, setNowCategory] = useState<String>();
+  const [isLast, setIsLast] = useState<boolean>(false);
+  const [nowCategory, setNowCategory] = useState<string>();
   const productTargetRef = useRef();
 
   const PAGE_SIZE = 10;

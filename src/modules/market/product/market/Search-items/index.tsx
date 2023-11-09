@@ -9,6 +9,7 @@ const Products = () => {
   const location = useLocation();
   const searchParam = new URLSearchParams(location.search);
   const category = searchParam.get("category");
+  const keyword = searchParam.get("keyword");
   const navigate = useNavigate();
   const { carts, setCart } = useCart();
   const [page, setPage] = useState(0);
@@ -42,7 +43,7 @@ const Products = () => {
     const fetchData = async () => {
       if (!isLast) {
         const response = await http.get<PaginationResponse<ProductItem>>(
-          `http://192.168.0.30:8080/product?category=${category}&page=${page}&size=${PAGE_SIZE}`
+          `http://192.168.0.30:8080/product/search?keyword=${keyword}&category=${category}&page=${page}&size=${PAGE_SIZE}`
         );
         if (response !== undefined) {
           if (response.status === 200) {
@@ -77,22 +78,26 @@ const Products = () => {
     <>
       <Category>
         <section>
-          <Link to="/products">
+          <Link to={`/products/items/search?keyword=${keyword}`}>
             <span>전체 &rarr;</span>
           </Link>
-          <Link to="/products?category=tent">
+          <Link to={`/products/items/search?keyword=${keyword}&category=tent`}>
             <span>텐트 &rarr;</span>
           </Link>
-          <Link to="/products?category=table">
+          <Link to={`/products/items/search?keyword=${keyword}&category=table`}>
             <span>의자 &rarr;</span>
           </Link>
-          <Link to="/products?category=tableware">
+          <Link
+            to={`/products/items/search?keyword=${keyword}&category=tableware`}
+          >
             <span>식기류 &rarr;</span>
           </Link>
-          <Link to="/products?category=accessory">
+          <Link
+            to={`/products/items/search?keyword=${keyword}&category=accessory`}
+          >
             <span>악세서리 &rarr;</span>
           </Link>
-          <Link to="/products?category=other">
+          <Link to={`/products/items/search?keyword=${keyword}&category=other`}>
             <span>기타 &rarr;</span>
           </Link>
         </section>
