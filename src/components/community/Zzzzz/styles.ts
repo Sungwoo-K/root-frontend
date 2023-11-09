@@ -6,6 +6,7 @@ export const BestItemContainer = styled(Container)`
   display: flex;
   flex-direction: row-reverse;
   background-color: gray;
+  justify-content: flex-end;
 `;
 
 export const BestItem = styled.div`
@@ -32,7 +33,22 @@ export const Pd = styled.textarea`
 export const UseContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
 `;
 
-export const UseName = styled.input``;
-export const Usephone = styled.input``;
+export const UseName = styled.input`
+  width: 15vw;
+  height: 2.5vw;
+`;
+export const Usephone = styled.input`
+  width: 15vw;
+  height: 2.5vw;
+`;
+export const Address = styled.input`
+  width: 15vw;
+  height: 2.5vw;
+`;
+export const DetailedAddress = styled.input`
+  width: 15vw;
+  height: 2.5vw;
+`;
