@@ -16,25 +16,47 @@ export interface ReviceItem {
 }
 export const ReviewDetail = () => {
   const [products, setProducts] = useState([]);
+  const [keyword, setKeyword] = useState("");
   useEffect(() => {
     const fetchData = async () => {
       const response = await http.get<ReviceItem[]>(
-        `http://192.168.100.109:8080/review/no-review`
+        `http://192.168.100.109:8080/review/no-review&key=${keyword}`
       );
 
       setProducts(response.data);
-      console.log(setProducts);
+      console.log(response.data);
     };
     fetchData();
   }, []);
+  const handleChange = (e) => {
+    const inputvalue = e.target.value;
+    setKeyword(inputvalue);
+  };
+
+  const handlesearch = () => {
+    console.log(keyword);
+    const fetchData = async () => {
+      const response = await http.get<ReviceItem[]>(
+        `http://192.168.100.109:8080/review/no-review&key=${keyword}`
+      );
+      setProducts(response.data);
+      console.log(response.data);
+    };
+    fetchData();
+  };
 
   return (
     <>
       <Container>
         <p>내가 사용하는 상품 리뷰쓰기</p>
         <div>
-          <input type="text" placeholder="브랜드명 혹은 상품명 입력" />
-          <button>검색</button>
+          <input
+            type="text"
+            placeholder="브랜드명 혹은 상품명 입력"
+            value={keyword}
+            onChange={handleChange}
+          />
+          <button onClick={handlesearch}>검색</button>
         </div>
         {products.map((item) => (
           <ReviewTable key={item.id}>

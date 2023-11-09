@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
-import { Container, Inquerybox, Title } from "./style";
+import { FcNext, FcPrevious } from "react-icons/fc";
+import {
+  Buttondiv,
+  Container,
+  Inqeurycontent,
+  Inquerybox,
+  Title,
+} from "./style";
 import http from "@/utils/http";
+import styled from "@emotion/styled";
 
 export interface Inquerydata {
   id: number;
@@ -20,19 +28,32 @@ function displayInqueryAnswer(answer) {
 export const Inquery = () => {
   const [products, setProducts] = useState<Inquerydata[]>([]);
   const [mainImage, setMainImage] = useState([]);
+  const [Disable, isDisable] = useState(false);
+  const [page, setPage] = useState(0);
+  const size = 3;
+
+  const isPrevButtonDisable = page === 0;
+  const isNextButtonDisable = products.length < 3;
+  const pageNextButton = (e) => {
+    setPage(page + 1);
+  };
+  const pagePrevButton = (e) => {
+    setPage(page - 1);
+  };
   useEffect(() => {
     const fetch = async () => {
       const response = await http.get<Inquerydata[]>(
-        `http://192.168.100.109:8080/inquery/user`
+        `http://192.168.100.109:8080/inquery/user?size=${size}&page=${page}`
       );
-      //   const image = await http.get(
-      //     `http://192.168.100.159:8080/proudct/`
-      //   )
-      console.log(response.data);
-      setProducts(response.data);
+
+      const responseData = response.data;
+      console.log(responseData.totalElements);
+      console.log(responseData.content);
+      setProducts(responseData.content);
     };
     fetch();
-  }, []);
+  }, [page]);
+
   return (
     <>
       <Container>
@@ -47,22 +68,42 @@ export const Inquery = () => {
                 </a>
               </div>
             </div>
+            <Inqeurycontent>
+              <img
+                src={`http://192.168.100.159:8080/product/files/main-image/${item.productId}`}
+                className="imagename"
+              />
 
-            <img
-              src={`http://192.168.100.159:8080/product/${item.productId}`}
-              className="imagename"
-            />
-            <div className="productquestion">
-              <span>Q &nbsp;</span>
-              <p>{displayInqueryAnswer(item.inqueryContent)}</p>
-            </div>
-            <div className="productanswer">
-              <span>A &nbsp;</span>
-              <p>{item.inqueryAnswer}</p>
-            </div>
-            <p className="answercontent">{item.inqueryAnswer}</p>
+              <div className="inqueryqna">
+                <div className="productquestion">
+                  <span>Q &nbsp;&nbsp;</span>
+                  <p style={{ width: "700px" }}>
+                    {displayInqueryAnswer(item.inqueryContent)}
+                  </p>
+                </div>
+                <div className="productanswer">
+                  <span>A &nbsp;</span>
+                  <p style={{ width: "700px", marginTop: "30px" }}>
+                    {item.inqueryAnswer}
+                  </p>
+                </div>
+                <p className="answercontent">{item.inqueryAnswer}</p>
+              </div>
+            </Inqeurycontent>
           </Inquerybox>
         ))}
+        <Buttondiv>
+          <button onClick={pagePrevButton} disabled={isPrevButtonDisable}>
+            <FcPrevious
+              className="icon"
+              style={{ fontSize: "xxx-large" }}
+              onClick={pagePrevButton}
+            />
+          </button>
+          <button onClick={pageNextButton} disabled={isNextButtonDisable}>
+            <FcNext style={{ fontSize: "xxx-large" }} className="icon" />
+          </button>
+        </Buttondiv>
       </Container>
     </>
   );

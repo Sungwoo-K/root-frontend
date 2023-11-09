@@ -49,6 +49,7 @@ export const Scrap = () => {
   };
   const cartAddHandle = (productId) => {
     const newCarts = [...carts, productId];
+    console.log(newCarts);
     setCart(newCarts);
   };
   return (
@@ -92,14 +93,12 @@ export const Scrap = () => {
                   src={`http://192.168.100.159:8080/product/files/${product.mainImageUuidName}`}
                 />
                 <p>{product.productName}</p>
-                <p>{product.productPrice}원</p>
+                <p>{product.productPrice.toLocaleString()}원</p>
                 <div
                   onClick={(e) => {
                     e.stopPropagation();
                   }}
-                >
-                  )
-                </div>
+                ></div>
               </div>
             </section>
           ))}

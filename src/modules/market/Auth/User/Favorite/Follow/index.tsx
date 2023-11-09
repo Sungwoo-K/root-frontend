@@ -9,7 +9,7 @@ import { ReviceItem } from "../../Shopping/Review";
 import { ProductItem } from "@/modules/market/product/market/Products";
 import { all } from "axios";
 
-export const Follow = () => {
+export const Scrap = () => {
   const location = useLocation();
   const searchParam = new URLSearchParams(location.search);
   const category = searchParam.get("category");
@@ -92,7 +92,7 @@ export const Follow = () => {
                   src={`http://192.168.100.159:8080/product/files/${product.mainImageUuidName}`}
                 />
                 <p>{product.productName}</p>
-                <p>{product.productPrice}원</p>
+                <p>{product.productPrice.toLocaleString()}원</p>
                 <div
                   onClick={(e) => {
                     e.stopPropagation();
@@ -109,4 +109,4 @@ export const Follow = () => {
   );
 };
 
-export default Follow;
+export default Scrap;

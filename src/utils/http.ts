@@ -26,7 +26,6 @@ http.interceptors.response.use(
       }
 
       if (status === 404) {
-        alert("데이터 존재하지 않습니다.");
       } else {
         console.error("No response found in error object:", error);
       }

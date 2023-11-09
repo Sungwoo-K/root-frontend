@@ -1,29 +1,31 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export const ButtonEvent = (props) => {
-    const { texts } = props;
-    const [buttonMenu, setButtonMenu] = useState(0);
+  const { texts, getButtonValue } = props;
 
-    const clickButton = (e) => {
-        setButtonMenu(() => {
-            return e.target.value;
-        });
-    };
+  const [buttonMenu, setButtonMenu] = useState(0);
 
-    return (
-        <>
-            {texts.map((item, idx) => (
-                <button
-                    key={idx}
-                    value={idx}
-                    className={'buttonevent' + (idx == buttonMenu ? 'active' : '')}
-                    onClick={clickButton}
-                >
-                    {item}
-                </button>
-            ))}
-        </>
-    );
+  const clickButton = (e) => {
+    setButtonMenu((idx) => {
+      getButtonValue(idx);
+      return e.target.value;
+    });
+  };
+
+  return (
+    <>
+      {texts.map((item, idx) => (
+        <button
+          key={idx}
+          value={idx}
+          className={"buttonevent" + (idx == buttonMenu ? "active" : "")}
+          onClick={clickButton}
+        >
+          {item}
+        </button>
+      ))}
+    </>
+  );
 };
 
 export default ButtonEvent;

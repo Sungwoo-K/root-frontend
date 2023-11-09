@@ -82,15 +82,23 @@ const OrderMain = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const fetch = await http.get(`http://192.168.100.159:8080/product/${id}`);
-      const response = await http.get(
-        `http://192.168.100.109:8080/review/review-total/${id}`
-      );
-      const productsArray = [fetch.data];
-      console.log(productsArray);
-      setProducts(productsArray);
-      console.log(response.data);
-      setReview(response.data);
+      try {
+        const fetch = await http.get(
+          `http://192.168.100.159:8080/product/${id}`
+        );
+        const response = await http.get(
+          `http://192.168.100.109:8080/review/review-total/${id}`
+        );
+        if (fetch.data || response.data) {
+          const productsArray = [fetch.data];
+          setProducts(productsArray);
+          setReview(response.data);
+        } else {
+          console.error("No data");
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
     };
 
     fetchData();

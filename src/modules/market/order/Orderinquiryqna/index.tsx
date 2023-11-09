@@ -27,9 +27,6 @@ export const Inqueryorderqna = () => {
     };
     fetch();
   }, []);
-  console.log(id);
-
-  console.log(id);
   return (
     <>
       <Container>

@@ -40,7 +40,9 @@ export const Orderdetail = () => {
                 className="imagename"
               />
               <BrandName>{item.productName}</BrandName>
-              <ProductPrice>{item.productPrice}원</ProductPrice>
+              <ProductPrice>
+                {item.productPrice.toLocaleString()} 원
+              </ProductPrice>
             </Detail>
           ))}
         </Totalimg>
