@@ -1,5 +1,10 @@
 import axios from "axios";
-import { Maincontainer, ImageItem, ViewDetailsLink } from "./styles";
+import {
+  Maincontainer,
+  ContentTitle,
+  ImageItem,
+  ViewDetailsLink,
+} from "./styles";
 import { useEffect, useState } from "react";
 
 interface PostItem {
@@ -68,7 +73,7 @@ const Main = () => {
       >
         {posts.map((post, idx) => (
           <div key={`post-item-${post.id}-${idx}`}>
-            <ViewDetailsLink to="/community/details">
+            <ViewDetailsLink to={`/community/details/${post.id}`}>
               {post.files && post.files.length > 0 && (
                 <MediaElement
                   key={post.files[0].uuidFileName}
@@ -77,7 +82,7 @@ const Main = () => {
                 />
               )}
             </ViewDetailsLink>
-            <h3>{post.title}</h3>
+            <ContentTitle>{post.title}</ContentTitle>
             <p>{post.content}</p>
           </div>
         ))}

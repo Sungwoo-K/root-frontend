@@ -31,3 +31,10 @@ export const ViewDetailsLink = styled(Link)`
   margin-top: 2vw;
 `;
 export const Maincontainer = styled(Container)``;
+export const ContentTitle = styled.h3`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
+  max-width: 100%;
+`;
