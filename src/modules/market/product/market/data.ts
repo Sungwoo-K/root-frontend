@@ -16,6 +16,14 @@ export interface PaginationResponse<T> {
   last: boolean;
 }
 
+export interface BrandInfo {
+  id: number;
+  name: string;
+  representativeName: string;
+  intro: string;
+  imageUuidName: string;
+}
+
 export interface ProductItem {
   id: number;
   productBrand: string;
