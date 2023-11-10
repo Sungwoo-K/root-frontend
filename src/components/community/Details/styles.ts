@@ -7,7 +7,7 @@ export const DetailsContainer = styled(Container)`
 `;
 
 export const DetailsTitle = styled.h1`
-  font-size: 5vw;
+  font-size: 2vw;
   display: flex;
 `;
 export const DetailsTime = styled.p`
@@ -20,14 +20,29 @@ export const DetailsTime = styled.p`
 export const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 2vw;
+  align-items: center;
+  width: 80vw;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  margin: 5vw;
+
+  .slick-slider {
+    width: 550px;
+  }
+  .slick-dots {
+    position: relative;
+    z-index: 1;
+    bottom: 0;
+
+    .slick-active > button {
+      ::before {
+        font-size: 1vw;
+      }
+    }
+  }
 `;
-export const ImageItem = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2vw;
-  padding: 3vw;
-`;
+
 export const ContentContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -35,12 +50,12 @@ export const ContentContainer = styled.div`
   padding: 3vw;
 `;
 export const Detailsimg = styled.img`
-  width: 27vw;
-  height: 25vh;
+  width: 550px;
+  height: auto;
 `;
 
 export const DetailContent = styled.p`
-  font-size: 1.5vw;
+  font-size: 1vw;
 `;
 export const TitleContainer = styled.div`
   display: flex;

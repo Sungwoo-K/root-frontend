@@ -16,7 +16,7 @@ export const BestItem = styled.div`
 
   margin: 10px;
   width: 11vw;
-  height: 20vw;
+  height: 11vw;
 `;
 
 export const Btnbtn = styled(BaseBtn)`
