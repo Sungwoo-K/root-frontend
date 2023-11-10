@@ -85,7 +85,7 @@ export const UseContainer = styled.div`
     text-align: center;
     align-items: center;
     flex-direction: column;
-    > div:nth-child(3) {
+    > div:nth-of-type(3) {
       display: flex;
       flex-direction: column;
     }

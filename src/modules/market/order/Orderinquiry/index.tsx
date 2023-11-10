@@ -5,7 +5,7 @@ import ButtonEvent from "@/components/market/ButtonEvent";
 import Inqueryorderqna from "../Orderinquiryqna";
 import { useParams } from "react-router-dom";
 import http from "@/utils/http";
-import { ProductItem } from "../../product/market/Products";
+import { ProductItem } from "../../product/market/data";
 
 export const Inquiryorder = () => {
   const { id } = useParams();

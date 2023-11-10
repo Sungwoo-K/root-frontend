@@ -7,15 +7,7 @@ export const Container = styled.div`
   height: 100%;
   justify-content: center;
   align-items: center;
-  .contentdiv {
-    width: 100%;
-    height: 700px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 15vh;
-  }
+
   .imgtotal {
     display: flex;
     flex-direction: column;
@@ -49,7 +41,7 @@ export const Container = styled.div`
 `;
 
 export const Contentdiv = styled.div`
-  width: 100%;
+  width: 1920px;
   height: 700px;
   display: flex;
   justify-content: center;

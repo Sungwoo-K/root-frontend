@@ -1,6 +1,12 @@
 import { BsBookmarkStar } from "react-icons/bs";
 
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  json,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import {
   Addinformation,
@@ -92,7 +98,9 @@ const OrderMain = () => {
         if (fetch.data || response.data) {
           const productsArray = [fetch.data];
           setProducts(productsArray);
+
           setReview(response.data);
+          console.log(response.data);
         } else {
           console.error("No data");
         }
@@ -103,7 +111,19 @@ const OrderMain = () => {
 
     fetchData();
   }, [id]);
+
+  const scrapEvent = async () => {
+    const response = await http.post(`http://192.168.100.109:8080/scrap/${id}`);
+
+    if (response && response.status == 409) {
+      alert("이미 장바구니 등록 되어 있습니다.");
+    } else {
+      alert("장바구니에 등록을 완료하였습니다.");
+    }
+  };
+
   const starRating = convertToStars(review.reviewTotal);
+
   return (
     <>
       <Container>
@@ -155,6 +175,7 @@ const OrderMain = () => {
                 <div className="clickmenu">
                   <Button
                     style={{ backgroundColor: "white", color: "#0f5ca8" }}
+                    onClick={scrapEvent}
                   >
                     장바구니
                   </Button>

@@ -53,7 +53,7 @@ export const Container = styled.div`
       height: 100%;
       width: 100%;
       transition: 0.3s;
-      background-color: #d9d0d2;
+      background-color: #ffb6c1;
       border: 1px solid #dbdbdb;
       font-weight: 700;
       color: black;

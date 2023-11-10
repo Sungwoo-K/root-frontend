@@ -60,10 +60,7 @@ export const Reviewbox = styled.article`
   }
   .reviewcontent {
     padding: 10px;
-
-    > article {
-      font-family: SUITE-Regular;
-    }
+    font-family: SUITE-Regular;
   }
 `;
 
