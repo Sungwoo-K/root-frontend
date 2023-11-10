@@ -15,7 +15,6 @@ export const Category = styled.article`
     p {
       display: flex;
       align-items: center;
-      border: 1px solid;
     }
 
     p:nth-of-type(1) {

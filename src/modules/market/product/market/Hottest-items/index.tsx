@@ -29,7 +29,7 @@ const HottestItems = () => {
   useEffect(() => {
     (async () => {
       const response = await http.get<ProductList[]>(
-        `http://192.168.0.30:8080/product/top-favorite`
+        `http://192.168.100.159:8080/product/top-favorite`
       );
       if (response !== undefined) {
         if (response.status === 200) {
@@ -116,7 +116,7 @@ const HottestItems = () => {
                     </div>
                   </div>
                   <img
-                    src={`http://192.168.0.30:8080/product/files/${tent.mainImageUuidName}`}
+                    src={`http://192.168.100.159:8080/product/files/${tent.mainImageUuidName}`}
                   />
                   <p>{tent.productName}</p>
                   <p>{tent.productPrice.toLocaleString()}원</p>
@@ -170,7 +170,7 @@ const HottestItems = () => {
                     </div>
                   </div>
                   <img
-                    src={`http://192.168.0.30:8080/product/files/${table.mainImageUuidName}`}
+                    src={`http://192.168.100.159:8080/product/files/${table.mainImageUuidName}`}
                   />
                   <p>{table.productName}</p>
                   <p>{table.productPrice.toLocaleString()}원</p>
@@ -224,7 +224,7 @@ const HottestItems = () => {
                     </div>
                   </div>
                   <img
-                    src={`http://192.168.0.30:8080/product/files/${tableware.mainImageUuidName}`}
+                    src={`http://192.168.100.159:8080/product/files/${tableware.mainImageUuidName}`}
                   />
                   <p>{tableware.productName}</p>
                   <p>{tableware.productPrice.toLocaleString()}원</p>
@@ -278,7 +278,7 @@ const HottestItems = () => {
                     </div>
                   </div>
                   <img
-                    src={`http://192.168.0.30:8080/product/files/${accessory.mainImageUuidName}`}
+                    src={`http://192.168.100.159:8080/product/files/${accessory.mainImageUuidName}`}
                   />
                   <p>{accessory.productName}</p>
                   <p>{accessory.productPrice.toLocaleString()}원</p>
@@ -332,7 +332,7 @@ const HottestItems = () => {
                     </div>
                   </div>
                   <img
-                    src={`http://192.168.0.30:8080/product/files/${other.mainImageUuidName}`}
+                    src={`http://192.168.100.159:8080/product/files/${other.mainImageUuidName}`}
                   />
                   <p>{other.productName}</p>
                   <p>{other.productPrice.toLocaleString()}원</p>
