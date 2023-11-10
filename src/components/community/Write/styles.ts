@@ -1,35 +1,87 @@
 import styled from "@emotion/styled";
 import { Container, PostAddButton } from "@/components/community/Header/styles";
+interface DropAreaProps {
+  isFilled?: boolean;
+}
 
-export const WriteContainer = styled(Container)`
-  /* display: flex; */
-`;
+export const WriteContainer = styled(Container)``;
 export const AddBtn = styled(PostAddButton)`
   margin-bottom: 10px;
 `;
 export const WriteInput = styled.input`
-  margin-bottom: 10px;
+  font-size: 25px;
+  font-family: "Nanum Pen Script", cursive;
+  background-color: #bdf6fe;
+  width: 22vw;
+  height: 1.5vw;
+  margin-bottom: 2vw;
+  display: grid;
 `;
 export const WriteTextarea = styled.textarea`
-  margin-bottom: 10px;
-  width: 20vw;
-  height: 30vw;
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 25px;
+  background-color: #bdf6fe;
+  width: 31vw;
+  height: 16vw;
+  margin-bottom: 2vw;
+  resize: none;
+  list-style: armenian;
 `;
-export const DropArea = styled.div`
-  background-color: #f9f9f9;
-  border: 2px dashed #ccc;
-  width: 30vw;
-  height: 35vw;
-  display: flex;
-  justify-content: center;
+export const DropArea = styled.div<DropAreaProps>`
+  background-color: ${(props) => (props.isFilled ? "white" : "#bdf6fe")};
+  border: 2px dashed ${(props) => (props.isFilled ? "white" : "#ffd400")};
+  width: 20vw;
+  height: 20vw;
+  gap: 10px;
   align-items: center;
   flex-direction: column;
+  max-height: 80vh;
+  max-width: 100vw;
   &:hover {
-    background-color: white;
+    background-color: ${(props) => (props.isFilled ? "white" : "#e6e6e6")};
   }
 `;
 export const WriteItem = styled.div`
   display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+`;
+export const WriteForm = styled.form`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10vw;
+  width: 100%;
+  height: 100%;
+`;
+export const PreviewImg = styled.div`
+  margin-right: 10px;
+`;
+export const PreviewContent = styled.div`
+  margin: 3vw;
+  display: flex;
+  width: 1000px;
+  flex-direction: row;
+  align-items: flex-start;
+`;
+
+export const ContentContainer = styled.div`
+  display: flex;
   flex-direction: column;
-  margin: auto;
+  align-items: flex-start;
+  margin-right: 10px;
+`;
+export const AddBtncontainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+`;
+export const DropFont = styled.p`
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 1.5vw;
+  text-align: center;
+  margin-top: 8vw;
 `;
