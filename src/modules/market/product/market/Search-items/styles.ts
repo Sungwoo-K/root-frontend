@@ -69,10 +69,6 @@ export const Product = styled.article`
       margin: 0 auto;
       margin-bottom: 90px;
     }
-    > p:first-of-type {
-      font-size: 15px;
-      margin: 10px;
-    }
 
     > img {
       width: 230px;
@@ -80,32 +76,47 @@ export const Product = styled.article`
       display: block;
       margin: 0 auto;
     }
+    > p {
+      cursor: default;
+    }
 
-    > p:nth-of-type(2) {
+    > p:nth-of-type(1) {
       font-size: 15px;
       margin: 15px;
       word-wrap: break-word;
     }
 
-    > p:nth-of-type(3) {
+    > p:nth-of-type(2) {
       position: absolute;
       right: 10px;
       bottom: 30px;
       font-size: 15px;
     }
-    > p:nth-of-type(4) {
+    > p:nth-of-type(3) {
       font-size: 15px;
       bottom: 8px;
       right: 10px;
       position: absolute;
     }
 
-    > div:first-of-type {
-      position: absolute;
-      right: 10px;
-      top: 3px;
-      width: 30px;
-      height: 30px;
+    > div {
+      margin: 10px;
+      display: flex;
+      justify-content: space-between;
+
+      > p:first-of-type {
+        font-size: 15px;
+        cursor: pointer;
+      }
+
+      > div {
+        position: absolute;
+        right: 10px;
+        top: 3px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
     }
   }
 

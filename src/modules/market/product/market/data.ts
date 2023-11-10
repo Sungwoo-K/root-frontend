@@ -37,4 +37,6 @@ export interface ProductItem {
   mainImageUuidName: string;
 }
 
-export type productList = Array<Map<string, Array<ProductItem>>>;
+export interface ProductList {
+  [key: string]: ProductItem[];
+}

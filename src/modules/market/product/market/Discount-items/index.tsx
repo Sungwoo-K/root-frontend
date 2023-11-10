@@ -105,7 +105,7 @@ const Products = () => {
               <p
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate(`/brands/123`);
+                  navigate(`/products/brands/${product.productBrand}`);
                 }}
               >
                 {product.productBrand}
@@ -129,17 +129,17 @@ const Products = () => {
                   />
                 )}
               </div>
-              <img
-                src={`http://192.168.0.30:8080/product/files/${product.mainImageUuidName}`}
-              />
-              <p>{product.productName}</p>
-              <p>{product.productPrice.toLocaleString()}원</p>
-              <p>
-                {product.discountRate > 0
-                  ? `${product.discountRate}% 할인중`
-                  : ""}
-              </p>
             </div>
+            <img
+              src={`http://192.168.0.30:8080/product/files/${product.mainImageUuidName}`}
+            />
+            <p>{product.productName}</p>
+            <p>{product.productPrice.toLocaleString()}원</p>
+            <p>
+              {product.discountRate > 0
+                ? `${product.discountRate}% 할인중`
+                : ""}
+            </p>
           </section>
         ))}
         <div ref={productTargetRef}></div>

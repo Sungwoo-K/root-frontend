@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ProductItem, productList, useCart } from "../data";
+import { ProductItem, ProductList, useCart } from "../data";
 import { HottestContainer } from "./styles";
 import { RiShoppingCartFill, RiShoppingCartLine } from "react-icons/ri";
 import http from "@/utils/http";
@@ -25,41 +25,46 @@ const HottestItems = () => {
     ];
     setCart(newCarts);
   };
-
+  console.log(topTent);
   useEffect(() => {
     (async () => {
-      const response = await http.get<productList>(
+      const response = await http.get<ProductList[]>(
         `http://192.168.0.30:8080/product/top-favorite`
       );
       if (response !== undefined) {
         if (response.status === 200) {
-          const result: Array<Map<string, Array<ProductItem>>> = response.data;
-          const mergedProductArray = result.reduce((result, map) => {
-            for (const key in map) {
-              result.push(...map[key]);
+          const result = response.data;
+          result.forEach((productList) => {
+            const key: string[] = Object.keys(productList);
+            if (key[0] == "top-tent") {
+              setTopTent(productList["top-tent"]);
+              setProductLists((prevProductLists) =>
+                prevProductLists.concat(productList["top-tent"])
+              );
             }
-            return result;
-          }, []);
-          setProductLists(mergedProductArray);
-          console.log(response.data);
-
-          result.forEach((productMap) => {
-            if (productMap instanceof Map) {
-              if (productMap.has("top-tent")) {
-                setTopTent(productMap.get("top-tent"));
-              }
-              if (productMap.has("top-table")) {
-                setTopTable(productMap.get("top-table"));
-              }
-              if (productMap.has("top-tableware")) {
-                setTopTableware(productMap.get("top-tableware"));
-              }
-              if (productMap.has("top-accesory")) {
-                setTopAccessory(productMap.get("top-accesory"));
-              }
-              if (productMap.has("top-other")) {
-                setTopOther(productMap.get("top-other"));
-              }
+            if (key[0] == "top-table") {
+              setTopTable(productList["top-table"]);
+              setProductLists((prevProductLists) =>
+                prevProductLists.concat(productList["top-table"])
+              );
+            }
+            if (key[0] == "top-tableware") {
+              setTopTableware(productList["top-tableware"]);
+              setProductLists((prevProductLists) =>
+                prevProductLists.concat(productList["top-tableware"])
+              );
+            }
+            if (key[0] == "top-accessory") {
+              setTopAccessory(productList["top-accessory"]);
+              setProductLists((prevProductLists) =>
+                prevProductLists.concat(productList["top-accessory"])
+              );
+            }
+            if (key[0] == "top-other") {
+              setTopOther(productList["top-other"]);
+              setProductLists((prevProductLists) =>
+                prevProductLists.concat(productList["top-other"])
+              );
             }
           });
         }
@@ -73,254 +78,271 @@ const HottestItems = () => {
         <section>
           <p>Top Tent</p>
           <article>
-            {topTent.map((tent) => (
-              <section
-                key={tent.id}
-                onClick={() => {
-                  navigate(`/products/${tent.id}`);
-                }}
-              >
-                <p
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigate(`/brands/123`);
+            {topTent &&
+              topTent.map((tent) => (
+                <section
+                  key={tent.id}
+                  onClick={() => {
+                    navigate(`/products/${tent.id}`);
                   }}
                 >
-                  {tent.productBrand}
-                </p>
-                <div
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
-                >
-                  {carts.some(
-                    (productInCart) => tent.id === productInCart.id
-                  ) ? (
-                    <RiShoppingCartFill
-                      onClick={() => cartRemoveHandle(tent.id)}
-                      size={"28px"}
-                    />
-                  ) : (
-                    <RiShoppingCartLine
-                      onClick={() => cartAddHandle(tent.id)}
-                      size={"28px"}
-                    />
-                  )}
-                </div>
-                <img
-                  src={`http://192.168.0.30:8080/product/files/${tent.mainImageUuidName}`}
-                />
-                <p>{tent.productName}</p>
-                <p>{tent.productPrice.toLocaleString()}원</p>
-                <p>
-                  {tent.discountRate > 0 ? `${tent.discountRate}% 할인중` : ""}
-                </p>
-              </section>
-            ))}
+                  <div>
+                    <p
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/products/brands/${tent.productBrand}`);
+                      }}
+                    >
+                      {tent.productBrand}
+                    </p>
+                    <div
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                    >
+                      {carts.some(
+                        (productInCart) => tent.id === productInCart.id
+                      ) ? (
+                        <RiShoppingCartFill
+                          onClick={() => cartRemoveHandle(tent.id)}
+                          size={"28px"}
+                        />
+                      ) : (
+                        <RiShoppingCartLine
+                          onClick={() => cartAddHandle(tent.id)}
+                          size={"28px"}
+                        />
+                      )}
+                    </div>
+                  </div>
+                  <img
+                    src={`http://192.168.0.30:8080/product/files/${tent.mainImageUuidName}`}
+                  />
+                  <p>{tent.productName}</p>
+                  <p>{tent.productPrice.toLocaleString()}원</p>
+                  <p>
+                    {tent.discountRate > 0
+                      ? `${tent.discountRate}% 할인중`
+                      : ""}
+                  </p>
+                </section>
+              ))}
           </article>
         </section>
         <section>
           <p>Top Table</p>
           <article>
-            {topTable.map((table) => (
-              <section
-                key={table.id}
-                onClick={() => {
-                  navigate(`/products/${table.id}`);
-                }}
-              >
-                <p
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigate(`/brands/123`);
+            {topTable &&
+              topTable.map((table) => (
+                <section
+                  key={table.id}
+                  onClick={() => {
+                    navigate(`/products/${table.id}`);
                   }}
                 >
-                  {table.productBrand}
-                </p>
-                <div
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
-                >
-                  {carts.some(
-                    (productInCart) => table.id === productInCart.id
-                  ) ? (
-                    <RiShoppingCartFill
-                      onClick={() => cartRemoveHandle(table.id)}
-                      size={"28px"}
-                    />
-                  ) : (
-                    <RiShoppingCartLine
-                      onClick={() => cartAddHandle(table.id)}
-                      size={"28px"}
-                    />
-                  )}
-                </div>
-                <img
-                  src={`http://192.168.0.30:8080/product/files/${table.mainImageUuidName}`}
-                />
-                <p>{table.productName}</p>
-                <p>{table.productPrice.toLocaleString()}원</p>
-                <p>
-                  {table.discountRate > 0
-                    ? `${table.discountRate}% 할인중`
-                    : ""}
-                </p>
-              </section>
-            ))}
+                  <div>
+                    <p
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/products/brands/${table.productBrand}`);
+                      }}
+                    >
+                      {table.productBrand}
+                    </p>
+                    <div
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                    >
+                      {carts.some(
+                        (productInCart) => table.id === productInCart.id
+                      ) ? (
+                        <RiShoppingCartFill
+                          onClick={() => cartRemoveHandle(table.id)}
+                          size={"28px"}
+                        />
+                      ) : (
+                        <RiShoppingCartLine
+                          onClick={() => cartAddHandle(table.id)}
+                          size={"28px"}
+                        />
+                      )}
+                    </div>
+                  </div>
+                  <img
+                    src={`http://192.168.0.30:8080/product/files/${table.mainImageUuidName}`}
+                  />
+                  <p>{table.productName}</p>
+                  <p>{table.productPrice.toLocaleString()}원</p>
+                  <p>
+                    {table.discountRate > 0
+                      ? `${table.discountRate}% 할인중`
+                      : ""}
+                  </p>
+                </section>
+              ))}
           </article>
         </section>
         <section>
           <p>Top Tableware</p>
           <article>
-            {topTableware.map((tableware) => (
-              <section
-                key={tableware.id}
-                onClick={() => {
-                  navigate(`/products/${tableware.id}`);
-                }}
-              >
-                <p
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigate(`/brands/123`);
+            {topTableware &&
+              topTableware.map((tableware) => (
+                <section
+                  key={tableware.id}
+                  onClick={() => {
+                    navigate(`/products/${tableware.id}`);
                   }}
                 >
-                  {tableware.productBrand}
-                </p>
-                <div
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
-                >
-                  {carts.some(
-                    (productInCart) => tableware.id === productInCart.id
-                  ) ? (
-                    <RiShoppingCartFill
-                      onClick={() => cartRemoveHandle(tableware.id)}
-                      size={"28px"}
-                    />
-                  ) : (
-                    <RiShoppingCartLine
-                      onClick={() => cartAddHandle(tableware.id)}
-                      size={"28px"}
-                    />
-                  )}
-                </div>
-                <img
-                  src={`http://192.168.0.30:8080/product/files/${tableware.mainImageUuidName}`}
-                />
-                <p>{tableware.productName}</p>
-                <p>{tableware.productPrice.toLocaleString()}원</p>
-                <p>
-                  {tableware.discountRate > 0
-                    ? `${tableware.discountRate}% 할인중`
-                    : ""}
-                </p>
-              </section>
-            ))}
+                  <div>
+                    <p
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/products/brands/${tableware.productBrand}`);
+                      }}
+                    >
+                      {tableware.productBrand}
+                    </p>
+                    <div
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                    >
+                      {carts.some(
+                        (productInCart) => tableware.id === productInCart.id
+                      ) ? (
+                        <RiShoppingCartFill
+                          onClick={() => cartRemoveHandle(tableware.id)}
+                          size={"28px"}
+                        />
+                      ) : (
+                        <RiShoppingCartLine
+                          onClick={() => cartAddHandle(tableware.id)}
+                          size={"28px"}
+                        />
+                      )}
+                    </div>
+                  </div>
+                  <img
+                    src={`http://192.168.0.30:8080/product/files/${tableware.mainImageUuidName}`}
+                  />
+                  <p>{tableware.productName}</p>
+                  <p>{tableware.productPrice.toLocaleString()}원</p>
+                  <p>
+                    {tableware.discountRate > 0
+                      ? `${tableware.discountRate}% 할인중`
+                      : ""}
+                  </p>
+                </section>
+              ))}
           </article>
         </section>
         <section>
           <p>Top Accessory</p>
           <article>
-            {topAccessory.map((accessory) => (
-              <section
-                key={accessory.id}
-                onClick={() => {
-                  navigate(`/products/${accessory.id}`);
-                }}
-              >
-                <p
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigate(`/brands/123`);
+            {topAccessory &&
+              topAccessory.map((accessory) => (
+                <section
+                  key={accessory.id}
+                  onClick={() => {
+                    navigate(`/products/${accessory.id}`);
                   }}
                 >
-                  {accessory.productBrand}
-                </p>
-                <div
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
-                >
-                  {carts.some(
-                    (productInCart) => accessory.id === productInCart.id
-                  ) ? (
-                    <RiShoppingCartFill
-                      onClick={() => cartRemoveHandle(accessory.id)}
-                      size={"28px"}
-                    />
-                  ) : (
-                    <RiShoppingCartLine
-                      onClick={() => cartAddHandle(accessory.id)}
-                      size={"28px"}
-                    />
-                  )}
-                </div>
-                <img
-                  src={`http://192.168.0.30:8080/product/files/${accessory.mainImageUuidName}`}
-                />
-                <p>{accessory.productName}</p>
-                <p>{accessory.productPrice.toLocaleString()}원</p>
-                <p>
-                  {accessory.discountRate > 0
-                    ? `${accessory.discountRate}% 할인중`
-                    : ""}
-                </p>
-              </section>
-            ))}
+                  <div>
+                    <p
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/products/brands/${accessory.productBrand}`);
+                      }}
+                    >
+                      {accessory.productBrand}
+                    </p>
+                    <div
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                    >
+                      {carts.some(
+                        (productInCart) => accessory.id === productInCart.id
+                      ) ? (
+                        <RiShoppingCartFill
+                          onClick={() => cartRemoveHandle(accessory.id)}
+                          size={"28px"}
+                        />
+                      ) : (
+                        <RiShoppingCartLine
+                          onClick={() => cartAddHandle(accessory.id)}
+                          size={"28px"}
+                        />
+                      )}
+                    </div>
+                  </div>
+                  <img
+                    src={`http://192.168.0.30:8080/product/files/${accessory.mainImageUuidName}`}
+                  />
+                  <p>{accessory.productName}</p>
+                  <p>{accessory.productPrice.toLocaleString()}원</p>
+                  <p>
+                    {accessory.discountRate > 0
+                      ? `${accessory.discountRate}% 할인중`
+                      : ""}
+                  </p>
+                </section>
+              ))}
           </article>
         </section>
         <section>
           <p>Top Other</p>
           <article>
-            {topOther.map((other) => (
-              <section
-                key={other.id}
-                onClick={() => {
-                  navigate(`/products/${other.id}`);
-                }}
-              >
-                <p
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigate(`/brands/123`);
+            {topOther &&
+              topOther.map((other) => (
+                <section
+                  key={other.id}
+                  onClick={() => {
+                    navigate(`/products/${other.id}`);
                   }}
                 >
-                  {other.productBrand}
-                </p>
-                <div
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
-                >
-                  {carts.some(
-                    (productInCart) => other.id === productInCart.id
-                  ) ? (
-                    <RiShoppingCartFill
-                      onClick={() => cartRemoveHandle(other.id)}
-                      size={"28px"}
-                    />
-                  ) : (
-                    <RiShoppingCartLine
-                      onClick={() => cartAddHandle(other.id)}
-                      size={"28px"}
-                    />
-                  )}
-                </div>
-                <img
-                  src={`http://192.168.0.30:8080/product/files/${other.mainImageUuidName}`}
-                />
-                <p>{other.productName}</p>
-                <p>{other.productPrice.toLocaleString()}원</p>
-                <p>
-                  {other.discountRate > 0
-                    ? `${other.discountRate}% 할인중`
-                    : ""}
-                </p>
-              </section>
-            ))}
+                  <div>
+                    <p
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/products/brands/${other.productBrand}`);
+                      }}
+                    >
+                      {other.productBrand}
+                    </p>
+                    <div
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                    >
+                      {carts.some(
+                        (productInCart) => other.id === productInCart.id
+                      ) ? (
+                        <RiShoppingCartFill
+                          onClick={() => cartRemoveHandle(other.id)}
+                          size={"28px"}
+                        />
+                      ) : (
+                        <RiShoppingCartLine
+                          onClick={() => cartAddHandle(other.id)}
+                          size={"28px"}
+                        />
+                      )}
+                    </div>
+                  </div>
+                  <img
+                    src={`http://192.168.0.30:8080/product/files/${other.mainImageUuidName}`}
+                  />
+                  <p>{other.productName}</p>
+                  <p>{other.productPrice.toLocaleString()}원</p>
+                  <p>
+                    {other.discountRate > 0
+                      ? `${other.discountRate}% 할인중`
+                      : ""}
+                  </p>
+                </section>
+              ))}
           </article>
         </section>
       </HottestContainer>

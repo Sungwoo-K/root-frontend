@@ -105,33 +105,36 @@ const Products = () => {
               navigate(`/products/${product.id}`);
             }}
           >
-            <p
-              onClick={(e) => {
-                e.stopPropagation();
-                navigate(`/brands/123`);
-              }}
-            >
-              {product.productBrand}
-            </p>
-            <div
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
-            >
-              {carts.some(
-                (productInCart) => product.id === productInCart.id
-              ) ? (
-                <RiShoppingCartFill
-                  onClick={() => cartRemoveHandle(product.id)}
-                  size={"28px"}
-                />
-              ) : (
-                <RiShoppingCartLine
-                  onClick={() => cartAddHandle(product.id)}
-                  size={"28px"}
-                />
-              )}
+            <div>
+              <p
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate(`/products/brands/${product.productBrand}`);
+                }}
+              >
+                {product.productBrand}
+              </p>
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                {carts.some(
+                  (productInCart) => product.id === productInCart.id
+                ) ? (
+                  <RiShoppingCartFill
+                    onClick={() => cartRemoveHandle(product.id)}
+                    size={"28px"}
+                  />
+                ) : (
+                  <RiShoppingCartLine
+                    onClick={() => cartAddHandle(product.id)}
+                    size={"28px"}
+                  />
+                )}
+              </div>
             </div>
+
             <img
               src={`http://192.168.0.30:8080/product/files/${product.mainImageUuidName}`}
             />
