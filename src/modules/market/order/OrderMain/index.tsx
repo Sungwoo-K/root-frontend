@@ -1,6 +1,6 @@
 import { BsBookmarkStar } from "react-icons/bs";
 
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import {
   Addinformation,
@@ -27,15 +27,14 @@ import { ReviewCount } from "../../auth/User/Shopping/Review/styles";
 
 export interface ReviceItem {
   id: number;
-  productId: number;
-  nickname: string;
-  brandName: string;
-  reviewcontent: string;
-  reviewCount: number;
-  reviewResponse: string;
-  createDate: string;
-  productPrice: number;
+  productBrand: string;
   productName: string;
+  productPrice: number;
+  category: string;
+  productDescription: string;
+  isActive: Boolean;
+  maximumPurchaseQuantity: number;
+  discountRate: number;
   mainImageUuidName: string;
 }
 
@@ -78,6 +77,7 @@ const OrderMain = () => {
   const handleDown = () => {
     setPlusnum(plusnum - 1);
   };
+  const navigate = useNavigate();
 
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -115,8 +115,14 @@ const OrderMain = () => {
                   src={`http://192.168.100.159:8080/product/files/${product.mainImageUuidName}`}
                 />
                 <div className="sidediv">
-                  <img src={product.img} alt="" className="sideimg" />
-                  <img src={product.img} alt="" className="sideimg" />
+                  {product.imageUuidName.map((image, index) => (
+                    <img
+                      key={index}
+                      className="sideimg"
+                      src={`http://192.168.100.159:8080/product/files/${image}`}
+                      alt={`Side Image ${index + 1}`}
+                    />
+                  ))}
                 </div>
               </Imgbox>
             </div>
@@ -126,16 +132,7 @@ const OrderMain = () => {
                 <h1 className="title">{product.productName}</h1>
                 <div className="star">{starRating}</div>
               </div>
-              <div className="option">
-                <Selectbox id="select-box">
-                  <option selected value="12">
-                    옵션 선택
-                  </option>
-                  <option value="1">옵션1</option>
-                  <option value="2">옵션2</option>
-                  <option value="3">옵션3</option>
-                </Selectbox>
-              </div>
+              <div className="option">{product.productDescription}</div>
               <div className="productorder">
                 <div className="buttondiv">
                   <input type="text" value={plusnum} onChange={handleChange} />
@@ -161,7 +158,18 @@ const OrderMain = () => {
                   >
                     장바구니
                   </Button>
-                  <Button>바로구매</Button>
+
+                  <Button
+                    onClick={() => {
+                      navigate(`/orderbuy/${product.id}`, {
+                        state: {
+                          count: `${plusnum}`,
+                        },
+                      });
+                    }}
+                  >
+                    바로구매
+                  </Button>
 
                   <BsBookmarkStar
                     style={{

@@ -14,7 +14,7 @@ export const Container = styled.div`
     padding-top: 10px;
     margin-left: 10px;
     > input {
-      width: 88%;
+      width: 97%;
       height: 34px;
       padding: 0 15px 0px 15px;
       border: 1px solid #dbdbdb;

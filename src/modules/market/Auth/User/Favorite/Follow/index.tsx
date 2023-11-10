@@ -23,6 +23,8 @@ export const Scrap = () => {
     const fetchData = async () => {
       const response = await http.get<ReviceItem[]>(
         `http://192.168.100.109:8080/scrap`
+
+        //http://192.168.100.159:8080/product/brands/{brandName}
       );
       const products = response.data;
       //   console.log(products);

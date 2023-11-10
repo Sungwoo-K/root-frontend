@@ -20,14 +20,14 @@ export const ReviewDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await http.get<ReviceItem[]>(
-        `http://192.168.100.109:8080/review/no-review&key=${keyword}`
+        `http://192.168.100.109:8080/review/no-review?key=${keyword}`
       );
 
       setProducts(response.data);
       console.log(response.data);
     };
     fetchData();
-  }, []);
+  }, [keyword]);
   const handleChange = (e) => {
     const inputvalue = e.target.value;
     setKeyword(inputvalue);
@@ -37,7 +37,7 @@ export const ReviewDetail = () => {
     console.log(keyword);
     const fetchData = async () => {
       const response = await http.get<ReviceItem[]>(
-        `http://192.168.100.109:8080/review/no-review&key=${keyword}`
+        `http://192.168.100.109:8080/review/no-review?key=${keyword}`
       );
       setProducts(response.data);
       console.log(response.data);
@@ -56,7 +56,7 @@ export const ReviewDetail = () => {
             value={keyword}
             onChange={handleChange}
           />
-          <button onClick={handlesearch}>검색</button>
+          {/* <button onClick={handlesearch}>검색</button> */}
         </div>
         {products.map((item) => (
           <ReviewTable key={item.id}>

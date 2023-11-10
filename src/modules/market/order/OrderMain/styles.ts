@@ -19,9 +19,10 @@ export const Container = styled.div`
   .imgtotal {
     display: flex;
     flex-direction: column;
-    width: 800px;
-    height: 550px;
-    justify-content: center;
+    width: 650px;
+    height: 750px;
+    margin-top: 100px;
+    justify-content: flex-start;
     align-items: flex-start;
   }
 
@@ -60,8 +61,8 @@ export const Mainimg = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 475px;
-  height: 360px;
+  width: 660px;
+  height: 450px;
   margin-bottom: 20px;
 `;
 
