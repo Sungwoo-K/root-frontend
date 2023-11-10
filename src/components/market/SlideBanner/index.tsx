@@ -29,7 +29,7 @@ const SlideBanner = ({ width, height, paths }: BannerSize) => {
   });
 
   return (
-    <BannerContainer>
+    <BannerContainer widthSize={width} heightSize={height}>
       <Banner widthSize={width} heightSize={height} {...settings}>
         {Object.keys(images).map((key) => (
           <img key={key} src={images[key]} />
