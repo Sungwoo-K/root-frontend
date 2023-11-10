@@ -57,6 +57,7 @@ export const BaseBtn = styled.button`
   color: white;
 `;
 export const Container = styled.div`
+  overflow: visible;
   background-color: white;
   background-size: cover;
   justify-content: space-between;

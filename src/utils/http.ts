@@ -26,7 +26,6 @@ http.interceptors.response.use(
       }
 
       if (status === 404) {
-      } else {
         console.error("No response found in error object:", error);
       }
     } else {

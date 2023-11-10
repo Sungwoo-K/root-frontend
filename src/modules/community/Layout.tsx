@@ -1,14 +1,15 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useMatch } from "react-router-dom";
 import PostHeader from "@/components/community/Header";
 import PostSidebar from "@/components/community/Sidebar";
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {
-  const location = useLocation();
+  const matchWrite = useMatch("/community/write/*");
+  const matchDetails = useMatch("/community/details/:postId");
   return (
     <>
       <PostHeader />
-      {location.pathname !== "/community/Write" && <PostSidebar />}
+      {!matchWrite && !matchDetails && <PostSidebar />}
       <Outlet />
     </>
   );

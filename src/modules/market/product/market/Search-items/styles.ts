@@ -69,6 +69,7 @@ export const Product = styled.article`
       margin: 0 auto;
       margin-bottom: 90px;
     }
+
     > img {
       width: 230px;
       height: 230px;

@@ -142,7 +142,7 @@ export const Iconbutton = styled.button`
 `;
 
 export const Input = styled.input`
-  width: 300px;
+  width: 250px;
   height: 35px;
 `;
 
@@ -162,6 +162,7 @@ export const Hedaerline = styled.div`
 export const Searchbutton = styled.button`
   width: 40px;
   height: 41px;
+  position: fixed;
   background-color: white;
   border: 1;
 `;
