@@ -19,6 +19,15 @@ import http from "@/utils/http";
 export const OrederBuy = () => {
   const { id } = useParams();
   const [products, setProducts] = useState([]);
+
+  const formData = {
+    productId: sting,
+    quantity: number,
+    address: string,
+    brandName: "nike",
+    productPrice: "123123",
+    productName: "텐트1ee1212",
+  };
   useEffect(() => {
     const fetch = async () => {
       const response = await http.get<ProductItem[]>(
@@ -32,7 +41,6 @@ export const OrederBuy = () => {
   }, [id]);
   const location = useLocation();
   const [count, setcount] = useState(location.state?.count);
-  console.log(count);
 
   return (
     <>
