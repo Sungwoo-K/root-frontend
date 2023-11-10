@@ -9,38 +9,40 @@ export const Category = styled.article`
     padding-left: 100px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     position: fixed;
-    top: 21%;
 
-    > a {
-      color: black;
-      border-top: 1px solid black;
-      width: 150px;
-      padding: 20px;
-
-      > span {
-        font-size: 18px;
-        display: inline-block;
-        transition: all 0.1s ease-in-out;
-      }
+    p {
+      display: flex;
+      align-items: center;
+      border: 1px solid;
     }
 
-    > a:hover:not(:nth-of-type(4)):not(:nth-of-type(5)) > span {
-      transform: translateX(90px);
-    }
-    > a:hover:nth-of-type(4) > span {
-      transform: translateX(70px);
-    }
-    > a:hover:nth-of-type(5) > span {
-      transform: translateX(60px);
+    p:nth-of-type(1) {
+      font-size: 30px;
+      font-weight: 600;
+      width: 200px;
+      height: 50px;
+      justify-content: center;
     }
 
-    > a:last-of-type {
-      border-bottom: 1px solid black;
+    p:nth-of-type(2) {
+      width: 250px;
+      height: 70px;
+      font-size: 18px;
+      margin-top: 20px;
     }
 
-    > a:visited {
-      color: black;
+    p:nth-of-type(3) {
+      margin-top: 20px;
+      width: 250px;
+      height: 30px;
+    }
+
+    img {
+      width: 250px;
+      height: 250px;
+      margin-top: 20px;
     }
   }
 `;

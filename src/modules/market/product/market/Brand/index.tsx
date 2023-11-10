@@ -1,29 +1,27 @@
 import { useEffect, useRef, useState } from "react";
 import { Category, Product } from "./styles";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { RiShoppingCartFill, RiShoppingCartLine } from "react-icons/ri";
-import { PaginationResponse, ProductItem, useCart } from "../data";
+import { BrandInfo, PaginationResponse, ProductItem, useCart } from "../data";
 import http from "@/utils/http";
 
 const Products = () => {
-  const location = useLocation();
-  const searchParam = new URLSearchParams(location.search);
-  const category = searchParam.get("category");
+  const param = useParams();
   const navigate = useNavigate();
   const { carts, setCart } = useCart();
   const [page, setPage] = useState(0);
   const [isLast, setIsLast] = useState<boolean>(false);
-  const [nowCategory, setNowCategory] = useState<string>();
   const productTargetRef = useRef();
 
   const PAGE_SIZE = 10;
 
   const [products, setProducts] = useState<ProductItem[]>([]);
+  const [brand, setBrand] = useState<BrandInfo>();
 
-  const cartRemoveHandle = (productId) => {
+  const cartRemoveHandle = (productId: number) => {
     setCart(carts.filter((product) => product.id !== productId));
   };
-  const cartAddHandle = (productId) => {
+  const cartAddHandle = (productId: number) => {
     const newCarts = [
       ...carts,
       products.find((product) => product.id === productId),
@@ -33,27 +31,34 @@ const Products = () => {
 
   useEffect(() => {
     (async () => {
-      if (nowCategory !== category) {
-        setProducts([]);
-        setNowCategory(category);
-        setPage(0);
-        setIsLast(false);
+      const response = await http.get<BrandInfo>(
+        `http://192.168.0.30:8080/product/brands/${param.brandName}`
+      );
+      if (response !== undefined) {
+        if (response.status === 200) {
+          setBrand(response.data);
+        }
+      } else {
+        navigate(-1);
       }
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
       if (!isLast) {
         const response = await http.get<PaginationResponse<ProductItem>>(
-          `http://192.168.0.30:8080/product/discount?category=${category}&page=${page}&size=${PAGE_SIZE}`
+          `http://192.168.0.30:8080/product/brands/items/${param.brandName}?page=${page}&size=${PAGE_SIZE}`
         );
         if (response !== undefined) {
           if (response.status === 200) {
-            setProducts((prevProducts) =>
-              prevProducts.concat(response.data.content)
-            );
+            setProducts(products.concat(response.data.content));
             setIsLast(response.data.last);
           }
         }
       }
     })();
-  }, [category, page, isLast]);
+  }, [page, isLast]);
   useEffect(() => {
     const productTarget = productTargetRef.current;
     const observer = new IntersectionObserver((targets) => {
@@ -69,28 +74,19 @@ const Products = () => {
       observer.unobserve(productTarget);
     };
   }, []);
+
   return (
     <>
       <Category>
         <section>
-          <Link to="/products/discount-items">
-            <span>전체 &rarr;</span>
-          </Link>
-          <Link to="/products/discount-items?category=tent">
-            <span>텐트 &rarr;</span>
-          </Link>
-          <Link to="/products/discount-items?category=table">
-            <span>의자 &rarr;</span>
-          </Link>
-          <Link to="/products/discount-items?category=accessory">
-            <span>식기류 &rarr;</span>
-          </Link>
-          <Link to="/products/discount-items?category=tableware">
-            <span>악세서리 &rarr;</span>
-          </Link>
-          <Link to="/products/discount-items?category=other">
-            <span>기타 &rarr;</span>
-          </Link>
+          {brand && <p>{brand.name}</p>}
+          {brand && (
+            <img
+              src={`http://192.168.0.30:8080/product/files/${brand.imageUuidName}`}
+            />
+          )}
+          {brand && <p>{brand.intro}</p>}
+          {brand && <p>대표자: {brand.representativeName}</p>}
         </section>
       </Category>
       <Product>
@@ -105,7 +101,7 @@ const Products = () => {
               <p
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate(`/products/brands/${product.productBrand}`);
+                  navigate(`/brands/123`);
                 }}
               >
                 {product.productBrand}

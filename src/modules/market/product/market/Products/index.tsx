@@ -1,23 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Category, Product } from "./styles";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { RiShoppingCartFill, RiShoppingCartLine } from "react-icons/ri";
-import { useCart } from "../data";
+import { PaginationResponse, ProductItem, useCart } from "../data";
 import http from "@/utils/http";
-
-export interface ProductItem {
-  id: number;
-  productBrand: string;
-  productName: string;
-  productPrice: number;
-  category: string;
-  productDescription: string;
-  isActive: Boolean;
-  maximumPurchaseQuantity: number;
-  discountRate: number;
-  mainImageUuidName: string;
-}
 
 const Products = () => {
   const location = useLocation();
@@ -25,6 +11,12 @@ const Products = () => {
   const category = searchParam.get("category");
   const navigate = useNavigate();
   const { carts, setCart } = useCart();
+  const [page, setPage] = useState(0);
+  const [isLast, setIsLast] = useState<boolean>(false);
+  const [nowCategory, setNowCategory] = useState<string>();
+  const productTargetRef = useRef();
+
+  const PAGE_SIZE = 10;
 
   const [products, setProducts] = useState<ProductItem[]>([]);
 
@@ -40,18 +32,47 @@ const Products = () => {
   };
 
   useEffect(() => {
-    (async () => {
-      const response = await http.get<ProductItem[]>(
-        `http://192.168.0.30:8080/product?category=${category}`
-      );
-      console.log(response);
-      if (response !== undefined) {
-        if (response.status === 200) {
-          setProducts(response.data);
+    if (nowCategory !== category) {
+      setProducts([]);
+      setNowCategory(category);
+      setPage(0);
+      setIsLast(false);
+    }
+
+    const fetchData = async () => {
+      if (!isLast) {
+        const response = await http.get<PaginationResponse<ProductItem>>(
+          `http://192.168.0.30:8080/product?category=${category}&page=${page}&size=${PAGE_SIZE}`
+        );
+        if (response !== undefined) {
+          if (response.status === 200) {
+            setProducts((prevProducts) =>
+              prevProducts.concat(response.data.content)
+            );
+            setIsLast(response.data.last);
+          }
         }
       }
-    })();
-  }, [category]);
+    };
+
+    fetchData();
+  }, [category, page, isLast]);
+  useEffect(() => {
+    const productTarget = productTargetRef.current;
+    const observer = new IntersectionObserver((targets) => {
+      targets.forEach((target) => {
+        if (target.isIntersecting) {
+          setPage((prevPage) => prevPage + 1);
+        }
+      });
+    });
+    observer.observe(productTarget);
+
+    return () => {
+      observer.unobserve(productTarget);
+    };
+  }, []);
+
   return (
     <>
       <Category>
@@ -65,10 +86,10 @@ const Products = () => {
           <Link to="/products?category=table">
             <span>의자 &rarr;</span>
           </Link>
-          <Link to="/products?category=accessory">
+          <Link to="/products?category=tableware">
             <span>식기류 &rarr;</span>
           </Link>
-          <Link to="/products?category=tableware">
+          <Link to="/products?category=accessory">
             <span>악세서리 &rarr;</span>
           </Link>
           <Link to="/products?category=other">
@@ -88,7 +109,7 @@ const Products = () => {
               <p
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate(`/brands/123`);
+                  navigate(`/products/brands/${product.productBrand}`);
                 }}
               >
                 {product.productBrand}
@@ -112,19 +133,21 @@ const Products = () => {
                   />
                 )}
               </div>
-              <img
-                src={`http://192.168.0.30:8080/product/files/${product.mainImageUuidName}`}
-              />
-              <p>{product.productName}</p>
-              <p>{product.productPrice.toLocaleString()}원</p>
-              <p>
-                {product.discountRate > 0
-                  ? `${product.discountRate}% 할인중`
-                  : ""}
-              </p>
             </div>
+
+            <img
+              src={`http://192.168.0.30:8080/product/files/${product.mainImageUuidName}`}
+            />
+            <p>{product.productName}</p>
+            <p>{product.productPrice.toLocaleString()}원</p>
+            <p>
+              {product.discountRate > 0
+                ? `${product.discountRate}% 할인중`
+                : ""}
+            </p>
           </section>
         ))}
+        <div ref={productTargetRef}></div>
       </Product>
     </>
   );

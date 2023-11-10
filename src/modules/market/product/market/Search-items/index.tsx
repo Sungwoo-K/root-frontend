@@ -9,6 +9,7 @@ const Products = () => {
   const location = useLocation();
   const searchParam = new URLSearchParams(location.search);
   const category = searchParam.get("category");
+  const keyword = searchParam.get("keyword");
   const navigate = useNavigate();
   const { carts, setCart } = useCart();
   const [page, setPage] = useState(0);
@@ -32,16 +33,17 @@ const Products = () => {
   };
 
   useEffect(() => {
-    (async () => {
-      if (nowCategory !== category) {
-        setProducts([]);
-        setNowCategory(category);
-        setPage(0);
-        setIsLast(false);
-      }
+    if (nowCategory !== category) {
+      setProducts([]);
+      setNowCategory(category);
+      setPage(0);
+      setIsLast(false);
+    }
+
+    const fetchData = async () => {
       if (!isLast) {
         const response = await http.get<PaginationResponse<ProductItem>>(
-          `http://192.168.0.30:8080/product/discount?category=${category}&page=${page}&size=${PAGE_SIZE}`
+          `http://192.168.0.30:8080/product/search?keyword=${keyword}&category=${category}&page=${page}&size=${PAGE_SIZE}`
         );
         if (response !== undefined) {
           if (response.status === 200) {
@@ -52,7 +54,9 @@ const Products = () => {
           }
         }
       }
-    })();
+    };
+
+    fetchData();
   }, [category, page, isLast]);
   useEffect(() => {
     const productTarget = productTargetRef.current;
@@ -69,26 +73,31 @@ const Products = () => {
       observer.unobserve(productTarget);
     };
   }, []);
+
   return (
     <>
       <Category>
         <section>
-          <Link to="/products/discount-items">
+          <Link to={`/products/items/search?keyword=${keyword}`}>
             <span>전체 &rarr;</span>
           </Link>
-          <Link to="/products/discount-items?category=tent">
+          <Link to={`/products/items/search?keyword=${keyword}&category=tent`}>
             <span>텐트 &rarr;</span>
           </Link>
-          <Link to="/products/discount-items?category=table">
+          <Link to={`/products/items/search?keyword=${keyword}&category=table`}>
             <span>의자 &rarr;</span>
           </Link>
-          <Link to="/products/discount-items?category=accessory">
+          <Link
+            to={`/products/items/search?keyword=${keyword}&category=tableware`}
+          >
             <span>식기류 &rarr;</span>
           </Link>
-          <Link to="/products/discount-items?category=tableware">
+          <Link
+            to={`/products/items/search?keyword=${keyword}&category=accessory`}
+          >
             <span>악세서리 &rarr;</span>
           </Link>
-          <Link to="/products/discount-items?category=other">
+          <Link to={`/products/items/search?keyword=${keyword}&category=other`}>
             <span>기타 &rarr;</span>
           </Link>
         </section>
@@ -101,7 +110,11 @@ const Products = () => {
               navigate(`/products/${product.id}`);
             }}
           >
-            <div>
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
               <p
                 onClick={(e) => {
                   e.stopPropagation();
@@ -110,11 +123,7 @@ const Products = () => {
               >
                 {product.productBrand}
               </p>
-              <div
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
-              >
+              <div>
                 {carts.some(
                   (productInCart) => product.id === productInCart.id
                 ) ? (

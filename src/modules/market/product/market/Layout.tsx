@@ -6,7 +6,7 @@ import { useHover } from "@/components/market/Header/data";
 const Layout = () => {
   const mainScreenRef = useRef(null);
   const mainScreenNavRef = useRef(null);
-  const [eventTrigger, setEventTrigger] = useState<Boolean>(false);
+  const [eventTrigger, setEventTrigger] = useState<boolean>(false);
   const { isHover } = useHover();
   const appearHandle = () => {
     mainScreenNavRef.current.style.transform = "translateY(90px)";
