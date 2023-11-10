@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Container, Forminput, Input, Inputdiv, Inputp } from "./style";
 import axios from "axios";
 import { MutableRefObject, useRef, useState } from "react";
-import { Button } from "../Login/styles";
+import { Button, Headername } from "../Login/styles";
 
 const Join = () => {
   const [formData, setFormData] = useState({
@@ -11,17 +11,15 @@ const Join = () => {
     userid: "",
     userpassword: "",
     nickname: "",
-    selctSex: "",
-    userbirth: "",
+    usersex: "",
+    birth: "",
   });
 
   const value = ["남성", "여성"];
-  const [selctSex, isSelectSex] = useState("");
-
+  const [selectSex, isSelectSex] = useState<string>("");
   const clickButton = (e) => {
-    isSelectSex(() => {
-      return e.target.value;
-    });
+    const selectedSex = e.target.value;
+    isSelectSex(selectedSex);
   };
 
   const postExample = async (e) => {
@@ -32,8 +30,8 @@ const Join = () => {
       username: formData.username,
       userpassword: formData.userpassword,
       nickname: formData.nickname,
-      usersex: formData.selctSex,
-      userbirth: formData.userbirth,
+      usersex: selectSex,
+      birth: formData.birth,
     });
 
     if (response.status === 201) {
@@ -43,8 +41,10 @@ const Join = () => {
       alert("회원가입에 실패했습니다.");
     }
   };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value);
 
     setFormData({
       ...formData,
@@ -61,25 +61,17 @@ const Join = () => {
             display: "flex",
             width: "100%",
             alignContent: "center",
+            textDecoration: "none",
           }}
         >
           <div style={{ marginTop: "10px", marginLeft: "30px" }}>
-            <img
-              src={require("../../../../components/market/Header/tent.png")}
-              style={{
-                width: "50px",
-                height: "50px",
-                marginRight: "10px",
-              }}
-            />
-            <img
-              src={require("../../../../components/market/Header/logo.png")}
-              style={{ width: "160px", height: "55px" }}
-            />
+            <p className="Header">CAMP&TENT</p>
           </div>
         </Link>
 
-        <p style={{ fontSize: "40px", marginTop: "70px" }}> 회원 가입</p>
+        <Headername style={{ marginTop: "80px", fontSize: "60px" }}>
+          회원 가입
+        </Headername>
 
         <Input
           name="userid"
@@ -115,8 +107,8 @@ const Join = () => {
         <Input
           type="text"
           placeholder="생년월일 8자리"
-          name="userbirth"
-          value={formData.userbirth}
+          name="birth"
+          value={formData.birth}
           onChange={handleInputChange}
         ></Input>
         <div className="select-sex">
@@ -125,7 +117,7 @@ const Join = () => {
               key={idx}
               value={item}
               name="usersex"
-              className={"buttonevent" + (item == selctSex ? idx + 1 : "")}
+              className={"buttonevent" + (item == selectSex ? idx + 1 : "")}
               onClick={clickButton}
               onChange={handleInputChange}
             >
@@ -135,7 +127,7 @@ const Join = () => {
         </div>
         <Button
           onClick={postExample}
-          style={{ width: "31vh", marginTop: "15vh" }}
+          style={{ width: "300px", marginTop: "80px" }}
         >
           회원가입하기
         </Button>

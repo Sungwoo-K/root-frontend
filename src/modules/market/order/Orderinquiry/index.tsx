@@ -1,14 +1,85 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import { Button, Container } from "./styles";
 import ButtonEvent from "@/components/market/ButtonEvent";
+import Inqueryorderqna from "../Orderinquiryqna";
+import { useParams } from "react-router-dom";
+import http from "@/utils/http";
+import { ProductItem } from "../../product/market/Products";
 
-export const Inquiry = () => {
+export const Inquiryorder = () => {
+  const { id } = useParams();
   const [isMenu, setIsMenu] = useState(false);
 
   const Inquirebutton = (index) => {
     isMenu === true ? setIsMenu(false) : setIsMenu(true);
-    console.log(isMenu);
+  };
+  const [buttonMenu, setButtonMenu] = useState(0);
+
+  const buttonRef = useRef();
+  const [products, setProducsts] = useState([]);
+
+  const [formData, setFormData] = useState({
+    userLoginId: "",
+    username: "",
+    productId: id,
+    brandName: "",
+    inqueryCategory: "",
+    inqueryContent: "",
+    productName: "",
+  });
+
+  const inqueryPost = async () => {
+    await http.post(`http://192.168.100.109:8080/inquery/menu/${id}`, {
+      userLoginId: formData.userLoginId,
+      username: formData.username,
+      productId: formData.productId,
+      brandName: formData.brandName,
+      inqueryCategory: formData.inqueryCategory,
+      inqueryContent: formData.inqueryContent,
+      productName: formData.productName,
+    });
+  };
+  useEffect(() => {
+    const fetch = async () => {
+      const response = await http.get<ProductItem>(
+        `http://192.168.100.159:8080/product/${id}`
+      );
+
+      setFormData((prevState) => ({
+        ...prevState,
+        brandName: response.data.productBrand,
+        productName: response.data.productName,
+      }));
+    };
+    fetch();
+  }, [id]);
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+
+    setFormData((prevData) => ({
+      ...formData,
+      [name]: value,
+      inqueryCategory:
+        name === "productName" ? inqueryCategory : prevData.inqueryCategory,
+    }));
+  };
+
+  const texts = ["상품", "배송", "반품", "교환", "환불", "기타"];
+
+  const [reviewcategory, setReviewcategory] = useState<string[]>([]);
+  const handleClickButton = (value: number) => {
+    const categories = ["상품", "배송", "반품", "교환", "환불", "기타"];
+    setReviewcategory((prevCategories) => [
+      ...prevCategories,
+      categories[value],
+    ]);
+
+    setFormData((prevData) => ({
+      ...prevData,
+      inqueryCategory: categories[value],
+    }));
   };
 
   return (
@@ -26,7 +97,7 @@ export const Inquiry = () => {
             <div className="seconde">문의 유형</div>
             <div className="total-button">
               <div className="first-button">
-                <ButtonEvent />
+                <ButtonEvent texts={texts} getButtonValue={handleClickButton} />
               </div>
             </div>
             <div className="seconde">문의 내용</div>
@@ -34,6 +105,9 @@ export const Inquiry = () => {
               placeholder="문의 내용을 입력하세요"
               maxLength={1000}
               className="content"
+              name="inqueryContent"
+              onChange={handleInputChange}
+              value={formData.inqueryContent}
             />
 
             <div className="deatil-content">
@@ -42,7 +116,9 @@ export const Inquiry = () => {
               삭제 또는 차단될 수 있습니다.
             </div>
             <div className="final-div">
-              <button className="final-button">완료</button>
+              <button className="final-button" onClick={inqueryPost}>
+                완료
+              </button>
             </div>
           </div>
         </div>
@@ -77,9 +153,10 @@ export const Inquiry = () => {
             </li>
           </ul>
         </div>
+        <Inqueryorderqna />
       </Container>
     </>
   );
 };
 
-export default Inquiry;
+export default Inquiryorder;

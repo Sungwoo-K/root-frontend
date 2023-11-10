@@ -2,16 +2,20 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
   width: 100%;
-  height: 95%;
+  height: 94%;
   font-family: "GmarketSansMedium";
-  overflow: hidden;
+  overflow-y: scroll;
   > section:first-of-type {
     display: flex;
     justify-content: center;
-    height: 150px;
-
+    height: 65px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    transition: all 0.18s ease-in-out;
+    background-color: white;
     > article {
-      padding-top: 50px;
+      padding-top: 10px;
       width: 25%;
       height: 40px;
       display: flex;
@@ -45,7 +49,6 @@ export const Container = styled.div`
 
   > section:last-of-type {
     width: 100%;
-    height: 85%;
     display: flex;
   }
 `;

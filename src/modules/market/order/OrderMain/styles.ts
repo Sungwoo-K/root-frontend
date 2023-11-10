@@ -13,53 +13,76 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     gap: 15vh;
   }
   .imgtotal {
     display: flex;
     flex-direction: column;
-    width: 38%;
-    height: 100%;
-    justify-content: center;
+    width: 650px;
+    height: 750px;
+    margin-top: 100px;
+    justify-content: flex-start;
     align-items: flex-start;
   }
-  .imgdiv {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    width: 100%;
-    height: 60vh;
-    justify-content: flex-start;
-    align-items: center;
-    border: 1px solid #dbdbdb;
-    padding: 15px 15px 15px 15px;
 
-    .mainimg {
+  .sideimg {
+    display: flex;
+    width: 95%;
+    height: 20%;
+
+    .smalldiv {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 95%;
-      height: 70%;
+      width: 30%;
+      height: 100%;
+
+      margin-top: 2%;
+      margin-right: 3%;
     }
+    .smallimg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+`;
+
+export const Contentdiv = styled.div`
+  width: 100%;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15vh;
+`;
+
+export const Mainimg = styled.img`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 660px;
+  height: 450px;
+  margin-bottom: 20px;
+`;
+
+export const Imgbox = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 500px;
+  height: 510px;
+  justify-content: flex-start;
+
+  padding: 15px 15px 15px 15px;
+  gap: 10px;
+  .sidediv {
+    display: flex;
+    width: 300px;
     .sideimg {
-      display: flex;
-      width: 95%;
-      height: 20%;
-
-      .smalldiv {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 30%;
-        height: 100%;
-
-        margin-top: 2%;
-        margin-right: 3%;
-      }
-      .smallimg {
-        width: 100%;
-        height: 100%;
-      }
+      margin-right: 10px;
+      width: 158px;
+      height: 120px;
     }
   }
 `;
@@ -68,8 +91,12 @@ export const Information = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 48vh;
+  width: 457px;
   height: 600px;
+  .star {
+    color: gold;
+    font-size: 24px;
+  }
 
   .headerdiv {
     display: flex;
@@ -90,6 +117,12 @@ export const Information = styled.div`
     width: 50vh;
     height: 100%;
   }
+  .option {
+    width: 476px;
+    height: 402px;
+    padding-top: 30px;
+    position: relative;
+  }
   .productorder {
     width: 100%;
     height: 10%;
@@ -97,25 +130,18 @@ export const Information = styled.div`
   .buttondiv {
     border: 1px solid;
     display: flex;
-    width: 99px;
+    width: 94px;
     height: 45px;
-  }
-  .button {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-
-    .countbutton {
-      display: flex;
-      cursor: pointer;
+    > input {
+      width: 60px;
+      height: 26px;
       border: none;
-      width: 34px;
-      height: 50%;
-
-      background-color: white;
-      border: 1px solid #ccc;
+      padding: 10px 0px 8px 0px;
+      text-align: center;
+      font-size: 18px;
     }
   }
+
   .productorder {
     display: flex;
     justify-content: center;
@@ -129,7 +155,22 @@ export const Information = styled.div`
     width: 100%;
   }
 `;
+export const EventButton = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 55%;
 
+  .countbutton {
+    display: flex;
+    cursor: pointer;
+    border: none;
+    width: 34px;
+    height: 50%;
+
+    background-color: white;
+    border: 1px solid #ccc;
+  }
+`;
 export const Iconbutton = styled.button`
   background-color: white;
   border: none;
@@ -146,10 +187,11 @@ export const Addinformation = styled.div`
   border-bottom: 1px solid #ccc;
   border-left: 1px solid #ccc;
 
-  width: 1300px;
+  width: 1400px;
   cursor: pointer;
   .productoption {
     width: 100%;
+
     height: 50px;
   }
   .navigation {
@@ -159,7 +201,7 @@ export const Addinformation = styled.div`
   .proudct-list {
     display: flex;
     width: 100%;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
   }
@@ -193,4 +235,17 @@ export const Price = styled.div`
   font-size: x-large;
   padding: 10px 10px 10px 10px;
   flex-direction: row-reverse;
+`;
+
+export const Selectbox = styled.select`
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 90%;
+  height: 50px;
+  padding: 0.8em 0.5em;
+  border: 1px solid #999;
+  border-radius: 0px;
+  background: url(https://t1.daumcdn.net/cfile/tistory/99761B495C84AA8716?original)
+    no-repeat 95% 50%;
 `;
