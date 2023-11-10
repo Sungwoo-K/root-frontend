@@ -9,6 +9,7 @@ export const AddBtn = styled(PostAddButton)`
   margin-bottom: 10px;
 `;
 export const WriteInput = styled.input`
+  border-radius: 10px 10px 10px 10px;
   font-size: 25px;
   font-family: "Nanum Pen Script", cursive;
   background-color: #bdf6fe;
@@ -19,6 +20,7 @@ export const WriteInput = styled.input`
 `;
 export const WriteTextarea = styled.textarea`
   font-family: "Nanum Pen Script", cursive;
+  border-radius: 10px 10px 10px 10px;
   font-size: 25px;
   background-color: #bdf6fe;
   width: 31vw;
@@ -28,6 +30,7 @@ export const WriteTextarea = styled.textarea`
   list-style: armenian;
 `;
 export const DropArea = styled.div<DropAreaProps>`
+  border-radius: 10px 10px 10px 10px;
   background-color: ${(props) => (props.isFilled ? "white" : "#bdf6fe")};
   border: 2px dashed ${(props) => (props.isFilled ? "white" : "#ffd400")};
   width: 20vw;
@@ -84,4 +87,14 @@ export const DropFont = styled.p`
   font-size: 1.5vw;
   text-align: center;
   margin-top: 8vw;
+`;
+export const StyleSelect = styled.select`
+  border-radius: 10px 10px 10px 10px;
+  text-align: center;
+  font-size: 25px;
+  font-family: "Nanum Pen Script", cursive;
+  background-color: #bdf6fe;
+  width: 9vw;
+  height: 2vw;
+  margin-bottom: 2vw;
 `;

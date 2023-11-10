@@ -1,5 +1,6 @@
 import http from "@/utils/http";
 import {
+  StyleSelect,
   AddBtn,
   WriteContainer,
   AddBtncontainer,
@@ -12,7 +13,6 @@ import {
   PreviewContent,
 } from "./styles";
 import { MutableRefObject, useEffect, useRef, useState } from "react";
-import { MultiStats } from "webpack";
 
 interface PostItem {
   id: number;
@@ -50,10 +50,18 @@ function MediaElement({
     );
   }
 }
+const backgroundImageUrls = {
+  sunny: "URL_FOR_SUNNY",
+  cloudy: "URL_FOR_CLOUDY",
+  rainy: "URL_FOR_RAINY",
+  snowy: "URL_FOR_SNOWY",
+};
 
 const Write = () => {
   const [posts, setPosts] = useState<PostItem[]>([]);
   const [filePreviews, setFilePreviews] = useState<string[]>([]);
+  const [weather, setWeather] = useState("");
+  const [backgroundImage, setBackgroundImage] = useState("");
 
   const fileRef = useRef() as MutableRefObject<HTMLInputElement>;
   const titleRef = useRef() as MutableRefObject<HTMLInputElement>;
@@ -61,7 +69,10 @@ const Write = () => {
   const formRef = useRef<HTMLFormElement>();
 
   useEffect(() => {}, []);
-
+  const handleWeatherChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setWeather(e.target.value);
+    setBackgroundImage(backgroundImageUrls[e.target.value]);
+  };
   const handlePost = (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData();
@@ -69,7 +80,7 @@ const Write = () => {
     Array.from(fileRef.current.files).forEach((file) => {
       formData.append("files", file);
     });
-
+    formData.append("backgroundImage", weather);
     formData.append("content", contentRef.current.value);
     formData.append("title", titleRef.current.value);
 
@@ -161,6 +172,13 @@ const Write = () => {
             />
             <AddBtn type="submit">올리기</AddBtn>
           </AddBtncontainer>
+          <StyleSelect value={weather} onChange={handleWeatherChange} required>
+            <option value={null}>날씨를 선택해주세요.</option>
+            <option value="sunny">맑음 🌞</option>
+            <option value="cloudy">흐림 🌫</option>
+            <option value="rainy">비 ☔</option>
+            <option value="snowy">눈 ⛄</option>
+          </StyleSelect>
         </WriteForm>
       </WriteContainer>
     </>
