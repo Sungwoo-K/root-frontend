@@ -68,7 +68,7 @@ export const UseContainer = styled.div`
   align-items: center;
 
   .useProfile {
-    margin-top: 30px;
+    margin-top: 50px;
     width: 800px;
     text-align: center;
     align-items: center;
@@ -79,7 +79,7 @@ export const UseContainer = styled.div`
     font-size: 2vw;
   }
   .delivery {
-    margin-top: 80px;
+    margin-top: 100px;
     width: 800px;
     display: flex;
     text-align: center;
@@ -90,7 +90,7 @@ export const UseContainer = styled.div`
       flex-direction: column;
     }
     .deliveryprofile {
-      margin-top: 20px;
+      margin-top: 40px;
       width: 576px;
       height: 54px;
       display: flex;

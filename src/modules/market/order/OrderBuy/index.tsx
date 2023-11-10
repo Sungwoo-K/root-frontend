@@ -17,30 +17,59 @@ import { ProductItem } from "../../product/market/Products";
 import http from "@/utils/http";
 
 export const OrederBuy = () => {
+  const location = useLocation();
+  const [count, setcount] = useState(location.state?.count);
   const { id } = useParams();
   const [products, setProducts] = useState([]);
+  const [isChecked, setIsChecked] = useState(true);
 
-  const formData = {
-    productId: sting,
-    quantity: number,
-    address: string,
-    brandName: "nike",
-    productPrice: "123123",
-    productName: "텐트1ee1212",
+  const [formData, setFormdata] = useState({
+    productId: id,
+    quantity: count,
+    address: String,
+    brandName: String,
+    productPrice: String,
+    productName: String,
+  });
+
+  const fetch = async () => {
+    const response = await http.post(`http://192.168.100.109/order/${id}`, {
+      productId: formData.productId,
+      quantity: formData.quantity,
+      address: formData.address,
+      brandName: formData.brandName,
+      productPrice: formData.productPrice,
+      productName: formData.productName,
+    });
   };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value);
+
+    setFormdata({
+      ...formData,
+      [name]: value,
+    });
+  };
+
   useEffect(() => {
     const fetch = async () => {
       const response = await http.get<ProductItem[]>(
         `http://192.168.100.159:8080/product/${id}`
       );
 
-      console.log(response.data);
       setProducts([response.data]);
+
+      setFormdata((prevState) => ({
+        ...prevState,
+        brandName: response.data.productBrand,
+        productName: response.data.productName,
+        productPrice: response.data.productPrice,
+      }));
     };
     fetch();
   }, [id]);
-  const location = useLocation();
-  const [count, setcount] = useState(location.state?.count);
 
   return (
     <>
@@ -79,7 +108,9 @@ export const OrederBuy = () => {
                     </div>
                     <div className="totaldiv">
                       <p className="totalprice">총 금액</p>
-                      <p>{product.productPrice.toLocaleString()} 원</p>
+                      <p>
+                        {(product.productPrice * count).toLocaleString()} 원
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -89,7 +120,7 @@ export const OrederBuy = () => {
                   <p>결제수단</p>
                 </div>
                 <div className="bankbook">
-                  <input type="radio" checked />
+                  <input type="radio" checked={isChecked} />
                   <p>무통장 입금</p>
                 </div>
                 <div className="selectbank">
@@ -144,9 +175,6 @@ export const OrederBuy = () => {
                     required
                   />
                 </div>
-              </div>
-              <div className="orderbutton">
-                <Button>구매하기</Button>
               </div>
             </UseContainer>
           </Form>
