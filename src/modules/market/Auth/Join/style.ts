@@ -16,27 +16,6 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     height: 5vh;
-    .buttonevent {
-      height: 100%;
-      width: 100%;
-      background-color: white;
-      border: 1px solid #dbdbdb;
-      color: #7d7c7c;
-    }
-    .buttonevent1 {
-      height: 100%;
-      width: 100%;
-      background-color: #ece6cc;
-      border: none;
-      color: #7d7c7c;
-    }
-    .buttonevent2 {
-      height: 100%;
-      width: 100%;
-      background-color: #ece6cc;
-      border: none;
-      color: #7d7c7c;
-    }
   }
 `;
 

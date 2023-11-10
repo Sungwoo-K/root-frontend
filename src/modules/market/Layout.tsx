@@ -10,8 +10,6 @@ const Layout = () => {
         <Header />
 
         <Item>
-          <Sidebar />
-
           <Main />
         </Item>
       </Container>

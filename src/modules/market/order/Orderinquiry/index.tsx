@@ -1,14 +1,85 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import { Button, Container } from "./styles";
 import ButtonEvent from "@/components/market/ButtonEvent";
+import Inqueryorderqna from "../Orderinquiryqna";
+import { useParams } from "react-router-dom";
+import http from "@/utils/http";
+import { ProductItem } from "../../product/market/Products";
 
-export const Inquiry = () => {
+export const Inquiryorder = () => {
+  const { id } = useParams();
   const [isMenu, setIsMenu] = useState(false);
 
   const Inquirebutton = (index) => {
     isMenu === true ? setIsMenu(false) : setIsMenu(true);
-    console.log(isMenu);
+  };
+  const [buttonMenu, setButtonMenu] = useState(0);
+
+  const buttonRef = useRef();
+  const [products, setProducsts] = useState([]);
+
+  const [formData, setFormData] = useState({
+    userLoginId: "",
+    username: "",
+    productId: id,
+    brandName: "",
+    inqueryCategory: "",
+    inqueryContent: "",
+    productName: "",
+  });
+
+  const inqueryPost = async () => {
+    await http.post(`http://192.168.100.109:8080/inquery/menu/${id}`, {
+      userLoginId: formData.userLoginId,
+      username: formData.username,
+      productId: formData.productId,
+      brandName: formData.brandName,
+      inqueryCategory: formData.inqueryCategory,
+      inqueryContent: formData.inqueryContent,
+      productName: formData.productName,
+    });
+  };
+  useEffect(() => {
+    const fetch = async () => {
+      const response = await http.get<ProductItem>(
+        `http://192.168.100.159:8080/product/${id}`
+      );
+
+      setFormData((prevState) => ({
+        ...prevState,
+        brandName: response.data.productBrand,
+        productName: response.data.productName,
+      }));
+    };
+    fetch();
+  }, [id]);
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+
+    setFormData((prevData) => ({
+      ...formData,
+      [name]: value,
+      inqueryCategory:
+        name === "productName" ? inqueryCategory : prevData.inqueryCategory,
+    }));
+  };
+
+  const texts = ["상품", "배송", "반품", "교환", "환불", "기타"];
+
+  const [reviewcategory, setReviewcategory] = useState<string[]>([]);
+  const handleClickButton = (value: number) => {
+    const categories = ["상품", "배송", "반품", "교환", "환불", "기타"];
+    setReviewcategory((prevCategories) => [
+      ...prevCategories,
+      categories[value],
+    ]);
+
+    setFormData((prevData) => ({
+      ...prevData,
+      inqueryCategory: categories[value],
+    }));
   };
 
   return (
@@ -26,7 +97,7 @@ export const Inquiry = () => {
             <div className="seconde">문의 유형</div>
             <div className="total-button">
               <div className="first-button">
-                <ButtonEvent />
+                <ButtonEvent texts={texts} getButtonValue={handleClickButton} />
               </div>
             </div>
             <div className="seconde">문의 내용</div>
@@ -34,6 +105,9 @@ export const Inquiry = () => {
               placeholder="문의 내용을 입력하세요"
               maxLength={1000}
               className="content"
+              name="inqueryContent"
+              onChange={handleInputChange}
+              value={formData.inqueryContent}
             />
 
             <div className="deatil-content">
@@ -42,7 +116,9 @@ export const Inquiry = () => {
               삭제 또는 차단될 수 있습니다.
             </div>
             <div className="final-div">
-              <button className="final-button">완료</button>
+              <button className="final-button" onClick={inqueryPost}>
+                완료
+              </button>
             </div>
           </div>
         </div>
@@ -66,20 +142,21 @@ export const Inquiry = () => {
                 문의는 고객센터 내 1:1 문의하기를 이용해주세요.
               </em>
               <em className="marker">
-                "해당 상품 자체"와 관계없는 글, 양도, 광고성, 욕설, 비방, 도배
+                해당 상품 자체와 관계없는 글, 양도, 광고성, 욕설, 비방, 도배
                 등의 글은 예고 없이 이동, 노출제한, 삭제 등의 조치가 취해질 수
                 있습니다.
               </em>
               <em className="marker" style={{ marginBottom: "50px" }}>
                 공개 게시판이므로 전화번호, 메일 주소 등 고객님의 소중한
-                개인정보는 절대 남기지 말아주세요.
+                개인정보는 절대 남기지 말아주세요
               </em>
             </li>
           </ul>
         </div>
+        <Inqueryorderqna />
       </Container>
     </>
   );
 };
 
-export default Inquiry;
+export default Inquiryorder;

@@ -42,10 +42,18 @@ export const Menudiv = styled.div`
   .menulist {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     margin-top: 30px;
     margin-left: 30px;
     font-size: large;
     gap: 10px;
+  }
+  .Linknav {
+    text-decoration: none;
+    color: black;
+    font-family: NPSfontBold;
+    font-size: medium;
+    font-weight: 400;
   }
 
   .menulist li {
@@ -63,7 +71,7 @@ export const Menubutton = styled.div`
   background-color: rgb(255, 217, 142, 0);
 
   width: 33vh;
-  height: 60px;
+  height: 50px;
 
   cursor: pointer;
 `;
@@ -82,40 +90,43 @@ export const ToggleButton = styled.div`
   cursor: pointer;
 `;
 
-export const Menulist = styled.ul``;
+export const Menulist = styled.ul`
+  font-size: x-small;
+`;
 
 export const Title = styled.div`
-  @font-face {
-    font-family: "TAEBAEKfont";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/TAEBAEKfont.woff2")
-      format("woff2");
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  margin-left: 10px;
-  align-items: center;
-  font-size: 29px;
+  display: flex;
+  font-family: JalnanGothic;
+  font-size: xx-large;
+  font-weight: 100px;
   margin-top: 10px;
+  height: 60px;
+  text-decoration: none;
+  color: inherit;
+  margin-left: 10px;
+  align-items: flex-start;
   justify-content: center;
-  font-family: "TAEBAEKfont";
 `;
 
 export const Campdiv = styled.div`
   display: flex;
-  width: 33vh;
+  width: 50vh;
+  height: 50px;
   justify-content: center;
+  align-items: flex-start;
 `;
 
 export const Inputdiv = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 33vh;
-  height: 35px;
-  float: right;
-  justify-content: left;
-  margin-bottom: 10px;
-  margin-right: 2vh;
+  > form {
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    height: 35px;
+    float: right;
+    justify-content: left;
+    margin-bottom: 10px;
+    margin-right: 2vh;
+  }
 `;
 
 export const Iconbutton = styled.button`
@@ -133,9 +144,8 @@ export const Iconbutton = styled.button`
 `;
 
 export const Input = styled.input`
-  width: 80%;
+  width: 300px;
   height: 35px;
-  border: 0.5cap;
 `;
 
 export const Linkgo = styled.div`
@@ -162,8 +172,9 @@ export const SideMenu = styled.p`
   display: flex;
   width: 130px;
   margin-top: 3px;
-
-  font-size: 15px;
+  font-family: JalnanGothic;
+  font-weight: 100;
+  font-size: medium;
   justify-content: space-between;
   align-items: center;
 `;
