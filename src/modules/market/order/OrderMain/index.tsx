@@ -100,7 +100,6 @@ const OrderMain = () => {
           setProducts(productsArray);
 
           setReview(response.data);
-          console.log(response.data);
         } else {
           console.error("No data");
         }
@@ -191,13 +190,6 @@ const OrderMain = () => {
                   >
                     바로구매
                   </Button>
-
-                  <BsBookmarkStar
-                    style={{
-                      width: "3vh",
-                      height: "3vh",
-                    }}
-                  />
                 </div>
               </div>
 

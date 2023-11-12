@@ -34,9 +34,19 @@ export const Form = styled.article`
 `;
 
 export const Button = styled.button`
-  margin-left: 10px;
   width: 582px;
   height: 54px;
+  border: none;
+  background-color: #35c5f0;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  border: 1px solid #dbdbdb;
+  :hover {
+    transition: 0.3s;
+    background-color: #009fce;
+  }
 `;
 
 export const BestItem = styled.div`
@@ -59,16 +69,17 @@ export const Pd = styled.textarea`
 `;
 export const UseContainer = styled.div`
   margin-top: 50px;
-  height: 740px;
+  height: 750px;
   width: 800px;
   border: 1px solid;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: right;
   align-items: center;
 
   .useProfile {
-    margin-top: 50px;
+    margin-top: 100px;
     width: 800px;
     text-align: center;
     align-items: center;
@@ -107,27 +118,32 @@ export const UseContainer = styled.div`
 
 export const UseName = styled.input`
   width: 576px;
-  height: 54px;
+  height: 20px;
   margin-bottom: 1vw;
   /* border-radius: 10px; */
+  font-size: large;
+  padding: 15px;
 `;
 export const Usephone = styled.input`
   width: 576px;
-  height: 54px;
-  /* border-radius: 10px; */
+  height: 20px;
+  padding: 15px;
+  font-size: large;
 `;
 
 export const Address = styled.input`
   margin-top: 20px;
   margin-bottom: 1vw;
   width: 576px;
-  height: 54px;
-  /* border-radius: 10px; */
+  height: 20px;
+  padding: 15px;
+  font-size: large;
 `;
 export const DetailedAddress = styled.input`
   width: 576px;
-  height: 54px;
-  /* border-radius: 10px; */
+  height: 20px;
+  padding: 15px;
+  font-size: large;
 `;
 export const PurchasedContainer = styled.div`
   display: flex;
@@ -137,11 +153,14 @@ export const PurchasedContainer = styled.div`
   justify-content: space-between;
   height: 415px;
   border: 1px solid;
+  border-radius: 10px;
 
   align-items: center;
 
   .productId {
-    padding: 10px 0px 5px 10px;
+    padding: 5px 0px 5px 10px;
+    font-family: SBAggroB;
+    font-size: large;
   }
   .imge {
     padding-top: 40px;
@@ -157,6 +176,7 @@ export const PurchasedContainer = styled.div`
 
     .productName {
       margin-top: 40px;
+      font-family: "Noto Sans KR", sans-serif;
     }
     .productTotal {
       margin-top: 20px;
@@ -205,6 +225,7 @@ export const Payment = styled.div`
   border: 1px solid;
   padding: 10px;
   gap: 20px;
+  border-radius: 15px;
   .bankbook {
     display: flex;
     flex-direction: row;
@@ -221,6 +242,7 @@ export const Payment = styled.div`
     .inputtext {
       /* width: 450px; */
       height: 30px;
+      padding: 5px;
     }
   }
   .paymentbutton {

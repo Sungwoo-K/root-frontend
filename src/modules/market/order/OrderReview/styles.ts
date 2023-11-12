@@ -48,7 +48,7 @@ export const Reviewbox = styled.article`
     font-family: TTWanjudaedunsancheB;
   }
   .reviewcount {
-    padding: 10px;
+    padding: 10px 10px 10px 0px;
     display: flex;
     > span {
       padding: 5px;
@@ -57,10 +57,15 @@ export const Reviewbox = styled.article`
       padding: 5px;
       margin-left: 20px;
     }
+    .star {
+      color: gold;
+      font-size: 18px;
+    }
   }
   .reviewcontent {
     padding: 10px;
     font-family: SUITE-Regular;
+    font-size: large;
   }
 `;
 

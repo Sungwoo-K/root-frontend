@@ -31,6 +31,9 @@ export const OrederBuy = () => {
     productId: id,
     quantity: count,
     address: "",
+    detailaddress: "",
+    username: "",
+    phonenumber: "",
     brandName: String,
     productPrice: totalPrice,
     productName: String,
@@ -44,6 +47,9 @@ export const OrederBuy = () => {
         productId: formData.productId,
         quantity: formData.quantity,
         address: formData.address,
+        detailaddress: formData.detailaddress,
+        username: formData.username,
+        phonenumber: formData.phonenumber,
         brandName: formData.brandName,
         productPrice: formData.productPrice,
         productName: formData.productName,
@@ -127,7 +133,9 @@ export const OrederBuy = () => {
               </PurchasedContainer>
               <Payment>
                 <div>
-                  <p>결제수단</p>
+                  <p style={{ fontFamily: "SBAggroB", fontSize: "large" }}>
+                    결제수단
+                  </p>
                 </div>
                 <div className="bankbook">
                   <input type="radio" checked={isChecked} />
@@ -141,7 +149,7 @@ export const OrederBuy = () => {
                   <p>주문 후 n시간 동안 미입금시 자동 취소됩니다.</p>
                 </div>
                 <div className="paymentbutton">
-                  <button onClick={fetch}>결제하기</button>
+                  <Button onClick={fetch}>결제하기</Button>
                 </div>
               </Payment>
             </div>
@@ -155,12 +163,18 @@ export const OrederBuy = () => {
                     type="text"
                     placeholder="이름을입력해주세요."
                     required
+                    name="username"
+                    value={formData.username}
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div>
                   <Usephone
                     type="text"
                     placeholder="전화번호를입력해주세요."
+                    name="phonenumber"
+                    value={formData.phonenumber}
+                    onChange={handleInputChange}
                     required
                   />
                 </div>
@@ -169,26 +183,26 @@ export const OrederBuy = () => {
                 <div>
                   <p>배송지 정보</p>
                 </div>
-                <div className="deliveryprofile">
-                  <input
-                    type="text"
-                    className="deliveryuser"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleInputChange}
-                  />
+                {/* <div className="deliveryprofile">
+                  <input type="text" className="deliveryuser" name="address" />
                   <input type="text" className="deliveryuser" />
-                </div>
+                </div> */}
                 <div>
                   <Address
                     type="text"
                     placeholder="주소를입력해주세요."
                     required
+                    name="address"
+                    value={formData.address}
+                    onChange={handleInputChange}
                   />
                   <DetailedAddress
                     type="text"
                     placeholder="상세주소를입력해주세요."
                     required
+                    name="deatiladdress"
+                    value={formData.detailaddress}
+                    onChange={handleInputChange}
                   />
                 </div>
               </div>

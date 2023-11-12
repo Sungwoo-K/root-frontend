@@ -3,10 +3,10 @@ import { Container, Product } from "./styles";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { RiShoppingCartFill, RiShoppingCartLine } from "react-icons/ri";
-import { useCart } from "@/modules/market/product/market/data";
+import { ProductItem, useCart } from "@/modules/market/product/market/data";
 import http from "@/utils/http";
 import { ReviceItem } from "../../Shopping/Review";
-import { ProductItem } from "@/modules/market/product/market/Products";
+
 import { all } from "axios";
 
 export const Scrap = () => {
@@ -25,8 +25,8 @@ export const Scrap = () => {
         `http://192.168.100.109:8080/scrap`
       );
       const products = response.data;
-      //   console.log(products);
       setProducts(products);
+      console.log(response.data);
 
       const fetchPromises = products.map(async (product) => {
         console.log(product.productId);
@@ -38,7 +38,7 @@ export const Scrap = () => {
 
       const fetResult = await Promise.all(fetchPromises);
       setAllproducts(fetResult);
-      console.log(allproducts);
+      // console.log(allproducts);
     };
 
     fetchData();
@@ -49,7 +49,7 @@ export const Scrap = () => {
   };
   const cartAddHandle = (productId) => {
     const newCarts = [...carts, productId];
-    console.log(newCarts);
+
     setCart(newCarts);
   };
   return (

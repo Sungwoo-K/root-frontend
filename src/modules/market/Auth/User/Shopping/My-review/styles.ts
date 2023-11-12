@@ -38,21 +38,27 @@ export const Reviewbox = styled.article`
     }
   }
   .reviewcount {
-    padding: 10px;
+    padding: 20px 10px 10px 0px;
+
     display: flex;
     > span {
       padding: 5px;
     }
     > div {
       padding: 5px;
-      margin-left: 20px;
+      margin-left: 10px;
+      display: flex;
+      align-items: flex-end;
+    }
+    .star {
+      color: gold;
+      font-size: medium;
     }
   }
   .reviewcontent {
-    padding: 5px;
-
-    > article {
+    padding: 10px 0px 0px 10px;
       font-family: TheJamsil5Bold;
+      font-size: large;
     }
   }
 `;

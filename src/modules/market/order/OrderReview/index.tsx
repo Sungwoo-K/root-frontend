@@ -13,18 +13,34 @@ export interface review {
 export const Revieworder = () => {
   const [products, setProducts] = useState([]);
   const { id } = useParams();
-  console.log(id);
+  const [review, setReview] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await http.get<ReviceItem[]>(
+      const response = await http.get<review[]>(
         `http://192.168.100.109:8080/review/${id}`
       );
-      // console.log(`http://192.168.100.109:8080/review/${id}`);
+
       setProducts(response.data);
-      console.log(response.data);
     };
     fetchData();
   }, []);
+
+  function convertToStars(score) {
+    switch (score) {
+      case 1:
+        return "★☆☆☆☆";
+      case 2:
+        return "★★☆☆☆";
+      case 3:
+        return "★★★☆☆";
+      case 4:
+        return "★★★★☆";
+      case 5:
+        return "★★★★★";
+      default:
+        return "☆☆☆☆☆";
+    }
+  }
   return (
     <>
       <Container>
@@ -32,7 +48,7 @@ export const Revieworder = () => {
           <Reviewbox key={item.id}>
             <div className="reviewnickname">{item.nickname}</div>
             <div className="reviewcount">
-              <span>{item.reviewCount} </span>
+              <span className="star">{convertToStars(item.reviewCount)} </span>
               <div>{item.orderdate}</div>
             </div>
             <div className="reviewcontent">{item.reviewContent}</div>

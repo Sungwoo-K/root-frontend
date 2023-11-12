@@ -47,6 +47,7 @@ export const Contentdiv = styled.div`
   justify-content: center;
   align-items: center;
   gap: 15vh;
+  border-radius: 10px;
 `;
 
 export const Mainimg = styled.img`
@@ -211,7 +212,7 @@ export const Addinformation = styled.div`
 
 export const Button = styled.button`
   gap: 30px;
-  width: 45%;
+  width: 180px;
   height: 47px;
   border: none;
   background-color: #35c5f0;
@@ -225,7 +226,7 @@ export const Button = styled.button`
 export const Price = styled.div`
   display: flex;
   font-size: x-large;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 0px 10px 10px;
   flex-direction: row-reverse;
 `;
 
