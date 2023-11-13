@@ -33,7 +33,6 @@ export const Inquerybox = styled.article`
     padding: 10px;
     font-family: GmarketSansMedium;
     > span {
-      /* position: absolute; */
       top: 0;
       left: 0;
       color: #35c5f0;
@@ -45,6 +44,7 @@ export const Inquerybox = styled.article`
     margin-top: 60px;
   }
   .productanswer {
+    margin-top: 30px;
     display: flex;
     padding: 10px;
     font-family: GmarketSansMedium;

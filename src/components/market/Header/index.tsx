@@ -31,7 +31,7 @@ import { LuArrowBigDown, LuArrowBigRight } from "react-icons/lu";
 import { PiArrowSquareDownLight } from "react-icons/pi";
 import { useHover } from "./data";
 
-const main = () => {
+export const main = () => {
   const [isMenu, setIsMenu] = useState(false);
 
   const [isList, setIsList] = useState(false);
@@ -48,12 +48,10 @@ const main = () => {
 
   const ToggleSidebar = () => {
     isMenu === true ? setIsMenu(false) : setIsMenu(true);
-    console.log(isMenu);
   };
 
   const Togglelist = () => {
     isList === true ? setIsList(false) : setIsList(true);
-    console.log(isList);
   };
 
   return (
@@ -268,10 +266,6 @@ const main = () => {
             <hr />
           </Menudiv>
         </div>
-        <div
-          className={`sidebar-overlay ${isMenu == true ? "active" : ""}`}
-          onClick={ToggleSidebar}
-        ></div>
 
         <Campdiv>
           <Link
@@ -290,6 +284,10 @@ const main = () => {
           </form>
         </Inputdiv>
       </Hedaerline>
+      <div
+        className={`sidebar-overlay ${isMenu == true ? "active" : ""}`}
+        onClick={ToggleSidebar}
+      ></div>
     </Header>
   );
 };

@@ -26,19 +26,16 @@ export const Scrap = () => {
       );
       const products = response.data;
       setProducts(products);
-      console.log(products);
 
       const fetchPromises = products.map(async (product) => {
         const productResponse = await http.get<ProductItem[]>(
           `http://192.168.100.159:8080/product/brands/${product.brandName}`
         );
-        console.log(productResponse.data);
         return productResponse.data;
       });
 
       const fetResult = await Promise.all(fetchPromises);
       setAllproducts(fetResult);
-      console.log(allproducts);
     };
 
     fetchData();

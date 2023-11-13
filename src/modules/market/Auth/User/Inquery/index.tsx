@@ -47,8 +47,6 @@ export const Inquery = () => {
       );
 
       const responseData = response.data;
-      console.log(responseData.totalElements);
-      console.log(responseData.content);
       setProducts(responseData.content);
     };
     fetch();

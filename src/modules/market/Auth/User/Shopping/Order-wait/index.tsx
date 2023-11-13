@@ -5,7 +5,6 @@ import http from "@/utils/http";
 import { ReviceItem } from "../Review";
 
 export const Orderdetail = () => {
-  // const { carts, setCart } = useCart();
   const [stars, setStar] = useState([]);
 
   const [products, setProducts] = useState([]);
@@ -21,7 +20,7 @@ export const Orderdetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await http.get<ReviceItem[]>(
-        `http://192.168.100.109:8080/order/user/true`
+        `http://192.168.100.109:8080/order/user/wait`
       );
       setProducts(response.data);
     };

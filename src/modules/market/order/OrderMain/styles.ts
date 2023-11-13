@@ -19,6 +19,7 @@ export const Container = styled.div`
   }
 
   .sideimg {
+    border: 1px solid;
     display: flex;
     width: 95%;
     height: 20%;
@@ -57,6 +58,7 @@ export const Mainimg = styled.img`
   width: 660px;
   height: 450px;
   margin-bottom: 20px;
+  border: 1px solid #dbdbdb;
 `;
 
 export const Imgbox = styled.div`
@@ -76,6 +78,9 @@ export const Imgbox = styled.div`
       margin-right: 10px;
       width: 158px;
       height: 120px;
+      > img {
+        cursor: pointer;
+      }
     }
   }
 `;
@@ -86,6 +91,12 @@ export const Information = styled.div`
   justify-content: flex-start;
   width: 457px;
   height: 600px;
+  > h1 {
+    margin-left: 10px;
+    font-family: yg-jalnan;
+    font-size: medium;
+  }
+
   .star {
     color: gold;
     font-size: 24px;
@@ -102,6 +113,7 @@ export const Information = styled.div`
 
   .title {
     padding: 10px;
+    font-family: SBAggroB;
 
     font-size: 18px;
   }
@@ -115,6 +127,7 @@ export const Information = styled.div`
     height: 402px;
     padding-top: 30px;
     position: relative;
+    font-family: Jeongnimsaji-R;
   }
   .productorder {
     width: 100%;
@@ -182,6 +195,10 @@ export const Addinformation = styled.div`
 
   width: 1400px;
   cursor: pointer;
+  .product.active {
+    background: #dbdbdb;
+    color: #555;
+  }
   .productoption {
     width: 100%;
 
@@ -199,7 +216,7 @@ export const Addinformation = styled.div`
     height: 100%;
   }
   .product {
-    width: 33%;
+    width: 470px;
     height: 100%;
     font-size: large;
     display: flex;

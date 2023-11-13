@@ -8,6 +8,7 @@ import http from "@/utils/http";
 import { ReviceItem } from "../../Shopping/Review";
 
 import { all } from "axios";
+import { TbNewSection } from "react-icons/tb";
 
 export const Scrap = () => {
   const location = useLocation();
@@ -17,7 +18,7 @@ export const Scrap = () => {
 
   const [products, setProducts] = useState([]);
   const [allproducts, setAllproducts] = useState([]);
-  const { carts, setCart } = useCart();
+  const { carts, setCart } = useCart("true");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,10 +27,8 @@ export const Scrap = () => {
       );
       const products = response.data;
       setProducts(products);
-      console.log(response.data);
 
       const fetchPromises = products.map(async (product) => {
-        console.log(product.productId);
         const productResponse = await http.get<ProductItem[]>(
           `http://192.168.100.159:8080/product/${product.productId}`
         );
@@ -38,7 +37,6 @@ export const Scrap = () => {
 
       const fetResult = await Promise.all(fetchPromises);
       setAllproducts(fetResult);
-      // console.log(allproducts);
     };
 
     fetchData();
@@ -51,6 +49,15 @@ export const Scrap = () => {
     const newCarts = [...carts, productId];
 
     setCart(newCarts);
+
+    const fetch = async () => {
+      await http.delete(
+        `http://192.168.100.109:8080/scrap/delete/${productId}`
+      );
+    };
+    alert("장바구니에서 제거 되었습니다.");
+    window.location.replace("/myfavorite/list/scrap");
+    fetch();
   };
   return (
     <>
@@ -63,7 +70,6 @@ export const Scrap = () => {
               }}
             >
               <div key={product.id}>
-                <p>{product.id}</p>
                 <p
                   onClick={(e) => {
                     e.stopPropagation();

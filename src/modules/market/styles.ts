@@ -6,6 +6,7 @@ export const Container = styled.div`
   flex-wrap: nowrap;
   overflow: hidden;
   height: 100vh;
+  z-index: 0;
 `;
 
 export const Item = styled.div`

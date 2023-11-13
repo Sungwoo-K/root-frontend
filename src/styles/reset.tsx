@@ -237,6 +237,13 @@ const ResetStyle = () => {
           font-weight: normal;
           font-style: normal;
         }
+        @font-face {
+          font-family: "Jeongnimsaji-R";
+          src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/Jeongnimsaji-R.woff2")
+            format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
       `}
     />
   );

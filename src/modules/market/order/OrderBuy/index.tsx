@@ -16,6 +16,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { ProductItem } from "../../product/market/data";
 import http from "@/utils/http";
 import { BrandName } from "../../auth/User/Shopping/Order/styles";
+import { RequestPayParams, RequestPayResponse } from "../data";
 
 export const OrederBuy = () => {
   const priceRef = useRef() as MutableRefObject<HTMLInputElement>;
@@ -26,6 +27,7 @@ export const OrederBuy = () => {
   const [products, setProducts] = useState([]);
   const [isChecked, setIsChecked] = useState(true);
   const [totalPrice, setTotalPrice] = useState<number>();
+  const [merchant, setMerchant] = useState<String>();
 
   const [formData, setFormdata] = useState({
     productId: id,
@@ -37,30 +39,11 @@ export const OrederBuy = () => {
     brandName: String,
     productPrice: totalPrice,
     productName: String,
+    imp_uid: merchant,
   });
-
-  const fetch = async (e) => {
-    e.preventDefault();
-    const response = await http.post(
-      `http://192.168.100.109:8080/order/${id}`,
-      {
-        productId: formData.productId,
-        quantity: formData.quantity,
-        address: formData.address,
-        detailaddress: formData.detailaddress,
-        username: formData.username,
-        phonenumber: formData.phonenumber,
-        brandName: formData.brandName,
-        productPrice: formData.productPrice,
-        productName: formData.productName,
-      }
-    );
-    console.log(response);
-  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
 
     setFormdata({
       ...formData,
@@ -86,6 +69,52 @@ export const OrederBuy = () => {
     };
     fetch();
   }, [id]);
+
+  const onClickPayment = () => {
+    if (!window.IMP) return;
+
+    const { IMP } = window;
+    IMP.init("imp44351413");
+
+    const data: RequestPayParams = {
+      pg: "kakaopay",
+      pay_method: "card",
+      merchant_uid: `mid_${new Date().getTime()}`,
+      amount: totalPrice,
+      name: formData.productId,
+      buyer_name: formData.username,
+      buyer_tel: formData.phonenumber,
+      buyer_addr: formData.address,
+      buyer_postcode: formData.detailaddress,
+    };
+
+    IMP.request_pay(data, callback);
+  };
+
+  const callback = async (response: RequestPayResponse) => {
+    const { success, error_msg, merchant_uid } = response;
+    const { imp_uid } = response;
+    if (success) {
+      const response = await http.post(
+        `http://192.168.100.109:8080/order/${id}`,
+        {
+          productId: formData.productId,
+          quantity: formData.quantity,
+          address: formData.address,
+          detailaddress: formData.detailaddress,
+          username: formData.username,
+          imp_uid: imp_uid,
+          phonenumber: formData.phonenumber,
+          brandName: formData.brandName,
+          productPrice: formData.productPrice,
+          productName: formData.productName,
+        }
+      );
+      alert("결제가 완료되셨습니다.");
+    } else {
+      alert(`결제 실패: ${error_msg}`);
+    }
+  };
 
   return (
     <>
@@ -137,19 +166,12 @@ export const OrederBuy = () => {
                     결제수단
                   </p>
                 </div>
-                <div className="bankbook">
-                  <input type="radio" checked={isChecked} />
-                  <p>무통장 입금</p>
-                </div>
-                <div className="selectbank">
-                  <select name="" className="input"></select>
-                  <input type="text" className="inputtext" />
-                </div>
+
                 <div>
-                  <p>주문 후 n시간 동안 미입금시 자동 취소됩니다.</p>
+                  <p>모든 정보를 기입하신 후 결제하기 버튼을 클릭해주세요.</p>
                 </div>
                 <div className="paymentbutton">
-                  <Button onClick={fetch}>결제하기</Button>
+                  <Button onClick={onClickPayment}>결제하기</Button>
                 </div>
               </Payment>
             </div>
@@ -183,10 +205,7 @@ export const OrederBuy = () => {
                 <div>
                   <p>배송지 정보</p>
                 </div>
-                {/* <div className="deliveryprofile">
-                  <input type="text" className="deliveryuser" name="address" />
-                  <input type="text" className="deliveryuser" />
-                </div> */}
+
                 <div>
                   <Address
                     type="text"
@@ -200,7 +219,7 @@ export const OrederBuy = () => {
                     type="text"
                     placeholder="상세주소를입력해주세요."
                     required
-                    name="deatiladdress"
+                    name="detailaddress"
                     value={formData.detailaddress}
                     onChange={handleInputChange}
                   />

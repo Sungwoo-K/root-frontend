@@ -16,6 +16,14 @@ const Orderdetail = lazy(
 const Reviewdetail = lazy(
   () => import("@/modules/market/auth/User/Shopping/Review")
 );
+
+const Orderfail = lazy(
+  () => import("@/modules/market/auth/User/Shopping/Order-fail")
+);
+
+const Orderwait = lazy(
+  () => import("@/modules/market/auth/User/Shopping/Order-wait")
+);
 const MyReview = lazy(
   () => import("@/modules/market/auth/User/Shopping/My-review")
 );
@@ -40,6 +48,8 @@ export const userRoutes = [
   <Route path="/myorder" key="order" element={<Layout />}>
     <Route path="list" key="order-list" element={<Shoppinghistory />}>
       <Route path="detail" key="order-detail" element={<Orderdetail />} />
+      <Route path="fail" key="order-fail" element={<Orderfail />} />
+      <Route path="wait" key="order-wait" element={<Orderwait />} />
       <Route path="review" key="review-detail" element={<Reviewdetail />} />
       <Route path="my-review" key="my-review" element={<MyReview />} />
       <Route path="inquery" key="my-inquery" element={<Inquery />} />

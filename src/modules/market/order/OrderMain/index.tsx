@@ -30,6 +30,7 @@ import Inqueryorderqna from "../Orderinquiryqna";
 import { ImStarFull } from "react-icons/im";
 import http from "@/utils/http";
 import { ReviewCount } from "../../auth/User/Shopping/Review/styles";
+import Orderdetail from "../Orderdetail";
 
 export interface ReviceItem {
   id: number;
@@ -85,6 +86,13 @@ const OrderMain = () => {
   };
   const navigate = useNavigate();
 
+  const handleImageClick = (mainImageUuidName) => {
+    const mainImage = document.getElementById(mainImageUuidName);
+
+    if (mainImage) {
+      mainImage.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -131,6 +139,7 @@ const OrderMain = () => {
             <div className="imgtotal">
               <Imgbox>
                 <Mainimg
+                  id={product.mainImageUuidName} // Add id to main image
                   src={`http://192.168.100.159:8080/product/files/${product.mainImageUuidName}`}
                 />
                 <div className="sidediv">
@@ -140,6 +149,9 @@ const OrderMain = () => {
                       className="sideimg"
                       src={`http://192.168.100.159:8080/product/files/${image}`}
                       alt={`Side Image ${index + 1}`}
+                      onClick={() =>
+                        handleImageClick(product.mainImageUuidName)
+                      }
                     />
                   ))}
                 </div>
@@ -228,7 +240,11 @@ const OrderMain = () => {
                 </li>
               </ol>
             </nav>
-            {selectedTab === "상품정보" && <div className="product-info"></div>}
+            {selectedTab === "상품정보" && (
+              <div className="product-info">
+                <Orderdetail />
+              </div>
+            )}
 
             {selectedTab === "상품리뷰" && (
               <div className="product-review">

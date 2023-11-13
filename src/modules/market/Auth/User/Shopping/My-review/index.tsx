@@ -35,7 +35,6 @@ export const Myreview = () => {
   return (
     <>
       <Container>
-        <Title>내가 작성한 리뷰</Title>
         {products.map((item) => (
           <Reviewbox key={item.id}>
             <div className="productname">
@@ -53,6 +52,12 @@ export const Myreview = () => {
             </div>
             <div className="reviewcontent">
               <article>{item.reviewContent}</article>
+              <br />
+              <br />
+              <span>{item.productName}</span>
+              <p className="answercontent">
+                {item.reviewAnswer || "문의하신 답변이 없습니다."}
+              </p>
             </div>
             <div style={{ marginTop: "20px", border: "1px solid #dbdbdb" }} />
           </Reviewbox>

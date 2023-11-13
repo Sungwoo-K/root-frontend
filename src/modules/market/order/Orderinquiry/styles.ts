@@ -142,6 +142,21 @@ export const Container = styled.div`
     height: 70%;
     width: 40%;
   }
+  .headbar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: 0.3s;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .headbar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
   .headerdiv {
     display: flex;
     justify-content: space-between;

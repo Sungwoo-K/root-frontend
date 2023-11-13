@@ -120,7 +120,6 @@ export const UseName = styled.input`
   width: 576px;
   height: 20px;
   margin-bottom: 1vw;
-  /* border-radius: 10px; */
   font-size: large;
   padding: 15px;
 `;
@@ -240,7 +239,6 @@ export const Payment = styled.div`
       height: 30px;
     }
     .inputtext {
-      /* width: 450px; */
       height: 30px;
       padding: 5px;
     }
