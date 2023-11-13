@@ -5,7 +5,7 @@ import ButtonEvent from "@/components/market/ButtonEvent";
 import Inqueryorderqna from "../Orderinquiryqna";
 import { useParams } from "react-router-dom";
 import http from "@/utils/http";
-import { ProductItem } from "../../product/market/Products";
+import { ProductItem } from "../../product/market/data";
 
 export const Inquiryorder = () => {
   const { id } = useParams();
@@ -30,15 +30,21 @@ export const Inquiryorder = () => {
   });
 
   const inqueryPost = async () => {
-    await http.post(`http://192.168.100.109:8080/inquery/menu/${id}`, {
-      userLoginId: formData.userLoginId,
-      username: formData.username,
-      productId: formData.productId,
-      brandName: formData.brandName,
-      inqueryCategory: formData.inqueryCategory,
-      inqueryContent: formData.inqueryContent,
-      productName: formData.productName,
-    });
+    try {
+      await http.post(`http://192.168.100.109:8080/inquery/menu/${id}`, {
+        userLoginId: formData.userLoginId,
+        username: formData.username,
+        productId: formData.productId,
+        brandName: formData.brandName,
+        inqueryCategory: formData.inqueryCategory,
+        inqueryContent: formData.inqueryContent,
+        productName: formData.productName,
+      });
+      alert("문의가 완료되었습니다");
+      location.reload();
+    } catch (error) {
+      console.error("문의 작성 중 오류 발생:", error);
+    }
   };
   useEffect(() => {
     const fetch = async () => {
@@ -81,6 +87,9 @@ export const Inquiryorder = () => {
       inqueryCategory: categories[value],
     }));
   };
+  const ToggleSidebar = () => {
+    isMenu === true ? setIsMenu(false) : setIsMenu(true);
+  };
 
   return (
     <>
@@ -122,6 +131,10 @@ export const Inquiryorder = () => {
             </div>
           </div>
         </div>
+        <div
+          className={`headbar-overlay ${isMenu == true ? "active" : ""}`}
+          onClick={ToggleSidebar}
+        ></div>
         <div className="headerdiv">
           <h1 className="list-title">상품문의</h1>
 

@@ -31,7 +31,7 @@ import { LuArrowBigDown, LuArrowBigRight } from "react-icons/lu";
 import { PiArrowSquareDownLight } from "react-icons/pi";
 import { useHover } from "./data";
 
-const main = () => {
+export const main = () => {
   const [isMenu, setIsMenu] = useState(false);
 
   const [isList, setIsList] = useState(false);
@@ -48,12 +48,10 @@ const main = () => {
 
   const ToggleSidebar = () => {
     isMenu === true ? setIsMenu(false) : setIsMenu(true);
-    console.log(isMenu);
   };
 
   const Togglelist = () => {
     isList === true ? setIsList(false) : setIsList(true);
-    console.log(isList);
   };
 
   return (
@@ -98,12 +96,8 @@ const main = () => {
                     <TiShoppingCart style={{ width: "35px", height: "30px" }} />
                   </Icon>
                 </Iconbutton>
-                <Link
-                  to="http://localhost:5000/myfavorite/list/scrap"
-                  className="Linknav"
-                >
-                  <SideMenu>장바구니</SideMenu>
-                </Link>
+
+                <SideMenu>장바구니</SideMenu>
               </Button>
             </Link>
 
@@ -272,10 +266,6 @@ const main = () => {
             <hr />
           </Menudiv>
         </div>
-        <div
-          className={`sidebar-overlay ${isMenu == true ? "active" : ""}`}
-          onClick={ToggleSidebar}
-        ></div>
 
         <Campdiv>
           <Link
@@ -294,6 +284,10 @@ const main = () => {
           </form>
         </Inputdiv>
       </Hedaerline>
+      <div
+        className={`sidebar-overlay ${isMenu == true ? "active" : ""}`}
+        onClick={ToggleSidebar}
+      ></div>
     </Header>
   );
 };

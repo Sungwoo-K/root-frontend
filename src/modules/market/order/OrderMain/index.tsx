@@ -1,6 +1,12 @@
 import { BsBookmarkStar } from "react-icons/bs";
 
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  json,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import {
   Addinformation,
@@ -24,6 +30,7 @@ import Inqueryorderqna from "../Orderinquiryqna";
 import { ImStarFull } from "react-icons/im";
 import http from "@/utils/http";
 import { ReviewCount } from "../../auth/User/Shopping/Review/styles";
+import Orderdetail from "../Orderdetail";
 
 export interface ReviceItem {
   id: number;
@@ -79,6 +86,13 @@ const OrderMain = () => {
   };
   const navigate = useNavigate();
 
+  const handleImageClick = (mainImageUuidName) => {
+    const mainImage = document.getElementById(mainImageUuidName);
+
+    if (mainImage) {
+      mainImage.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -92,6 +106,7 @@ const OrderMain = () => {
         if (fetch.data || response.data) {
           const productsArray = [fetch.data];
           setProducts(productsArray);
+
           setReview(response.data);
         } else {
           console.error("No data");
@@ -103,7 +118,19 @@ const OrderMain = () => {
 
     fetchData();
   }, [id]);
+
+  const scrapEvent = async () => {
+    const response = await http.post(`http://192.168.100.109:8080/scrap/${id}`);
+
+    if (response && response.status == 409) {
+      alert("이미 장바구니 등록 되어 있습니다.");
+    } else {
+      alert("장바구니에 등록을 완료하였습니다.");
+    }
+  };
+
   const starRating = convertToStars(review.reviewTotal);
+
   return (
     <>
       <Container>
@@ -112,6 +139,7 @@ const OrderMain = () => {
             <div className="imgtotal">
               <Imgbox>
                 <Mainimg
+                  id={product.mainImageUuidName} // Add id to main image
                   src={`http://192.168.100.159:8080/product/files/${product.mainImageUuidName}`}
                 />
                 <div className="sidediv">
@@ -121,6 +149,9 @@ const OrderMain = () => {
                       className="sideimg"
                       src={`http://192.168.100.159:8080/product/files/${image}`}
                       alt={`Side Image ${index + 1}`}
+                      onClick={() =>
+                        handleImageClick(product.mainImageUuidName)
+                      }
                     />
                   ))}
                 </div>
@@ -155,6 +186,7 @@ const OrderMain = () => {
                 <div className="clickmenu">
                   <Button
                     style={{ backgroundColor: "white", color: "#0f5ca8" }}
+                    onClick={scrapEvent}
                   >
                     장바구니
                   </Button>
@@ -170,13 +202,6 @@ const OrderMain = () => {
                   >
                     바로구매
                   </Button>
-
-                  <BsBookmarkStar
-                    style={{
-                      width: "3vh",
-                      height: "3vh",
-                    }}
-                  />
                 </div>
               </div>
 
@@ -215,7 +240,11 @@ const OrderMain = () => {
                 </li>
               </ol>
             </nav>
-            {selectedTab === "상품정보" && <div className="product-info"></div>}
+            {selectedTab === "상품정보" && (
+              <div className="product-info">
+                <Orderdetail />
+              </div>
+            )}
 
             {selectedTab === "상품리뷰" && (
               <div className="product-review">

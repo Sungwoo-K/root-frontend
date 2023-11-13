@@ -21,7 +21,7 @@ export const Orderdetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await http.get<ReviceItem[]>(
-        `http://192.168.100.109:8080/order/user/true`
+        `http://192.168.100.109:8080/order/user/false`
       );
       setProducts(response.data);
     };

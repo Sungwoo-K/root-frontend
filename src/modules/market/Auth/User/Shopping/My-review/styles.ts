@@ -3,8 +3,9 @@ import styled from "@emotion/styled";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
+  margin-bottom: 90px;
+  width: 1420px;
+  padding-left: 80px;
 `;
 
 export const Button = styled.button`
@@ -19,11 +20,12 @@ export const Button = styled.button`
 
 export const Reviewbox = styled.article`
   width: 1400px;
-  height: 100vw;
+  height: 100px;
   margin-left: 200px;
+
   display: block;
   flex-direction: column;
-  margin-top: 30px;
+  margin-top: 100px;
   user-select: none;
   margin-bottom: 90px;
 
@@ -38,21 +40,35 @@ export const Reviewbox = styled.article`
     }
   }
   .reviewcount {
-    padding: 10px;
+    padding: 20px 10px 10px 0px;
+
     display: flex;
     > span {
       padding: 5px;
     }
     > div {
       padding: 5px;
-      margin-left: 20px;
+      margin-left: 10px;
+      display: flex;
+      align-items: flex-end;
+    }
+    .star {
+      color: gold;
+      font-size: medium;
     }
   }
   .reviewcontent {
-    padding: 5px;
-
-    > article {
+    padding: 10px 0px 0px 10px;
       font-family: TheJamsil5Bold;
+      font-size: large;
+      .answercontent{
+        margin-top: 10px;
+        font-family: answercontent;
+      }
+      >span{
+        margin-bottom: 10px;
+        color: skyblue;
+      }
     }
   }
 `;

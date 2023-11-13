@@ -7,15 +7,7 @@ export const Container = styled.div`
   height: 100%;
   justify-content: center;
   align-items: center;
-  .contentdiv {
-    width: 100%;
-    height: 700px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 15vh;
-  }
+
   .imgtotal {
     display: flex;
     flex-direction: column;
@@ -27,6 +19,7 @@ export const Container = styled.div`
   }
 
   .sideimg {
+    border: 1px solid;
     display: flex;
     width: 95%;
     height: 20%;
@@ -49,12 +42,13 @@ export const Container = styled.div`
 `;
 
 export const Contentdiv = styled.div`
-  width: 100%;
+  width: 1920px;
   height: 700px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15vh;
+  border-radius: 10px;
 `;
 
 export const Mainimg = styled.img`
@@ -64,6 +58,7 @@ export const Mainimg = styled.img`
   width: 660px;
   height: 450px;
   margin-bottom: 20px;
+  border: 1px solid #dbdbdb;
 `;
 
 export const Imgbox = styled.div`
@@ -83,6 +78,9 @@ export const Imgbox = styled.div`
       margin-right: 10px;
       width: 158px;
       height: 120px;
+      > img {
+        cursor: pointer;
+      }
     }
   }
 `;
@@ -93,6 +91,12 @@ export const Information = styled.div`
   justify-content: flex-start;
   width: 457px;
   height: 600px;
+  > h1 {
+    margin-left: 10px;
+    font-family: yg-jalnan;
+    font-size: medium;
+  }
+
   .star {
     color: gold;
     font-size: 24px;
@@ -109,6 +113,7 @@ export const Information = styled.div`
 
   .title {
     padding: 10px;
+    font-family: SBAggroB;
 
     font-size: 18px;
   }
@@ -122,6 +127,7 @@ export const Information = styled.div`
     height: 402px;
     padding-top: 30px;
     position: relative;
+    font-family: Jeongnimsaji-R;
   }
   .productorder {
     width: 100%;
@@ -189,6 +195,10 @@ export const Addinformation = styled.div`
 
   width: 1400px;
   cursor: pointer;
+  .product.active {
+    background: #dbdbdb;
+    color: #555;
+  }
   .productoption {
     width: 100%;
 
@@ -206,7 +216,7 @@ export const Addinformation = styled.div`
     height: 100%;
   }
   .product {
-    width: 33%;
+    width: 470px;
     height: 100%;
     font-size: large;
     display: flex;
@@ -219,7 +229,7 @@ export const Addinformation = styled.div`
 
 export const Button = styled.button`
   gap: 30px;
-  width: 45%;
+  width: 180px;
   height: 47px;
   border: none;
   background-color: #35c5f0;
@@ -233,7 +243,7 @@ export const Button = styled.button`
 export const Price = styled.div`
   display: flex;
   font-size: x-large;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 0px 10px 10px;
   flex-direction: row-reverse;
 `;
 

@@ -28,6 +28,7 @@ export const Product = styled.article`
       > p:first-of-type {
         font-size: 15px;
         margin: 10px;
+        font-family: SBAggroB;
       }
 
       > img {
@@ -35,19 +36,25 @@ export const Product = styled.article`
         height: 230px;
         display: block;
         margin: 0 auto;
+        border: 1px solid #dbdbdb;
       }
 
       > p:nth-of-type(2) {
-        font-size: 15px;
+        font-size: x-large;
         margin: 15px;
+        margin-top: 30px;
         word-wrap: break-word;
+        font-family: SBAggroB;
+        align-items: center;
+        text-align: center;
       }
 
       > p:nth-of-type(3) {
         position: absolute;
         right: 10px;
         bottom: 30px;
-        font-size: 15px;
+        font-size: large;
+        font-family: KOTRAHOPE;
       }
       > p:nth-of-type(4) {
         font-size: 15px;

@@ -157,9 +157,6 @@ const EditProfile = () => {
 
                 <Editdiv
                   style={{
-                    // position: 'absolute',
-                    //     padding: 0,
-                    //     overflow: 'hidden',
                     border: 0,
                   }}
                 >

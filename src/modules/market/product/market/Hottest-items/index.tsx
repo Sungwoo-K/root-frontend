@@ -25,7 +25,6 @@ const HottestItems = () => {
     ];
     setCart(newCarts);
   };
-  console.log(topTent);
   useEffect(() => {
     (async () => {
       const response = await http.get<ProductList[]>(
@@ -71,7 +70,6 @@ const HottestItems = () => {
       }
     })();
   }, []);
-  console.log();
   return (
     <>
       <HottestContainer>

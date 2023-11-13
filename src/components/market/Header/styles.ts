@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 
 export const Header = styled.div`
-  background-color: rgb(255, 217, 142, 0.5);
+  /* background-color: rgb(255, 217, 142, 0.5); */
+  background-color: #fff2d8;
   padding: 0cap, 16vh;
   display: flex;
   height: 65px;
@@ -14,11 +15,12 @@ export const Header = styled.div`
     position: fixed;
     top: 0;
     left: -100%;
-    z-index: 99;
-    transition: 0.3s;
+    transition: 0.3ms;
     align-items: center;
   }
   .sidebar.active {
+    z-index: 11;
+    position: fixed;
     left: 0;
   }
   .sidebar-overlay {
@@ -28,12 +30,12 @@ export const Header = styled.div`
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
-    transition: 0.3s;
-    opacity: 0;
+    /* transition: 0.3s; */
     visibility: hidden;
   }
   .sidebar-overlay.active {
     opacity: 1;
+    z-index: 9;
     visibility: visible;
   }
 `;
@@ -57,7 +59,7 @@ export const Menudiv = styled.div`
   }
 
   .menulist li {
-    font-size: medium;
+    font-size: me;
     margin-left: 10px;
   }
 `;
@@ -117,16 +119,14 @@ export const Campdiv = styled.div`
 `;
 
 export const Inputdiv = styled.div`
-  > form {
-    display: flex;
-    flex-direction: row;
-    width: 300px;
-    height: 35px;
-    float: right;
-    justify-content: left;
-    margin-bottom: 10px;
-    margin-right: 2vh;
-  }
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  height: 35px;
+  float: right;
+  justify-content: left;
+  margin-bottom: 10px;
+  margin-right: 2vh;
 `;
 
 export const Iconbutton = styled.button`
@@ -144,7 +144,7 @@ export const Iconbutton = styled.button`
 `;
 
 export const Input = styled.input`
-  width: 300px;
+  width: 250px;
   height: 35px;
 `;
 
@@ -164,6 +164,7 @@ export const Hedaerline = styled.div`
 export const Searchbutton = styled.button`
   width: 40px;
   height: 41px;
+  position: fixed;
   background-color: white;
   border: 1;
 `;

@@ -22,7 +22,6 @@ export const Inqueryorderqna = () => {
       const response = await http.get<review[]>(
         `http://192.168.100.109:8080/inquery/${id}`
       );
-      console.log(response.data);
       setProducts(response.data);
     };
     fetch();
@@ -32,10 +31,11 @@ export const Inqueryorderqna = () => {
       <Container>
         {products.map((item) => (
           <Inquerybox key={item.id}>
-            <div className="productquestion">
-              <span>Q &nbsp;</span>
-              <p>{item.inqueryContent}</p>
+            <div className="productanswer">
+              <span>Q &nbsp;{item.userLoginId}</span>
+              <p>{item.brand}</p>
             </div>
+            <p className="answercontent">{item.inqueryContent}</p>
             <div className="productanswer">
               <span>A &nbsp;{item.productName}</span>
               <p>{item.brand}</p>
