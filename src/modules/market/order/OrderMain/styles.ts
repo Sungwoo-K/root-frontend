@@ -55,10 +55,11 @@ export const Mainimg = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 660px;
-  height: 450px;
+  width: 630px;
+  height: 480px;
   margin-bottom: 20px;
   border: 1px solid #dbdbdb;
+  object-fit: cover;
 `;
 
 export const Imgbox = styled.div`
@@ -92,9 +93,16 @@ export const Information = styled.div`
   width: 457px;
   height: 600px;
   > h1 {
-    margin-left: 10px;
+    cursor: pointer;
+    margin-left: 5px;
     font-family: yg-jalnan;
     font-size: medium;
+    > button {
+      border: none;
+      background-color: white;
+      font-family: yg-jalnan;
+      font-size: medium;
+    }
   }
 
   .star {

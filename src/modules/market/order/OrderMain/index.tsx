@@ -1,12 +1,6 @@
 import { BsBookmarkStar } from "react-icons/bs";
 
-import {
-  Link,
-  json,
-  useLocation,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import {
   Addinformation,
@@ -14,22 +8,15 @@ import {
   Container,
   Contentdiv,
   EventButton,
-  Iconbutton,
   Imgbox,
   Information,
   Mainimg,
   Price,
-  Selectbox,
 } from "./styles";
 import { useEffect, useState } from "react";
-import ButtonEvent from "@/components/market/ButtonEvent";
-import Inquery from "../../auth/User/Inquery";
 import Inquiryorder from "../Orderinquiry";
 import Revieworder from "../OrderReview";
-import Inqueryorderqna from "../Orderinquiryqna";
-import { ImStarFull } from "react-icons/im";
 import http from "@/utils/http";
-import { ReviewCount } from "../../auth/User/Shopping/Review/styles";
 import Orderdetail from "../Orderdetail";
 
 export interface ReviceItem {
@@ -68,6 +55,7 @@ const OrderMain = () => {
   const [plusnum, setPlusnum] = useState<number>(1);
   const [selectedTab, setSelectedTab] = useState("상품정보");
   const [review, setReview] = useState(0);
+  const [testimage, settestimgage] = useState("");
 
   const handleTabClick = (e) => {
     setSelectedTab(e);
@@ -85,13 +73,16 @@ const OrderMain = () => {
     setPlusnum(plusnum - 1);
   };
   const navigate = useNavigate();
+  const handleImageClick = (mainImageUuidName) => (clickedImage) => {
+    settestimgage(clickedImage.target.currentSrc);
+  };
+  const followAction = async (e) => {
+    const path = e.target.innerText;
+    const decodedPath = decodeURI(
+      `http://192.168.100.109:8080/follow/${encodeURIComponent(path)}`
+    );
 
-  const handleImageClick = (mainImageUuidName) => {
-    const mainImage = document.getElementById(mainImageUuidName);
-
-    if (mainImage) {
-      mainImage.scrollIntoView({ behavior: "smooth" });
-    }
+    await http.post(decodedPath);
   };
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -106,7 +97,9 @@ const OrderMain = () => {
         if (fetch.data || response.data) {
           const productsArray = [fetch.data];
           setProducts(productsArray);
-
+          settestimgage(
+            `http://192.168.100.159:8080/product/files/${fetch.data.mainImageUuidName}`
+          );
           setReview(response.data);
         } else {
           console.error("No data");
@@ -139,9 +132,11 @@ const OrderMain = () => {
             <div className="imgtotal">
               <Imgbox>
                 <Mainimg
-                  id={product.mainImageUuidName} // Add id to main image
-                  src={`http://192.168.100.159:8080/product/files/${product.mainImageUuidName}`}
+                  id={product.mainImageUuidName}
+                  src={testimage}
+                  onMouseMove={handleImageClick(product.mainImageUuidName)}
                 />
+
                 <div className="sidediv">
                   {product.imageUuidName.map((image, index) => (
                     <img
@@ -149,16 +144,18 @@ const OrderMain = () => {
                       className="sideimg"
                       src={`http://192.168.100.159:8080/product/files/${image}`}
                       alt={`Side Image ${index + 1}`}
-                      onClick={() =>
-                        handleImageClick(product.mainImageUuidName)
-                      }
+                      onMouseMove={handleImageClick(product.mainImageUuidName)}
                     />
                   ))}
                 </div>
               </Imgbox>
             </div>
             <Information>
-              <h1>{product.productBrand}</h1>
+              <h1>
+                <button onClick={followAction} value={product.productBrand}>
+                  {product.productBrand}
+                </button>
+              </h1>
               <div className="headerdiv">
                 <h1 className="title">{product.productName}</h1>
                 <div className="star">{starRating}</div>

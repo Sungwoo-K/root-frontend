@@ -11,16 +11,33 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 10px;
   background-color: #fafafa;
   height: 100vh;
   padding: 0%;
+  width: 100vw;
+  top: 50%;
+  position: relative;
+  > video {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    object-fit: cover;
+    z-index: 0;
+  }
+  > div {
+    z-index: 1;
+    position: absolute;
+    top: 30vh;
+    left: 43vw;
+  }
 `;
 
 export const Headername = styled.p`
   font-family: "Nanum Pen Script", cursive;
   font-size: 60px;
-  color: black;
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
 `;
 
 export const Logindiv = styled.div`
@@ -44,13 +61,19 @@ export const Logininput = styled.input`
   width: 300px;
   height: 50px;
   padding: 0px 0px 0px 10px;
+  margin-top: 10px;
 `;
 
 export const Loginbutton = styled.div`
   display: flex;
-  justify-content: space-between;
-
-  width: 150px;
+  justify-content: center;
+  width: 298px;
+  .Link {
+    margin-top: 20px;
+    text-decoration: none;
+    color: white;
+    border: none;
+  }
 `;
 
 export const ExceptionButton = styled.button`
@@ -58,7 +81,7 @@ export const ExceptionButton = styled.button`
   border: none;
   width: 80px;
   height: 20px;
-  background-color: #fafafa;
+  background-color: hsl(0, 50%, 100%);
   font-size: 14px;
   padding-right: 0;
 `;
@@ -73,7 +96,7 @@ export const Button = styled.button`
   font-weight: bold;
   color: white;
   margin-top: 25px;
-  border: 1px solid #dbdbdb;
+
   :hover {
     transition: 0.3s;
     background-color: #009fce;
