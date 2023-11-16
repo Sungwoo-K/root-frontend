@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Bestfiles } from "../Sidebar/styles";
 import { Container } from "@/components/community/Header/styles";
 import { WriteItem } from "@/components/community/Write/styles";
 import { Link } from "react-router-dom";
@@ -20,7 +19,7 @@ export const ImageItem = styled(WriteItem)`
   justify-content: flex-start;
   align-items: flex-start;
   max-width: calc(25% * 4);
-  margin: 0vw;
+  margin: 2vw;
   gap: 2.3vw;
 `;
 export const ViewDetailsLink = styled(Link)`
@@ -32,9 +31,12 @@ export const ViewDetailsLink = styled(Link)`
 `;
 export const Maincontainer = styled(Container)``;
 export const ContentTitle = styled.h3`
+  font-family: iceSotong-Rg;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 200px;
+  width: 10vw;
   max-width: 100%;
+  margin: 0.3vw;
+  font-size: 1vw;
 `;

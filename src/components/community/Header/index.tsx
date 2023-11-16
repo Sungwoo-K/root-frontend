@@ -18,7 +18,12 @@ const main = () => {
       <CommunityAtag to="http://localhost:5000/community">
         커뮤니티
       </CommunityAtag>
-      <MarketAtag to="http://localhost:5000/market">쇼핑</MarketAtag>
+      <MarketAtag
+        to="http://localhost:5000/market"
+        style={{ marginTop: "0.5vw" }}
+      >
+        쇼핑
+      </MarketAtag>
       <FormField type="text" placeholder="🔍Search" />
       <CartButton>
         <img

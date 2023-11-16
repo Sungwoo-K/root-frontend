@@ -4,7 +4,11 @@ interface DropAreaProps {
   isFilled?: boolean;
 }
 
-export const WriteContainer = styled(Container)``;
+export const WriteContainer = styled(Container)`
+  flex-wrap: wrap;
+  align-content: stretch;
+  justify-content: space-evenly;
+`;
 export const AddBtn = styled(PostAddButton)`
   margin-bottom: 10px;
 `;
@@ -51,9 +55,10 @@ export const WriteItem = styled.div`
 `;
 export const WriteForm = styled.form`
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 10vw;
+
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 3vw;
   width: 100%;
   height: 100%;
 `;
@@ -81,6 +86,16 @@ export const AddBtncontainer = styled.div`
   position: fixed;
   bottom: 0;
   width: 100%;
+  input {
+    border-radius: 10px 10px 10px 10px;
+    text-align: center;
+    font-size: 1vw;
+    font-family: "Nanum Pen Script", cursive;
+    background-color: #bdf6fe;
+    width: 9vw;
+    height: 2vw;
+    margin: 0.5vw;
+  }
 `;
 export const DropFont = styled.p`
   font-family: "Nanum Pen Script", cursive;
@@ -97,4 +112,36 @@ export const StyleSelect = styled.select`
   width: 9vw;
   height: 2vw;
   margin-bottom: 2vw;
+`;
+export const KakaoContainer = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+  svg {
+    width: 25vw;
+    height: 20vw;
+  }
+
+  button {
+    border-radius: 10px 10px 10px 10px;
+    text-align: center;
+    font-size: 2vw;
+    font-family: "Nanum Pen Script", cursive;
+    background-color: #bdf6fe;
+    width: 9vw;
+    height: 2vw;
+    margin-bottom: 2vw;
+    margin: 1vw;
+  }
+  input {
+    font-family: "Nanum Pen Script", cursive;
+    border-radius: 10px 10px 10px 10px;
+    font-size: 2vw;
+    background-color: #bdf6fe;
+    width: 16vw;
+    height: 2vw;
+    margin-bottom: 2vw;
+    resize: none;
+    list-style: armenian;
+    margin: 1vw;
+  }
 `;

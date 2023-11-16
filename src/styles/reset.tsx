@@ -138,6 +138,13 @@ const ResetStyle = () => {
           font-weight: normal;
           font-style: normal;
         }
+        @font-face {
+          font-family: "iceSotong-Rg";
+          src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/iceSotong-Rg.woff2")
+            format("woff2");
+          font-weight: normal;
+          font-style: normal;
+        }
       `}
     />
   );
