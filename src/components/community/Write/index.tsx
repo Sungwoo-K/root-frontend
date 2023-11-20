@@ -1,5 +1,12 @@
 import http from "@/utils/http";
+import axios from "axios";
+import sunnyImg from "@/images/SUNNY.png";
+import cloudyImg from "@/images/CLOUDY.png";
+import rainyImg from "@/images/RAINY.png";
+import snowyImg from "@/images/SNOWY.png";
+import KakaoMap from "@/components/community/KakaoMap";
 import {
+  StyleSelect,
   AddBtn,
   WriteContainer,
   AddBtncontainer,
@@ -10,10 +17,14 @@ import {
   DropFont,
   WriteForm,
   PreviewContent,
+  KakaoContainer,
 } from "./styles";
 import { MutableRefObject, useEffect, useRef, useState } from "react";
-import { MultiStats } from "webpack";
 
+interface LatLng {
+  getLat: () => number;
+  getLng: () => number;
+}
 interface PostItem {
   id: number;
   title: string[];
@@ -50,10 +61,26 @@ function MediaElement({
     );
   }
 }
+const backgroundImageUrls = {
+  sunny: sunnyImg,
+  cloudy: cloudyImg,
+  rainy: rainyImg,
+  snowy: snowyImg,
+};
 
 const Write = () => {
   const [posts, setPosts] = useState<PostItem[]>([]);
   const [filePreviews, setFilePreviews] = useState<string[]>([]);
+  const [weather, setWeather] = useState("");
+  const [backgroundImage, setBackgroundImage] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState<LatLng | null>(null);
+  const [address, setAddress] = useState("");
+  const [searchedLocation, setSearchedLocation] = useState(null);
+  const [mapCenter, setMapCenter] = useState({
+    lat: 33.450701,
+    lng: 126.570667,
+  });
+  const [markerPosition, setMarkerPosition] = useState(null);
 
   const fileRef = useRef() as MutableRefObject<HTMLInputElement>;
   const titleRef = useRef() as MutableRefObject<HTMLInputElement>;
@@ -61,7 +88,42 @@ const Write = () => {
   const formRef = useRef<HTMLFormElement>();
 
   useEffect(() => {}, []);
+  const handleAddressChange = (e) => {
+    setAddress(e.target.value);
+  };
 
+  const handleAddressSearch = async () => {
+    const REST_API_KEY = "32a0368bed126bcd2cb86b165033bff4";
+    try {
+      const response = await axios.get(
+        `https://dapi.kakao.com/v2/local/search/address.json?query=${address}`,
+        {
+          headers: {
+            Authorization: `KakaoAK ${REST_API_KEY}`,
+          },
+        }
+      );
+      const data = response.data.documents[0];
+      if (data) {
+        const newLocation = {
+          lat: parseFloat(data.y),
+          lng: parseFloat(data.x),
+        };
+        setMapCenter(newLocation);
+        setMarkerPosition(newLocation);
+        setSelectedLocation({
+          getLat: () => newLocation.lat,
+          getLng: () => newLocation.lng,
+        });
+      }
+    } catch (error) {
+      console.error("주소 검색 에러", error);
+    }
+  };
+  const handleWeatherChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setWeather(e.target.value);
+    setBackgroundImage(backgroundImageUrls[e.target.value]);
+  };
   const handlePost = (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData();
@@ -69,9 +131,13 @@ const Write = () => {
     Array.from(fileRef.current.files).forEach((file) => {
       formData.append("files", file);
     });
-
+    formData.append("backgroundImage", weather);
     formData.append("content", contentRef.current.value);
     formData.append("title", titleRef.current.value);
+    if (selectedLocation) {
+      formData.append("latitude", selectedLocation.getLat().toString());
+      formData.append("longitude", selectedLocation.getLng().toString());
+    }
 
     (async () => {
       try {
@@ -161,6 +227,33 @@ const Write = () => {
             />
             <AddBtn type="submit">올리기</AddBtn>
           </AddBtncontainer>
+          <StyleSelect value={weather} onChange={handleWeatherChange}>
+            <option value={""}>날씨를 선택해주세요.</option>
+            <option value="sunny">맑음 🌞</option>
+            <option value="cloudy">흐림 🌫</option>
+            <option value="rainy">비 ☔</option>
+            <option value="snowy">눈 ⛄</option>
+          </StyleSelect>
+          <KakaoContainer>
+            <button type="button" onClick={handleAddressSearch}>
+              주소 검색
+            </button>
+            <input
+              type="text"
+              value={address}
+              onChange={handleAddressChange}
+              placeholder="주소를 입력하세요"
+            />
+            <KakaoMap
+              onLocationSelect={setSelectedLocation}
+              latitude={mapCenter.lat}
+              longitude={mapCenter.lng}
+              markerLatitude={markerPosition?.lat}
+              markerLongitude={markerPosition?.lng}
+              level={3}
+              mapStyle={{ width: "25vw", height: "20vw" }}
+            />
+          </KakaoContainer>
         </WriteForm>
       </WriteContainer>
     </>
