@@ -71,6 +71,7 @@ export const Inquerybox = styled.article`
   .productanswer {
     display: flex;
     padding: 10px;
+    flex-direction: row;
     font-family: GmarketSansMedium;
 
     > span {

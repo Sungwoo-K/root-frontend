@@ -115,8 +115,6 @@ export const Container = styled.div`
       }
     }
     .reviewall {
-      margin-top: 80px;
-
       width: 700px;
       padding: 30px 30px 10px 30px;
       display: flex;
@@ -146,6 +144,7 @@ export const Container = styled.div`
     .review-ok {
       width: 700px;
       padding: 10px;
+      margin: 30px 0px 0px 20px;
       padding-top: 0px;
       > button {
         width: 695px;

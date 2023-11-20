@@ -11,7 +11,7 @@ export const Container = styled.div`
     height: 65px;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 10;
     transition: all 0.18s ease-in-out;
     background-color: white;
     > article {

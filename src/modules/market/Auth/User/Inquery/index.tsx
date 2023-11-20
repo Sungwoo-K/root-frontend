@@ -55,7 +55,6 @@ export const Inquery = () => {
   return (
     <>
       <Container>
-        <Title>문의 내역</Title>
         {products.map((item) => (
           <Inquerybox key={item.id}>
             <div className="productname">
@@ -81,11 +80,12 @@ export const Inquery = () => {
                 </div>
                 <div className="productanswer">
                   <span>A &nbsp;</span>
-                  <p style={{ width: "700px", marginTop: "30px" }}>
-                    {item.inqueryAnswer}
-                  </p>
+                  <p style={{ width: "700px" }}>{item.productName}</p>
                 </div>
-                <p className="answercontent">{item.inqueryAnswer}</p>
+                <p className="answercontent">
+                  {item.inqueryAnswer ||
+                    "판매자의 답변이 등록되어있지 않습니다."}
+                </p>
               </div>
             </Inqeurycontent>
           </Inquerybox>

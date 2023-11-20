@@ -36,9 +36,9 @@ export const OrederBuy = () => {
     detailaddress: "",
     username: "",
     phonenumber: "",
-    brandName: String,
+    brandName: "",
     productPrice: totalPrice,
-    productName: String,
+    productName: "",
     imp_uid: merchant,
   });
 
@@ -53,18 +53,24 @@ export const OrederBuy = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const response = await http.get<ProductItem[]>(
+      const response = await http.get<ProductItem>(
         `http://192.168.100.159:8080/product/${id}`
       );
 
       setProducts([response.data]);
 
-      setFormdata((prevState) => ({
-        ...prevState,
+      setFormdata({
+        productId: id,
+        quantity: count,
+        address: "",
+        detailaddress: "",
+        username: "",
+        phonenumber: "",
         brandName: response.data.productBrand,
-        productName: response.data.productName,
         productPrice: response.data.productPrice * count,
-      }));
+        productName: response.data.productName,
+        imp_uid: merchant,
+      });
       setTotalPrice(response.data.productPrice * count);
     };
     fetch();

@@ -80,7 +80,6 @@ export const ReviewDetail = () => {
   };
   const ToggleSidebar = () => {
     select === true ? setSelect(false) : setSelect(true);
-    console.log(select);
   };
 
   const reviewPost = async () => {
@@ -98,7 +97,6 @@ export const ReviewDetail = () => {
 
   const handleSelect = (e) => {
     setReview(e.target.value);
-    console.log(e.target.value);
   };
   return (
     <>
@@ -134,7 +132,7 @@ export const ReviewDetail = () => {
                   href={`/products/${item.productId}`}
                   style={{ textDecoration: "none", color: " #35c5f0" }}
                 >
-                  제품 문의
+                  제품 상세
                 </a>
               </button>
             </Reviewbutton>

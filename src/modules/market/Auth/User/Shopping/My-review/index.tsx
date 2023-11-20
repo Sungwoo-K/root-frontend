@@ -56,7 +56,7 @@ export const Myreview = () => {
               <br />
               <span>{item.productName}</span>
               <p className="answercontent">
-                {item.reviewAnswer || "문의하신 답변이 없습니다."}
+                {item.reviewResponse || "판매자의 답변이 없습니다."}
               </p>
             </div>
             <div style={{ marginTop: "20px", border: "1px solid #dbdbdb" }} />

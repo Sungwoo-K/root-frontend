@@ -67,20 +67,20 @@ export const Inquiryorder = () => {
     setFormData((prevData) => ({
       ...formData,
       [name]: value,
-      inqueryCategory:
-        name === "productName" ? inqueryCategory : prevData.inqueryCategory,
+      // inqueryCategory:
+      //   name === "productName" ? inqueryCategory : prevData.inqueryCategory,
     }));
   };
 
   const texts = ["상품", "배송", "반품", "교환", "환불", "기타"];
 
-  const [reviewcategory, setReviewcategory] = useState<string[]>([]);
+  const [reviewcategory, setReviewcategory] = useState(["상품"]);
   const handleClickButton = (value: number) => {
+    console.log(value);
     const categories = ["상품", "배송", "반품", "교환", "환불", "기타"];
-    setReviewcategory((prevCategories) => [
-      ...prevCategories,
-      categories[value],
-    ]);
+    setReviewcategory(() =>
+      value === null ? ["상품"] : categories[categories[value]]
+    );
 
     setFormData((prevData) => ({
       ...prevData,
@@ -143,9 +143,6 @@ export const Inquiryorder = () => {
         <div className="deatildiv">
           <ul className="list">
             <li className="list-item">
-              <em className="marker">
-                구매한 상품의 취소/반품은 마이쿠팡 구매내역에서 신청 가능합니다.
-              </em>
               <em className="marker">
                 상품문의 및 후기게시판을 통해 취소나 환불, 반품 등은 처리되지
                 않습니다.

@@ -8,11 +8,13 @@ export const Layout = () => {
   const isActive = (path) => {
     const currentPath = location.pathname;
 
-    return (
-      (currentPath === "/user/profile" && path === "/user/profile") ||
-      (currentPath.startsWith("/user/profile/edits") &&
-        path === "/user/profile/edits")
-    );
+    if (path === "/user/profile/edits") {
+      return currentPath === path;
+    }
+    if (path === "/user/profile") {
+      return currentPath === path;
+    }
+    return currentPath.startsWith(path);
   };
 
   return (

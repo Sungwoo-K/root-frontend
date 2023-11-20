@@ -5,6 +5,7 @@ export const Container = styled.div`
   justify-content: space-around;
   margin-top: 20px;
   width: 100%;
+  margin-left: 50px;
 `;
 
 export const Totalimg = styled.article`

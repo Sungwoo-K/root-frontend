@@ -41,7 +41,7 @@ export const Inqueryorderqna = () => {
               <p>{item.brand}</p>
             </div>
             <p className="answercontent">
-              {item.inqueryAnswer || "문의하신 답변이 없습니다."}
+              {item.inqueryAnswer || "문의 하신 답변 내용이 없습니다."}
             </p>
             <div className="bottomline"></div>
           </Inquerybox>

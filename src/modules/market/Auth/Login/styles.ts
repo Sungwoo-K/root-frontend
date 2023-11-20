@@ -66,11 +66,12 @@ export const Logininput = styled.input`
 
 export const Loginbutton = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   width: 298px;
   .Link {
     margin-top: 20px;
     text-decoration: none;
+    justify-content: space-between;
     color: white;
     border: none;
   }

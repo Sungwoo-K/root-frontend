@@ -86,7 +86,7 @@ export const main = () => {
             </Link>
 
             <Link
-              to="/myorder/list/detail"
+              to="/myfavorite/list/scrap"
               className="Linknav"
               onClick={ToggleSidebar}
             >
