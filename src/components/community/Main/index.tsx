@@ -10,7 +10,10 @@ import { useEffect, useState } from "react";
 interface PostItem {
   id: number;
   title: string;
+  userid: string;
+  nickname: string;
   content: string;
+  createdDate: string;
   files: PostFile[];
 }
 interface PostFile {
@@ -55,6 +58,7 @@ const Main = () => {
         const response = await axios.get(
           "http://localhost:8080/community/posts"
         );
+
         setPosts(response.data);
       } catch (error) {
         console.error("게시물 불러오는데 실패", error);
@@ -82,8 +86,17 @@ const Main = () => {
                 />
               )}
             </ViewDetailsLink>
-            <ContentTitle>{post.title}</ContentTitle>
-            <p>{post.content}</p>
+            <div className="contentContainer">
+              <ContentTitle>{post.title}</ContentTitle>
+              <div className="Nickname">
+                {/* <p>{post.nickname}</p> */}
+                <p>닉네임</p>
+              </div>
+              <div className="Date">
+                {/* <p>{post.createdDate}</p> */}
+                <p>날짜</p>
+              </div>
+            </div>
           </div>
         ))}
       </ImageItem>

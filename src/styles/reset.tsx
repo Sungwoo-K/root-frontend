@@ -139,7 +139,6 @@ const ResetStyle = () => {
           font-style: normal;
         }
         @font-face {
-<<<<<<< HEAD
           font-family: "GmarketSansMedium";
           src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
             format("woff");
@@ -184,15 +183,10 @@ const ResetStyle = () => {
         @font-face {
           font-family: "KOTRAHOPE";
           src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2")
-=======
-          font-family: "iceSotong-Rg";
-          src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/iceSotong-Rg.woff2")
->>>>>>> 55e76475f43701eae86363d5e33ac3a390c0b4c6
             format("woff2");
           font-weight: normal;
           font-style: normal;
         }
-<<<<<<< HEAD
         @font-face {
           font-family: "Cafe24Ssurround";
           src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff")
@@ -250,8 +244,6 @@ const ResetStyle = () => {
           font-weight: 400;
           font-style: normal;
         }
-=======
->>>>>>> 55e76475f43701eae86363d5e33ac3a390c0b4c6
       `}
     />
   );

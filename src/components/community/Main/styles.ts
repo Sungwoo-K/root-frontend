@@ -21,6 +21,10 @@ export const ImageItem = styled(WriteItem)`
   max-width: calc(25% * 4);
   margin: 2vw;
   gap: 2.3vw;
+  .contentContainer {
+    display: flex;
+    flex-direction: row;
+  }
 `;
 export const ViewDetailsLink = styled(Link)`
   flex: 0 0 25%;
