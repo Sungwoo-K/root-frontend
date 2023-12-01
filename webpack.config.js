@@ -62,5 +62,5 @@ module.exports = {
     type: env.WEBPACK_SERVE ? "memory" : "filesystem",
   },
   // 소스맵 최적화
-  devtool: env.WEBPACK_SERVE ? "memory" : "filesystem",
+  devtool: env.WEBPACK_SERVE ? "eval-cheap-module-source-map" : false,
 };
