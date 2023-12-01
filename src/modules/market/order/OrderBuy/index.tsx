@@ -27,7 +27,7 @@ export const OrederBuy = () => {
   const [products, setProducts] = useState([]);
   const [isChecked, setIsChecked] = useState(true);
   const [totalPrice, setTotalPrice] = useState<number>();
-  const [merchant, setMerchant] = useState<String>();
+  const [merchant, setMerchant] = useState<string>();
 
   const [formData, setFormdata] = useState({
     productId: id,

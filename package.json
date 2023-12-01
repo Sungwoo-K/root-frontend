@@ -41,6 +41,7 @@
     "react-router-dom": "^6.16.0",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
-    "swr": "^2.2.4"
+    "swr": "^2.2.4",
+    "webpack-bundle-analyzer": "^4.10.1"
   }
 }

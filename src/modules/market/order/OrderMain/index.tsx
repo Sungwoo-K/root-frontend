@@ -26,7 +26,7 @@ export interface ReviceItem {
   productPrice: number;
   category: string;
   productDescription: string;
-  isActive: Boolean;
+  isActive: string;
   maximumPurchaseQuantity: number;
   discountRate: number;
   mainImageUuidName: string;
