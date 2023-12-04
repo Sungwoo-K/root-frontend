@@ -8,8 +8,10 @@ import http from "@/utils/http";
 import { ReviceItem } from "../../Shopping/Review";
 
 import { all } from "axios";
+import { isLocalhost } from "@/components/market/host";
 
 export const Scrap = () => {
+  const url = isLocalhost();
   const location = useLocation();
   const searchParam = new URLSearchParams(location.search);
   const category = searchParam.get("category");
@@ -21,9 +23,7 @@ export const Scrap = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await http.get<ReviceItem[]>(
-        `http://192.168.100.109:8080/follow`
-      );
+      const response = await http.get<ReviceItem[]>(`${url}/follow`);
       const products = response.data;
       setProducts(products);
 

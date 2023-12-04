@@ -18,6 +18,7 @@ import Inquiryorder from "../Orderinquiry";
 import Revieworder from "../OrderReview";
 import http from "@/utils/http";
 import Orderdetail from "../Orderdetail";
+import { isLocalhost } from "@/components/market/host";
 
 export interface ReviceItem {
   id: number;
@@ -72,15 +73,14 @@ const OrderMain = () => {
   const handleDown = () => {
     setPlusnum(plusnum - 1);
   };
+  const url = isLocalhost();
   const navigate = useNavigate();
   const handleImageClick = (mainImageUuidName) => (clickedImage) => {
     settestimgage(clickedImage.target.currentSrc);
   };
   const followAction = async (e) => {
     const path = e.target.innerText;
-    const decodedPath = decodeURI(
-      `http://192.168.100.109:8080/follow/${encodeURIComponent(path)}`
-    );
+    const decodedPath = decodeURI(`${url}/follow/${encodeURIComponent(path)}`);
 
     await http.post(decodedPath);
   };
@@ -91,9 +91,7 @@ const OrderMain = () => {
         const fetch = await http.get(
           `http://192.168.100.159:8080/product/${id}`
         );
-        const response = await http.get(
-          `http://192.168.100.109:8080/review/review-total/${id}`
-        );
+        const response = await http.get(`${url}/review/review-total/${id}`);
         if (fetch.data || response.data) {
           const productsArray = [fetch.data];
           setProducts(productsArray);

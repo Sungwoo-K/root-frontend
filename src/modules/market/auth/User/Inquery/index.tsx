@@ -9,6 +9,7 @@ import {
 } from "./style";
 import http from "@/utils/http";
 import styled from "@emotion/styled";
+import { isLocalhost } from "@/components/market/host";
 
 export interface Inquerydata {
   id: number;
@@ -26,6 +27,7 @@ function displayInqueryAnswer(answer) {
 }
 
 export const Inquery = () => {
+  const url = isLocalhost();
   const [products, setProducts] = useState<Inquerydata[]>([]);
   const [mainImage, setMainImage] = useState([]);
   const [Disable, isDisable] = useState(false);
@@ -43,7 +45,7 @@ export const Inquery = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await http.get<Inquerydata[]>(
-        `http://192.168.100.109:8080/inquery/user?size=${size}&page=${page}`
+        `${url}/inquery/user?size=${size}&page=${page}`
       );
 
       const responseData = response.data;

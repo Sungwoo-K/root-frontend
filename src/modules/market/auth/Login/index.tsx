@@ -10,10 +10,27 @@ import {
   Logindiv,
   Logininput,
 } from "./styles";
-import getCookie from "@/utils/cookie";
-import ReactPlayer from "react-player";
+import { isLocalhost } from "@/components/market/host";
+import { useEffect, useState } from "react";
 
 const Login = () => {
+  const [Data, setData] = useState({
+    userLoginId: "",
+    userPassword: "",
+  });
+  const changeHandle = (e) => {
+    const { name, value } = e.target;
+    setData({
+      ...Data,
+      [name]: value,
+    });
+  };
+  const [loginCurrnet, setLoginCurrent] = useState("");
+  const url = isLocalhost();
+
+  useEffect(() => {
+    setLoginCurrent(url + "/auth/signin");
+  }, [isLocalhost()]);
   return (
     <>
       <Container>
@@ -25,13 +42,15 @@ const Login = () => {
           >
             <Headername>캠프&텐트</Headername>
           </Link>
-          <form action="http://localhost:8080/auth/signin" method="post">
+          <form action={loginCurrnet} method="POST">
             <Logindiv>
               <Logininput
                 className="id"
                 type="text"
                 placeholder="아이디"
                 name="userLoginId"
+                value={Data.userLoginId}
+                onChange={changeHandle}
               ></Logininput>
               <div style={{ border: "0.5px solid #dbdbdb" }}></div>
               <Logininput
@@ -39,6 +58,8 @@ const Login = () => {
                 type="password"
                 placeholder="비밀번호"
                 name="userPassword"
+                value={Data.userPassword}
+                onChange={changeHandle}
               ></Logininput>
             </Logindiv>
 

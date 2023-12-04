@@ -6,6 +6,7 @@ import Inqueryorderqna from "../Orderinquiryqna";
 import { useParams } from "react-router-dom";
 import http from "@/utils/http";
 import { ProductItem } from "../../product/market/data";
+import { isLocalhost } from "@/components/market/host";
 
 export const Inquiryorder = () => {
   const { id } = useParams();
@@ -28,10 +29,11 @@ export const Inquiryorder = () => {
     inqueryContent: "",
     productName: "",
   });
+  const url = isLocalhost();
 
   const inqueryPost = async () => {
     try {
-      await http.post(`http://192.168.100.109:8080/inquery/menu/${id}`, {
+      await http.post(`${url}/inquery/menu/${id}`, {
         userLoginId: formData.userLoginId,
         username: formData.username,
         productId: formData.productId,

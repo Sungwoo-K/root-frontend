@@ -3,6 +3,7 @@ import { BrandName, Container, Detail, ProductPrice, Totalimg } from "./styles";
 import { Navigate } from "react-router-dom";
 import http from "@/utils/http";
 import { ReviceItem } from "../Review";
+import { isLocalhost } from "@/components/market/host";
 
 export const Orderdetail = () => {
   const [stars, setStar] = useState([]);
@@ -16,12 +17,11 @@ export const Orderdetail = () => {
     const newStars = [...stars, productId];
     setStar(newStars);
   };
+  const url = isLocalhost();
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await http.get<ReviceItem[]>(
-        `http://192.168.100.109:8080/order/user/wait`
-      );
+      const response = await http.get<ReviceItem[]>(`${url}/order/user/wait`);
       setProducts(response.data);
     };
     fetchData();

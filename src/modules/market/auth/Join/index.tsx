@@ -4,8 +4,10 @@ import { Container, Forminput, Input, Inputdiv, Inputp } from "./style";
 import axios from "axios";
 import { MutableRefObject, useRef, useState } from "react";
 import { Button, Headername } from "../Login/styles";
+import { isLocalhost } from "@/components/market/host";
 
 const Join = () => {
+  const url = isLocalhost();
   const [formData, setFormData] = useState({
     username: "",
     userid: "",
@@ -25,7 +27,7 @@ const Join = () => {
   const postExample = async (e) => {
     e.preventDefault();
 
-    const response = await axios.post("http://localhost:8080/auth/sign", {
+    const response = await axios.post(`isLocalhost/auth/sign`, {
       userid: formData.userid,
       username: formData.username,
       userpassword: formData.userpassword,

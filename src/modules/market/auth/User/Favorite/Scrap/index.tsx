@@ -9,8 +9,10 @@ import { ReviceItem } from "../../Shopping/Review";
 
 import { all } from "axios";
 import { TbNewSection } from "react-icons/tb";
+import { isLocalhost } from "@/components/market/host";
 
 export const Scrap = () => {
+  const url = isLocalhost();
   const location = useLocation();
   const searchParam = new URLSearchParams(location.search);
   const category = searchParam.get("category");
@@ -22,9 +24,7 @@ export const Scrap = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await http.get<ReviceItem[]>(
-        `http://192.168.100.109:8080/scrap`
-      );
+      const response = await http.get<ReviceItem[]>(`${url}/scrap`);
       const products = response.data;
       setProducts(products);
 
@@ -51,9 +51,7 @@ export const Scrap = () => {
     setCart(newCarts);
 
     const fetch = async () => {
-      await http.delete(
-        `http://192.168.100.109:8080/scrap/delete/${productId}`
-      );
+      await http.delete(`${url}/scrap/delete/${productId}`);
     };
     alert("장바구니에서 제거 되었습니다.");
     window.location.replace("/myfavorite/list/scrap");
@@ -97,7 +95,7 @@ export const Scrap = () => {
                   )}
                 </div>
                 <img
-                  src={`http://192.168.100.159:8080/product/files/${product.mainImageUuidName}`}
+                  src={`${url}/product/files/${product.mainImageUuidName}`}
                 />
                 <p>{product.productName}</p>
                 <p>{product.productPrice.toLocaleString()}원</p>
