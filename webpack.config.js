@@ -37,7 +37,7 @@ module.exports = {
     assetModuleFilename: "asset/[hash][ext][query]",
     path: __dirname + "/dist",
     clean: true,
-    publicPath: "/",
+    // publicPath: "/",
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -46,21 +46,21 @@ module.exports = {
     new ProvidePlugin({
       React: "react",
     }),
-    !env.WEBPACK_SERVE
-      ? new BundleAnalyzerPlugin({
-          analyzerMode: "static",
-          openAnalyzer: false,
-        })
-      : null,
+    // !env.WEBPACK_SERVE
+    //   ? new BundleAnalyzerPlugin({
+    //       analyzerMode: "static",
+    //       openAnalyzer: false,
+    //     })
+    //   : null,
   ],
   devServer: {
     historyApiFallback: true,
     static: "./dist",
     open: true,
   },
+  devtool: env.WEBPACK_SERVE ? "eval-cheap-module-source-map" : false,
+  // 빌드 캐시 최적화
   cache: {
     type: env.WEBPACK_SERVE ? "memory" : "filesystem",
   },
-  // 소스맵 최적화
-  devtool: env.WEBPACK_SERVE ? "memory" : "filesystem",
 };
