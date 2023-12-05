@@ -53,14 +53,14 @@ module.exports = {
     //     })
     //   : null,
   ],
-  // devServer: {
-  //   historyApiFallback: true,
-  //   static: "./dist",
-  //   open: true,
-  // },
-  // devtool: env.WEBPACK_SERVE ? "eval-cheap-module-source-map" : false,
+  devServer: {
+    historyApiFallback: true,
+    static: "./dist",
+    open: true,
+  },
+  devtool: env.WEBPACK_SERVE ? "eval-cheap-module-source-map" : false,
   // // 빌드 캐시 최적화
-  // cache: {
-  //   type: env.WEBPACK_SERVE ? "memory" : "filesystem",
-  // },
+  cache: {
+    type: env.WEBPACK_SERVE ? "memory" : "filesystem",
+  },
 };
