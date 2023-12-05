@@ -5,9 +5,11 @@ import axios from "axios";
 import { MutableRefObject, useRef, useState } from "react";
 import { Button, Headername } from "../Login/styles";
 import { isLocalhost } from "@/components/market/host";
+import { isHome } from "@/components/market/isHome";
 
+const url = isLocalhost();
+const home = isHome();
 const Join = () => {
-  const url = isLocalhost();
   const [formData, setFormData] = useState({
     username: "",
     userid: "",
@@ -27,7 +29,7 @@ const Join = () => {
   const postExample = async (e) => {
     e.preventDefault();
 
-    const response = await axios.post(`isLocalhost/auth/sign`, {
+    const response = await axios.post(`${url}/auth/sign`, {
       userid: formData.userid,
       username: formData.username,
       userpassword: formData.userpassword,
@@ -57,7 +59,7 @@ const Join = () => {
     <>
       <Container>
         <Link
-          to="http://localhost:5000/"
+          to={home}
           style={{
             display: "flex",
             width: "100%",

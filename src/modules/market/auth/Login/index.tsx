@@ -12,6 +12,8 @@ import {
 } from "./styles";
 import { isLocalhost } from "@/components/market/host";
 import { useEffect, useState } from "react";
+import { isHome } from "@/components/market/isHome";
+import getCookie from "@/utils/cookie";
 
 const Login = () => {
   const [Data, setData] = useState({
@@ -27,17 +29,18 @@ const Login = () => {
   };
   const [loginCurrnet, setLoginCurrent] = useState("");
   const url = isLocalhost();
-
+  const home = isHome();
   useEffect(() => {
     setLoginCurrent(url + "/auth/signin");
   }, [isLocalhost()]);
+
   return (
     <>
       <Container>
         <video src={videosrc} autoPlay muted loop />
         <div>
           <Link
-            to={"http://localhost:5000/"}
+            to={home}
             style={{ marginBottom: "20px", textDecoration: "none" }}
           >
             <Headername>캠프&텐트</Headername>

@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import http from "@/utils/http";
 import { ProductItem } from "../../product/market/data";
 import { isLocalhost } from "@/components/market/host";
+import { apiHost } from "@/components/market/apiHost";
 
 export const Inquiryorder = () => {
   const { id } = useParams();
@@ -30,6 +31,7 @@ export const Inquiryorder = () => {
     productName: "",
   });
   const url = isLocalhost();
+  const apiUrl = apiHost();
 
   const inqueryPost = async () => {
     try {
@@ -50,9 +52,7 @@ export const Inquiryorder = () => {
   };
   useEffect(() => {
     const fetch = async () => {
-      const response = await http.get<ProductItem>(
-        `http://192.168.100.159:8080/product/${id}`
-      );
+      const response = await http.get<ProductItem>(`${apiUrl}/product/${id}`);
 
       setFormData((prevState) => ({
         ...prevState,

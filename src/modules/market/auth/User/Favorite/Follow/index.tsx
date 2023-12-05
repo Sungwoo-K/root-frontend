@@ -9,9 +9,11 @@ import { ReviceItem } from "../../Shopping/Review";
 
 import { all } from "axios";
 import { isLocalhost } from "@/components/market/host";
+import { apiHost } from "@/components/market/apiHost";
 
 export const Scrap = () => {
   const url = isLocalhost();
+  const apiUrl = apiHost();
   const location = useLocation();
   const searchParam = new URLSearchParams(location.search);
   const category = searchParam.get("category");
@@ -29,7 +31,7 @@ export const Scrap = () => {
 
       const fetchPromises = products.map(async (product) => {
         const productResponse = await http.get<ProductItem[]>(
-          `http://192.168.100.159:8080/product/brands/${product.brandName}`
+          `${apiUrl}/product/brands/${product.brandName}`
         );
         return productResponse.data;
       });
@@ -66,9 +68,7 @@ export const Scrap = () => {
                     e.stopPropagation();
                   }}
                 ></div>
-                <img
-                  src={`http://192.168.100.159:8080/product/files/${product.imageUuidName}`}
-                />
+                <img src={`${apiUrl}/product/files/${product.imageUuidName}`} />
                 <p>{product.intro}</p>
                 <p>{product.representativeName}</p>
                 <div

@@ -10,6 +10,7 @@ import {
 import http from "@/utils/http";
 import styled from "@emotion/styled";
 import { isLocalhost } from "@/components/market/host";
+import { apiHost } from "@/components/market/apiHost";
 
 export interface Inquerydata {
   id: number;
@@ -28,6 +29,7 @@ function displayInqueryAnswer(answer) {
 
 export const Inquery = () => {
   const url = isLocalhost();
+  const apiurl = apiHost();
   const [products, setProducts] = useState<Inquerydata[]>([]);
   const [mainImage, setMainImage] = useState([]);
   const [Disable, isDisable] = useState(false);
@@ -69,7 +71,7 @@ export const Inquery = () => {
             </div>
             <Inqeurycontent>
               <img
-                src={`http://192.168.100.159:8080/product/files/main-image/${item.productId}`}
+                src={`${apiurl}/product/files/main-image/${item.productId}`}
                 className="imagename"
               />
 

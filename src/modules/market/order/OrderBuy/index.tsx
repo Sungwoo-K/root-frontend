@@ -18,9 +18,11 @@ import http from "@/utils/http";
 import { BrandName } from "../../auth/User/Shopping/Order/styles";
 import { RequestPayParams, RequestPayResponse } from "../data";
 import { isLocalhost } from "@/components/market/host";
+import { apiHost } from "@/components/market/apiHost";
 
 export const OrederBuy = () => {
   const url = isLocalhost();
+  const apiUrl = apiHost();
   const priceRef = useRef() as MutableRefObject<HTMLInputElement>;
 
   const location = useLocation();
@@ -55,9 +57,7 @@ export const OrederBuy = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const response = await http.get<ProductItem>(
-        `http://192.168.100.159:8080/product/${id}`
-      );
+      const response = await http.get<ProductItem>(`${apiUrl}/product/${id}`);
 
       setProducts([response.data]);
 
@@ -132,7 +132,7 @@ export const OrederBuy = () => {
                   <p className="productId">주문 상품</p>
                   <BestItem>
                     <img
-                      src={`http://192.168.100.159:8080/product/files/${product.mainImageUuidName}`}
+                      src={`${apiUrl}/product/files/${product.mainImageUuidName}`}
                       alt=""
                     />
                   </BestItem>

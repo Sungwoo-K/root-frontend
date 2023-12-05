@@ -4,9 +4,11 @@ import { Navigate } from "react-router-dom";
 import http from "@/utils/http";
 import { ReviceItem } from "../Review";
 import { isLocalhost } from "@/components/market/host";
+import { apiHost } from "@/components/market/apiHost";
 
 export const Orderdetail = () => {
   // const { carts, setCart } = useCart();
+  const apiUrl = apiHost();
   const [stars, setStar] = useState([]);
 
   const [products, setProducts] = useState([]);
@@ -35,7 +37,7 @@ export const Orderdetail = () => {
             <Detail key={item.id}>
               <p className="brandname">{item.brandName}</p>
               <img
-                src={`http://192.168.100.159:8080/product/files/main-image/${item.productId}`}
+                src={`${apiUrl}/product/files/main-image/${item.productId}`}
                 className="imagename"
               />
               <BrandName>{item.productName}</BrandName>
