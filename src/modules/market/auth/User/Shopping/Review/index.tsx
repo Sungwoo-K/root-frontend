@@ -4,6 +4,8 @@ import http from "@/utils/http";
 import { Select } from "../../Edit/styles";
 import ButtonEvent from "@/components/market/ButtonEvent";
 import { IoIosClose } from "react-icons/io";
+import { isLocalhost } from "@/components/market/host";
+import { apiHost } from "@/components/market/apiHost";
 export interface ReviceItem {
   id: number;
   productId: number;
@@ -19,6 +21,8 @@ export interface ReviceItem {
 }
 
 export const ReviewDetail = () => {
+  const url = isLocalhost();
+  const apiUrl = apiHost();
   const [products, setProducts] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [select, setSelect] = useState(false);
@@ -51,7 +55,7 @@ export const ReviewDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await http.get<ReviceItem[]>(
-        `http://192.168.100.109:8080/review/no-review?key=${keyword}`
+        `${url}/review/no-review?key=${keyword}`
       );
 
       setProducts(response.data);
@@ -72,7 +76,7 @@ export const ReviewDetail = () => {
   const handlesearch = () => {
     const fetchData = async () => {
       const response = await http.get<ReviceItem[]>(
-        `http://192.168.100.109:8080/review/no-review?key=${keyword}`
+        `${url}/review/no-review?key=${keyword}`
       );
       setProducts(response.data);
     };
@@ -83,14 +87,11 @@ export const ReviewDetail = () => {
   };
 
   const reviewPost = async () => {
-    await http.put(
-      `http://192.168.100.109:8080/review/user/${selectedProduct.productId}`,
-      {
-        reviewContent: formData.reviewContent,
-        reviewCount: review,
-        productId: selectedProduct.productId,
-      }
-    );
+    await http.put(`${url}/review/user/${selectedProduct.productId}`, {
+      reviewContent: formData.reviewContent,
+      reviewCount: review,
+      productId: selectedProduct.productId,
+    });
     alert("리뷰가 등록 되었습니다.");
     location.reload();
   };
@@ -114,7 +115,7 @@ export const ReviewDetail = () => {
         {products.map((item) => (
           <ReviewTable key={item.id}>
             <img
-              src={`http://192.168.100.159:8080/product/files/main-image/${item.productId}`}
+              src={`${apiUrl}/product/files/main-image/${item.productId}`}
               className="detailimg"
             />
             <ReviewPage href={`/products/${item.productId}`}>
@@ -155,7 +156,7 @@ export const ReviewDetail = () => {
                 {selectedProduct && (
                   <>
                     <img
-                      src={`http://192.168.100.159:8080/product/files/main-image/${selectedProduct.productId}`}
+                      src={`${apiUrl}:8080/product/files/main-image/${selectedProduct.productId}`}
                       className="detailimg"
                     />
                     <div>

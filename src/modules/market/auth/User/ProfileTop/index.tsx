@@ -2,6 +2,7 @@ import http from "@/utils/http";
 import { Container, Detail, Followdiv, Totalimg } from "./styles";
 import { useEffect, useState } from "react";
 import ApexChart from "@/components/market/Chart";
+import { isLocalhost } from "@/components/market/host";
 
 export const Follow = () => {
   const [product, setProduct] = useState([{}]);
@@ -10,12 +11,11 @@ export const Follow = () => {
   const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
+    const url = isLocalhost();
     const response = async () => {
-      const fetch = await http.get(`http://192.168.100.109:8080/user/count`);
-      const amount = await http.get(`http://192.168.100.109:8080/user/amount`);
-      const monthamount = await http.get(
-        `http://192.168.100.109:8080/user/amount/month`
-      );
+      const fetch = await http.get(`${url}/user/count`);
+      const amount = await http.get(`${url}/user/amount`);
+      const monthamount = await http.get(`${url}/user/amount/month`);
       setChartData(monthamount.data.monthAaount);
 
       setTotalamount(amount.data.totalAmount);

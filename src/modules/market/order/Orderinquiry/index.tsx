@@ -6,6 +6,8 @@ import Inqueryorderqna from "../Orderinquiryqna";
 import { useParams } from "react-router-dom";
 import http from "@/utils/http";
 import { ProductItem } from "../../product/market/data";
+import { isLocalhost } from "@/components/market/host";
+import { apiHost } from "@/components/market/apiHost";
 
 export const Inquiryorder = () => {
   const { id } = useParams();
@@ -28,10 +30,12 @@ export const Inquiryorder = () => {
     inqueryContent: "",
     productName: "",
   });
+  const url = isLocalhost();
+  const apiUrl = apiHost();
 
   const inqueryPost = async () => {
     try {
-      await http.post(`http://192.168.100.109:8080/inquery/menu/${id}`, {
+      await http.post(`${url}/inquery/menu/${id}`, {
         userLoginId: formData.userLoginId,
         username: formData.username,
         productId: formData.productId,
@@ -48,9 +52,7 @@ export const Inquiryorder = () => {
   };
   useEffect(() => {
     const fetch = async () => {
-      const response = await http.get<ProductItem>(
-        `http://192.168.100.159:8080/product/${id}`
-      );
+      const response = await http.get<ProductItem>(`${apiUrl}/product/${id}`);
 
       setFormData((prevState) => ({
         ...prevState,

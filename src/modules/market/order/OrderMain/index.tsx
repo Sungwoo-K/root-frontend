@@ -18,6 +18,8 @@ import Inquiryorder from "../Orderinquiry";
 import Revieworder from "../OrderReview";
 import http from "@/utils/http";
 import Orderdetail from "../Orderdetail";
+import { isLocalhost } from "@/components/market/host";
+import { apiHost } from "@/components/market/apiHost";
 
 export interface ReviceItem {
   id: number;
@@ -72,15 +74,15 @@ const OrderMain = () => {
   const handleDown = () => {
     setPlusnum(plusnum - 1);
   };
+  const url = isLocalhost();
+  const apiUrl = apiHost();
   const navigate = useNavigate();
   const handleImageClick = (mainImageUuidName) => (clickedImage) => {
     settestimgage(clickedImage.target.currentSrc);
   };
   const followAction = async (e) => {
     const path = e.target.innerText;
-    const decodedPath = decodeURI(
-      `http://192.168.100.109:8080/follow/${encodeURIComponent(path)}`
-    );
+    const decodedPath = decodeURI(`${url}/follow/${encodeURIComponent(path)}`);
 
     await http.post(decodedPath);
   };
@@ -88,17 +90,13 @@ const OrderMain = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const fetch = await http.get(
-          `http://192.168.100.159:8080/product/${id}`
-        );
-        const response = await http.get(
-          `http://192.168.100.109:8080/review/review-total/${id}`
-        );
+        const fetch = await http.get(`${apiUrl}/product/${id}`);
+        const response = await http.get(`${url}/review/review-total/${id}`);
         if (fetch.data || response.data) {
           const productsArray = [fetch.data];
           setProducts(productsArray);
           settestimgage(
-            `http://192.168.100.159:8080/product/files/${fetch.data.mainImageUuidName}`
+            `${apiUrl}/product/files/${fetch.data.mainImageUuidName}`
           );
           setReview(response.data);
         } else {
@@ -113,7 +111,7 @@ const OrderMain = () => {
   }, [id]);
 
   const scrapEvent = async () => {
-    const response = await http.post(`http://192.168.100.109:8080/scrap/${id}`);
+    const response = await http.post(`${url}/${id}`);
 
     if (response && response.status == 409) {
       alert("이미 장바구니 등록 되어 있습니다.");
@@ -142,7 +140,7 @@ const OrderMain = () => {
                     <img
                       key={index}
                       className="sideimg"
-                      src={`http://192.168.100.159:8080/product/files/${image}`}
+                      src={`${apiUrl}:8080/product/files/${image}`}
                       alt={`Side Image ${index + 1}`}
                       onMouseMove={handleImageClick(product.mainImageUuidName)}
                     />

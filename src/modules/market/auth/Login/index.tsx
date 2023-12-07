@@ -10,28 +10,50 @@ import {
   Logindiv,
   Logininput,
 } from "./styles";
+import { isLocalhost } from "@/components/market/host";
+import { useEffect, useState } from "react";
+import { isHome } from "@/components/market/isHome";
 import getCookie from "@/utils/cookie";
-import ReactPlayer from "react-player";
 
 const Login = () => {
+  const [Data, setData] = useState({
+    userLoginId: "",
+    userPassword: "",
+  });
+  const changeHandle = (e) => {
+    const { name, value } = e.target;
+    setData({
+      ...Data,
+      [name]: value,
+    });
+  };
+  const [loginCurrnet, setLoginCurrent] = useState("");
+  const url = isLocalhost();
+  const home = isHome();
+  useEffect(() => {
+    setLoginCurrent(url + "/auth/signin");
+  }, [isLocalhost()]);
+
   return (
     <>
       <Container>
         <video src={videosrc} autoPlay muted loop />
         <div>
           <Link
-            to={"http://localhost:5000/"}
+            to={home}
             style={{ marginBottom: "20px", textDecoration: "none" }}
           >
             <Headername>캠프&텐트</Headername>
           </Link>
-          <form action="http://localhost:8080/auth/signin" method="post">
+          <form action={loginCurrnet} method="POST">
             <Logindiv>
               <Logininput
                 className="id"
                 type="text"
                 placeholder="아이디"
                 name="userLoginId"
+                value={Data.userLoginId}
+                onChange={changeHandle}
               ></Logininput>
               <div style={{ border: "0.5px solid #dbdbdb" }}></div>
               <Logininput
@@ -39,6 +61,8 @@ const Login = () => {
                 type="password"
                 placeholder="비밀번호"
                 name="userPassword"
+                value={Data.userPassword}
+                onChange={changeHandle}
               ></Logininput>
             </Logindiv>
 

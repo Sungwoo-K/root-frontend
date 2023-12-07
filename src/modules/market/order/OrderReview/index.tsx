@@ -4,6 +4,7 @@ import { Button, Container, Reviewbox } from "./styles";
 import http from "@/utils/http";
 import { ReviceItem } from "../../auth/User/Shopping/Review";
 import { useParams } from "react-router-dom";
+import { isLocalhost } from "@/components/market/host";
 export interface review {
   nickname: string;
   reviewContent: string;
@@ -11,14 +12,13 @@ export interface review {
   reviewResponse: string;
 }
 export const Revieworder = () => {
+  const url = isLocalhost();
   const [products, setProducts] = useState([]);
   const { id } = useParams();
   const [review, setReview] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await http.get<review[]>(
-        `http://192.168.100.109:8080/review/${id}`
-      );
+      const response = await http.get<review[]>(`${url}/review/${id}`);
 
       setProducts(response.data);
     };

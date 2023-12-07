@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Container, Inquerybox, Title } from "./styles";
 import { useParams } from "react-router-dom";
 import http from "@/utils/http";
+import { isLocalhost } from "@/components/market/host";
 
 export interface review {
   id: number;
@@ -14,14 +15,14 @@ export interface review {
   inqueryAnswer: string;
 }
 
+const url = isLocalhost();
+
 export const Inqueryorderqna = () => {
   const [products, setProducts] = useState([]);
   const { id } = useParams();
   useEffect(() => {
     const fetch = async () => {
-      const response = await http.get<review[]>(
-        `http://192.168.100.109:8080/inquery/${id}`
-      );
+      const response = await http.get<review[]>(`${url}/inquery/${id}`);
       setProducts(response.data);
     };
     fetch();

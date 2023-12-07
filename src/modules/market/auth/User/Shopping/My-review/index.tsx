@@ -2,16 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import { Button, Container, Reviewbox, Title } from "./styles";
 import http from "@/utils/http";
 import { ReviceItem } from "../Review";
+import { isLocalhost } from "@/components/market/host";
 
 export const Myreview = () => {
+  const url = isLocalhost();
   const [products, setProducts] = useState([]);
   const [prdouctid, setProductid] = useState([]);
   const [review, setRevicew] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await http.get<ReviceItem[]>(
-        `http://192.168.100.109:8080/review/in-review`
-      );
+      const response = await http.get<ReviceItem[]>(`${url}/review/in-review`);
       setProducts(response.data);
     };
     fetchData();

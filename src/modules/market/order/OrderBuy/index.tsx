@@ -17,8 +17,12 @@ import { ProductItem } from "../../product/market/data";
 import http from "@/utils/http";
 import { BrandName } from "../../auth/User/Shopping/Order/styles";
 import { RequestPayParams, RequestPayResponse } from "../data";
+import { isLocalhost } from "@/components/market/host";
+import { apiHost } from "@/components/market/apiHost";
 
 export const OrederBuy = () => {
+  const url = isLocalhost();
+  const apiUrl = apiHost();
   const priceRef = useRef() as MutableRefObject<HTMLInputElement>;
 
   const location = useLocation();
@@ -53,9 +57,7 @@ export const OrederBuy = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const response = await http.get<ProductItem>(
-        `http://192.168.100.159:8080/product/${id}`
-      );
+      const response = await http.get<ProductItem>(`${apiUrl}/product/${id}`);
 
       setProducts([response.data]);
 
@@ -101,21 +103,18 @@ export const OrederBuy = () => {
     const { success, error_msg, merchant_uid } = response;
     const { imp_uid } = response;
     if (success) {
-      const response = await http.post(
-        `http://192.168.100.109:8080/order/${id}`,
-        {
-          productId: formData.productId,
-          quantity: formData.quantity,
-          address: formData.address,
-          detailaddress: formData.detailaddress,
-          username: formData.username,
-          imp_uid: imp_uid,
-          phonenumber: formData.phonenumber,
-          brandName: formData.brandName,
-          productPrice: formData.productPrice,
-          productName: formData.productName,
-        }
-      );
+      const response = await http.post(`${url}/order/${id}`, {
+        productId: formData.productId,
+        quantity: formData.quantity,
+        address: formData.address,
+        detailaddress: formData.detailaddress,
+        username: formData.username,
+        imp_uid: imp_uid,
+        phonenumber: formData.phonenumber,
+        brandName: formData.brandName,
+        productPrice: formData.productPrice,
+        productName: formData.productName,
+      });
       alert("결제가 완료되셨습니다.");
     } else {
       alert(`결제 실패: ${error_msg}`);
@@ -133,7 +132,7 @@ export const OrederBuy = () => {
                   <p className="productId">주문 상품</p>
                   <BestItem>
                     <img
-                      src={`http://192.168.100.159:8080/product/files/${product.mainImageUuidName}`}
+                      src={`${apiUrl}/product/files/${product.mainImageUuidName}`}
                       alt=""
                     />
                   </BestItem>
