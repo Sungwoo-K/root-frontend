@@ -42,8 +42,9 @@ const Products = () => {
     const fetchData = async () => {
       if (!isLast) {
         const response = await http.get<PaginationResponse<ProductItem>>(
-          `http://192.168.100.159:8080/api/product?category=${category}&page=${page}&size=${PAGE_SIZE}`
+          `http://192.168.100.159:8081/api/product?category=${category}&page=${page}&size=${PAGE_SIZE}`
         );
+        console.log(response);
         if (response !== undefined) {
           if (response.status === 200) {
             setProducts((prevProducts) =>
@@ -136,7 +137,7 @@ const Products = () => {
             </div>
 
             <img
-              src={`http://192.168.100.159:8080/api/product/files/${product.mainImageUuidName}`}
+              src={`http://192.168.100.159:8081/api/product/files/${product.mainImageUuidName}`}
             />
             <p>{product.productName}</p>
             <p>{product.productPrice.toLocaleString()}원</p>
