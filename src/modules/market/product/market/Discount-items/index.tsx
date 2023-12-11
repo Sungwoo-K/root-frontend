@@ -41,7 +41,7 @@ const Products = () => {
       }
       if (!isLast) {
         const response = await http.get<PaginationResponse<ProductItem>>(
-          `http://192.168.100.159:8080/product/discount?category=${category}&page=${page}&size=${PAGE_SIZE}`
+          `http://192.168.100.159:8080/api/product/discount?category=${category}&page=${page}&size=${PAGE_SIZE}`
         );
         if (response !== undefined) {
           if (response.status === 200) {
@@ -131,7 +131,7 @@ const Products = () => {
               </div>
             </div>
             <img
-              src={`http://192.168.100.159:8080/product/files/${product.mainImageUuidName}`}
+              src={`http://192.168.100.159:8080/api/product/files/${product.mainImageUuidName}`}
             />
             <p>{product.productName}</p>
             <p>{product.productPrice.toLocaleString()}원</p>

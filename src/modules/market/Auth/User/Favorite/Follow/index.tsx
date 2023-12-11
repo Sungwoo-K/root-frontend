@@ -8,8 +8,12 @@ import http from "@/utils/http";
 import { ReviceItem } from "../../Shopping/Review";
 
 import { all } from "axios";
+import { isLocalhost } from "@/components/market/host";
+import { apiHost } from "@/components/market/apiHost";
 
 export const Scrap = () => {
+  const url = isLocalhost();
+  const apiUrl = apiHost();
   const location = useLocation();
   const searchParam = new URLSearchParams(location.search);
   const category = searchParam.get("category");
@@ -21,15 +25,13 @@ export const Scrap = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await http.get<ReviceItem[]>(
-        `http://192.168.100.109:8080/follow`
-      );
+      const response = await http.get<ReviceItem[]>(`${url}/follow`);
       const products = response.data;
       setProducts(products);
 
       const fetchPromises = products.map(async (product) => {
         const productResponse = await http.get<ProductItem[]>(
-          `http://192.168.100.159:8080/product/brands/${product.brandName}`
+          `${apiUrl}/product/brands/${product.brandName}`
         );
         return productResponse.data;
       });
@@ -47,6 +49,7 @@ export const Scrap = () => {
         <Product>
           {allproducts.map((product) => (
             <section
+              key={product.id}
               onClick={() => {
                 navigate(`/products/brands/${product.name}`);
               }}
@@ -65,9 +68,7 @@ export const Scrap = () => {
                     e.stopPropagation();
                   }}
                 ></div>
-                <img
-                  src={`http://192.168.100.159:8080/product/files/${product.imageUuidName}`}
-                />
+                <img src={`${apiUrl}/product/files/${product.imageUuidName}`} />
                 <p>{product.intro}</p>
                 <p>{product.representativeName}</p>
                 <div

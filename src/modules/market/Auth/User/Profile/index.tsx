@@ -17,12 +17,17 @@ import { BsBookmarkStar } from "react-icons/bs";
 import { SlLike } from "react-icons/sl";
 import { AiOutlineSetting } from "react-icons/ai";
 import { TiShoppingCart } from "react-icons/ti";
+import { isLocalhost } from "@/components/market/host";
+import { apiHost } from "@/components/market/apiHost";
+
 const UserProfile = () => {
   const [user, setUser] = useState([]);
+  const url = isLocalhost();
+  const apiUrl = apiHost();
 
   useEffect(() => {
     (async () => {
-      const response = await http.get("http://localhost:8080/user/profile");
+      const response = await http.get(`${url}/user/profile`);
       const responseData = response.data;
       setUser(responseData);
     })();
@@ -32,11 +37,11 @@ const UserProfile = () => {
     <>
       <Container>
         {user.map((userData, id) => (
-          <Profilediv>
+          <Profilediv key={id}>
             <div className="profilediv">
               <img
                 className="profileimg"
-                src={`http://192.168.100.109:8080/user/files/${userData.uuidFileName}`}
+                src={`${url}/user/files/${userData.uuidFileName}`}
               />
             </div>
             <Keydiv key={id}>

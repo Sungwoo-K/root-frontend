@@ -3,9 +3,12 @@ import { BrandName, Container, Detail, ProductPrice, Totalimg } from "./styles";
 import { Navigate } from "react-router-dom";
 import http from "@/utils/http";
 import { ReviceItem } from "../Review";
+import { isLocalhost } from "@/components/market/host";
+import { apiHost } from "@/components/market/apiHost";
 
 export const Orderdetail = () => {
   // const { carts, setCart } = useCart();
+  const apiUrl = apiHost();
   const [stars, setStar] = useState([]);
 
   const [products, setProducts] = useState([]);
@@ -17,12 +20,11 @@ export const Orderdetail = () => {
     const newStars = [...stars, productId];
     setStar(newStars);
   };
+  const url = isLocalhost();
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await http.get<ReviceItem[]>(
-        `http://192.168.100.109:8080/order/user/false`
-      );
+      const response = await http.get<ReviceItem[]>(`${url}/order/user/false`);
       setProducts(response.data);
     };
     fetchData();
@@ -35,7 +37,7 @@ export const Orderdetail = () => {
             <Detail key={item.id}>
               <p className="brandname">{item.brandName}</p>
               <img
-                src={`http://192.168.100.159:8080/product/files/main-image/${item.productId}`}
+                src={`${apiUrl}/product/files/main-image/${item.productId}`}
                 className="imagename"
               />
               <BrandName>{item.productName}</BrandName>

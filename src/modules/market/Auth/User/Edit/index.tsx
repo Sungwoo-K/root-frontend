@@ -11,6 +11,7 @@ import {
   Seconddiv,
 } from "./styles";
 import http from "@/utils/http";
+import { isLocalhost } from "@/components/market/host";
 
 interface UserProfile {
   username: string;
@@ -23,6 +24,7 @@ interface UserProfile {
 }
 
 const EditProfile = () => {
+  const url = isLocalhost();
   const nameRef = useRef() as MutableRefObject<HTMLInputElement>;
   const nicknameRef = useRef() as MutableRefObject<HTMLInputElement>;
   const sexRef = useRef() as MutableRefObject<HTMLInputElement>;
@@ -40,11 +42,8 @@ const EditProfile = () => {
     formData.append("sex", sexRef.current.value);
     formData.append("introduction", introductionRef.current.value);
     formData.append("file", imageRef.current.files[0]);
-    location.reload();
-    const response = await http.put(
-      `http://localhost:8080/user/update`,
-      formData
-    );
+
+    const response = await http.put(`${url}/user/update`, formData);
   };
 
   const [user, setUser] = useState([]);
@@ -52,7 +51,7 @@ const EditProfile = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await http.get("http://localhost:8080/user/profile");
+      const response = await http.get(`${url}/user/profile`);
       const responseData = response.data;
       setUser(responseData);
     })();

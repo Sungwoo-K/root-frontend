@@ -32,7 +32,7 @@ const Products = () => {
   useEffect(() => {
     (async () => {
       const response = await http.get<BrandInfo>(
-        `http://192.168.100.159:8080/product/brands/${param.brandName}`
+        `http://192.168.100.159:8080/api/product/brands/${param.brandName}`
       );
       if (response !== undefined) {
         if (response.status === 200) {
@@ -48,7 +48,7 @@ const Products = () => {
     (async () => {
       if (!isLast) {
         const response = await http.get<PaginationResponse<ProductItem>>(
-          `http://192.168.100.159:8080/product/brands/items/${param.brandName}?page=${page}&size=${PAGE_SIZE}`
+          `http://192.168.100.159:8080/api/product/brands/items/${param.brandName}?page=${page}&size=${PAGE_SIZE}`
         );
         if (response !== undefined) {
           if (response.status === 200) {
@@ -82,7 +82,7 @@ const Products = () => {
           {brand && <p>{brand.name}</p>}
           {brand && (
             <img
-              src={`http://192.168.100.159:8080/product/files/${brand.imageUuidName}`}
+              src={`http://192.168.100.159:8080/api/product/files/${brand.imageUuidName}`}
             />
           )}
           {brand && <p>{brand.intro}</p>}
@@ -127,7 +127,7 @@ const Products = () => {
               </div>
             </div>
             <img
-              src={`http://192.168.100.159:8080/product/files/${product.mainImageUuidName}`}
+              src={`http://192.168.100.159:8080/api/product/files/${product.mainImageUuidName}`}
             />
             <p>{product.productName}</p>
             <p>{product.productPrice.toLocaleString()}원</p>
